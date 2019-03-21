@@ -1,0 +1,31 @@
+.tabBar{
+	position:fixed;
+	display:flex;
+	width:100%;
+	height:3rem;
+	bottom:0;
+	left:0;
+	right:0;
+	box-sizing:border-box;
+	background: rgb(28,28,28);
+}
+.tabBar-item{
+	flex:1;
+	max-width:33.3333333%;
+	text-align:center;
+	height:3rem;
+	line-height:3rem;
+	border:1px solid black;
+}
+.tabBar-item-normal{
+	width: 2.2rem;vertical-align: text-top;
+}
+.tabBar-item-find{
+	width: 4rem;vertical-align: text-top;position:absolute;left:25%;bottom:1.5rem;
+}
+.tabBar-item-find-view{
+	line-height:0;height:4rem;position:relative;
+}
+.tabBar-item-red{
+	background-color: rgb(193,39,47);
+}

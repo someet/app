@@ -1,0 +1,4 @@
+<view>
+	<view>mapmap</view>
+	<bottom-nav isActive='map'></bottom-nav>
+</view>

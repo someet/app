@@ -1,0 +1,36 @@
+<!-- // 引入初始化html内容的模板 -->
+<import src="../wxParse/wxParse.wxml"/>
+<view>
+	<view class='detail-poster'>
+		<image mode='widthFix' src="{{model.poster}}" class="detail-slide-image"/>
+		<!-- //类型展示，收藏按钮，黑名单按钮 -->
+		<view class="detail-poster-box">
+			<image mode='widthFix' src="{{model.type.icon_img}}" class="detail-slide-image-icon"/>
+			<text class='detail-slide-image-text'>观影</text>
+			<view class='detail-poster-box-button'>
+				<view class="detail-poster-box-button-right">
+					<image style="height: 50%;" mode='widthFix' src="../image/collect.png" class="detail-slide-image-collect"/>
+					<text style="height: 50%;" class='detail-slide-icon-text'>黑名单</text>
+				</view>
+				<view class="detail-poster-box-button-right">
+					<image style="height: 50%;" mode='widthFix' src="../image/collect.png" class="detail-slide-image-collect"/>
+					<text style="height: 50%;" class='detail-slide-icon-text'>黑名单</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class='detail-title'>
+		<text class="detail-title-text" style="margin-top:2rem;">{{model.title}}</text>
+		<text class="detail-title-text normal">{{model.desc}}</text>
+		<!-- 分割线 -->
+		<view class="detail-line"></view>
+		<!-- 详细内容html模板初始化 -->
+		<view>
+			<template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+		</view>
+		<!-- 发起人头像和信息 -->
+		<view class='detail-founder'>
+			sssss
+		</view>
+	</view>
+</view>
