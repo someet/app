@@ -52,7 +52,7 @@ height: 100%;
 	color:white;
 }
 .bottomView{
-	height: 40px;width:100%;
+	height: 2rem;width:100%;
 }
 .activityList-title-text{
 	display: block;

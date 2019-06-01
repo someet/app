@@ -30,7 +30,199 @@
 		</view>
 		<!-- 发起人头像和信息 -->
 		<view class='detail-founder'>
-			sssss
+			<!-- 黑色分割线 -->
+			<view class="detail-user-line">
+				<text>发起人</text>
+			</view>
+			<!-- 发起人姓名 -->
+			<view class="detail-user-username">
+				<view class="detail-user-username-box">
+					<text class="detail-user-username-text">{{model.user.username}}</text>
+				</view>
+				<view class="iconfont icon-cc-card idcard"></view>
+			</view>
+			<!-- 头像显示 -->
+			<view class="detail-user-headimg">
+				<view class="detail-user-headimg-box textforimage">
+					<text>“</text>
+				</view>
+				<view class="detail-user-headimg-box imagefortext">
+					<image src="{{model.profile.headimgurl}}" />
+				</view>
+			</view>
+			<!-- 发起人简介 -->
+			<view class="detail-founder-desc">
+				<text>
+					{{model.user.founder_desc}}
+				</text>
+			</view>
+			<!-- 发起人标签 -->
+			<view class="founder-tags">
+				<block wx:for="{{model.tags}}">
+					<view>
+						{{item.tag_title}}
+					</view>
+				</block>
+			</view>
 		</view>
+		
+		<!-- 这些人也报名了啊 -->
+		<view class="scroll-box" wx:if="{{model.answers.length > 0}}">
+			<view class="scroll-box-text">
+				<text>这些人也报名了</text>
+			</view>
+			<scroll-view scroll-x  class="scroll-view-other">
+				<block wx:for="{{model.answers}}" wx:key="index" 	wx-item="item">
+					<view class="other-answers">
+						<!-- 头像 -->
+						<view class="other-headimg">
+							<image src="{{item.profile.headimgurl}}" />
+						</view>
+						<!-- 姓名 -->
+						<view class="other-username">
+							<text>{{item.user.username}}</text>
+						</view>
+						<!-- 是否完成标签 -->
+						<view class="iconfont icon-cc-card other-idcard"></view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+	</view>
+	<!-- 活动细节开始 -->
+	<view class="detail-details">
+		<view class="detail-details-container">
+			<view class="details-container-xj">
+				<text>活动细节</text>
+			</view>
+			<!-- 活动开始时间 -->
+			<view class="details-container-time">
+				<view class="iconfont icon-rili red"></view>
+				<view class="detail-inline-block">
+					03月24日 周日 19：00 - 21：00
+				</view>
+			</view>
+			<!-- 地址开始 -->
+			<view class="details-container-time">
+				<view class="iconfont icon-weizhi red"></view>
+				<view class="detail-inline-block">
+					朝阳公园附近
+				</view>
+			</view>
+			<!-- 活动人数 -->
+			<view class="details-container-time">
+				<view class="iconfont icon-yonghu red"></view>
+				<view class="detail-inline-block">
+					活动人数10人左右
+				</view>
+			</view>
+			<!-- 活动费用 -->
+			<view class="details-container-time">
+				<view class="iconfont icon-qian red"></view>
+				<view class="detail-inline-block">
+					60元/人（场地，设备，活动费用）
+				</view>
+			</view>
+			<!-- 活动流程 -->
+			<view class="details-container-time more-height">
+				<view class="iconfont icon-liucheng red block-icon"></view>
+				<view class="detail-inline-block block-text">
+					<view>
+						<template is="wxParse" data="{{wxParseData:review.nodes}}"/>
+					</view>
+				</view>
+			</view>
+			<!-- 注意事项 -->
+			<view class="details-container-time more-height">
+				<view class="iconfont icon-zhuyi red block-icon"></view>
+				<view class="detail-inline-block block-text">
+					<view>
+						<template is="wxParse" data="{{wxParseData:field6.nodes}}"/>
+					</view>
+				</view>
+			</view>
+			<!-- Tips -->
+			<view class="details-container-time more-height">
+				<view class="iconfont icon-zhuyidapx red block-icon"></view>
+				<view class="detail-inline-block block-text">
+					<view>
+						<template is="wxParse" data="{{wxParseData:field2.nodes}}"/>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 此时间段还有其他活动 -->
+	<view class="other-activity-box">
+		<view>
+			此时间段还有这些活动
+		</view>
+		<scroll-view scroll-x class="other-activity">
+			<view class="other-activity-one">
+				<!-- 图片 -->
+				<view>
+					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
+				</view>
+				<!-- 发起人头像 -->
+				<view class="circle-headimgurl-box">
+					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
+				</view>
+				<!-- 活动标题 -->
+				<view class="other-activity-title">
+					一杯一比好了一卡卡卡
+				</view>
+			</view>
+			<view class="other-activity-one">
+				<!-- 图片 -->
+				<view>
+					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
+				</view>
+				<!-- 发起人头像 -->
+				<view class="circle-headimgurl-box">
+					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
+				</view>
+				<!-- 活动标题 -->
+				<view class="other-activity-title">
+					一杯一比好了一卡卡卡
+				</view>
+			</view>
+			<view class="other-activity-one">
+				<!-- 图片 -->
+				<view>
+					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
+				</view>
+				<!-- 发起人头像 -->
+				<view class="circle-headimgurl-box">
+					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
+				</view>
+				<!-- 活动标题 -->
+				<view class="other-activity-title">
+					一杯一比好了一卡卡卡
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<!-- 关注Someet二维码 -->
+	<view class="detail-details subscribe-box">
+		<!-- 左侧提示语 -->
+		<view class="top-subscribe">
+			<view class="iconfont icon-zhuyidapx red m-left"></view>
+			<view class="detail-line"></view>
+			<view class="color-white p-left">
+				请扫码关注Someet服务号
+				及时接受报名进度通知
+			</view>
+		</view>
+		<!-- 二维码显示 -->
+		<view>
+			<view class="other-activity-poster-box">
+				<image class="other-activity-poster middle-poster" mode='widthFix' src="{{model.profile.headimgurl}}" />
+			</view>
+		</view>
+	</view>
+	<!-- 报名按钮 -->
+	<view class="go-answer">
+		<button class="answer-goback" bindtap='goback'> 返回 </button>
+		<button class="answer-goanswer" bindtap='goAnswer'> 报名 </button>
 	</view>
 </view>

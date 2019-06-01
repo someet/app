@@ -1,4 +1,7 @@
 @import "../wxParse/wxParse.wxss";
+.color-white{
+	color:white;
+}
 .detail-poster{
 	position:relative;
 	width: 100%;
@@ -7,7 +10,7 @@
 	width:100%;
 }
 .detail-slide-image-icon{
-	width:2rem;
+	width:1.5rem;
 	vertical-align: sub;
 	height: 2rem;
 	margin-left:1rem;
@@ -84,8 +87,325 @@
 	margin: 0 auto;
 	border-radius: 5px;
 	box-shadow:0px 0px 10px 2px #666666;
-	height: 10rem;
+	/* height: 10rem; */
 	margin-top: 1.5rem;
 	margin-bottom: 1rem;
 	border:1px solid lightgray;
+	padding-bottom:1.5rem;
+}
+.detail-user-line{
+	height: 2rem;
+	background-color: black;
+	width: 8rem;
+	max-width: 50%;
+	margin-top: 1rem;
+	line-height: 2rem;
+}
+.detail-user-username{
+	width: 100%;
+	height: 2.5rem;
+	text-align: right;
+}
+.detail-user-username-text{
+	font-size: 1.3rem;
+	font-weight: 800;
+	padding-right: 0.5rem;
+}
+.detail-user-line>text{
+	color:white;
+	font-size: 0.9rem;
+}
+.detail-user-headimg{
+	text-align: right;
+}
+.detail-user-headimg-box >image{
+	width:8rem;
+	height:8rem;
+	
+}
+.detail-user-headimg-box{
+	display: inline-block;
+	width:8rem;
+	height:8rem;
+}
+.textforimage{
+	display:inline-block;
+}
+.textforimage>text{
+	padding-right: 5rem;
+	margin-top: 4rem;
+	display: block;
+	font-size: 2rem;
+	font-size:2rem;
+	font-weight:800;
+}
+.imagefortext{
+	padding-right: 1.5rem;
+}
+.detail-user-username-text{
+	display: inline-block;
+}
+.detail-user-username-box{
+	display: inline-block;
+}
+.idcard{
+	display: inline-block;
+	font-size: 24px;
+	padding-right: 1rem;
+	color: red;
+}
+.detail-founder-desc{
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+.detail-founder-desc>text{
+	color:gray;
+	font-size: 0.8rem;
+}
+.scroll-box{
+	width: 100%;
+	height: 9rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	overflow-y:hidden;
+}
+.other-headimg{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 4rem;
+	margin: 0 auto;
+	overflow: hidden;
+	
+}
+.other-headimg>image{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 4rem;
+}
+.other-username{
+	width: 4rem;
+	height: 1.5rem;
+	margin: 0 auto;
+}
+.other-username>text{
+	font-size: 0.75rem;
+	color:gray;
+}
+.other-idcard{
+	font-size: 24px;
+	margin:0 auto;
+	height: 1.5rem;
+}
+.scroll-view-other{
+	white-space: nowrap;
+	height: 8rem;
+	width:100%;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+}
+.other-answers{
+	width: 6rem;
+	height: 7rem;
+	text-align: center;
+	display: inline-block;
+}
+.scroll-box-text>text{
+	height:2rem;
+	display:block;
+	line-height:2rem;
+}
+.founder-tags{
+	width: 96%;
+	height: 8rem;
+	margin:0 auto;
+}
+.founder-tags>view{
+	padding: 0px;
+    display: inline-block;
+    font-size: 0.8rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    box-sizing: border-box;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    background: rgb(241,43,54);
+    color: white;
+    width: auto;
+    margin: 0.2rem;
+    border-radius: 1.5rem;
+}
+.detail-details{
+	background-color: black;
+	height: auto;
+	width: 100%;
+}
+.detail-details-container{
+	width: 96%;
+	margin: auto;
+	color:red;
+}
+.details-container-xj{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	text-align:left;
+	padding-left:1rem;
+}
+.details-container-xj>text{
+	font-size:1.1rem;
+	padding-left: 0.5rem;
+}
+.details-container-time{
+	text-align: left;
+	height: 2rem;
+	line-height: 2rem;
+}
+.details-container-time>view{
+	display: inline-block;
+	font-size: 0.8rem;
+	padding-left: 0.5rem;
+	color:white;
+	overflow:hidden;
+}
+.red{
+	color:red;
+}
+.more-height{
+	min-height: 2rem;
+	height: auto;
+	position:relative;
+}
+.block-text>text{
+	display: block;
+	margin-left:1.2rem;
+	padding-left:0.5rem;
+}
+.block-text>view{
+	margin-left:1.2rem;
+	border-left:4px solid red;
+	margin-top:1rem;
+	padding-left:0.6rem;
+}
+.block-icon{
+	position: absolute;
+	top:0;
+}
+.other-activity-box{
+	width: 100%;
+}
+.other-activity-box>view{
+	width: 100%;
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 800;
+	margin-top:1rem;
+	margin-bottom:1rem;
+}
+.other-activity{
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.other-activity-one{
+	position: relative;
+	text-align: center;
+	width: 8rem;
+	display: inline-block;
+	padding-left: 0.7rem;
+	padding-right: 0.7rem;
+}
+.circle-headimgurl-box,.circle-headimgurl{
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+}
+.circle-headimgurl-box{
+	position: absolute;
+	bottom: 1.5rem;
+	left:25%;
+}
+.other-activity-title{
+	color:black;
+	text-align: center;
+	margin-top: 1.6rem;
+	font-size:0.8rem;
+}
+.other-activity-poster{
+	width: 8rem;
+}
+.subscribe-box{
+	margin-top: 1.5rem;
+	margin-bottom: 3rem;
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 0.5rem;
+}
+.subscribe-box>view{
+	display: inline-block;
+	width:50%;
+	box-sizing: border-box;
+	/* height: 8rem; */
+	height:100%;
+}
+/* .top-subscribe{
+	position: absolute;
+	top:1rem;
+} */
+.m-left{
+	margin-left:2rem;
+	margin-top:1rem;
+}
+.p-left{
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	font-size: 0.7rem;
+}
+.middle-poster{
+	vertical-align: middle;
+	padding: 1rem;
+	width: 8rem;
+	height: 8rem;
+}
+.other-activity-poster-box{
+	text-align: center;
+}
+.go-answer{
+	position: fixed;
+	bottom: 0px;
+	left:0px;
+	width:100%;
+	height: 3rem;
+	text-align: center;
+	line-height: 3rem;
+	background-color:red;
+	color:white;
+	font-weight:800;
+	display:flex;
+}
+.go-answer>button:after{
+	border:0;
+}
+.answer-goback:after{
+	border-radius: 0;
+}
+.answer-goanswer:after{
+	border-radius: 0;
+}
+.answer-goback{
+	width:25%;
+	height:3rem;
+	line-height:3rem;
+	border-radius: 0;
+	background-color:white;
+	color:red;
+}
+.answer-goanswer{
+	width:75%;
+	height:3rem;
+	line-height:3rem;
+	color:white;
+	background-color:red;
+	border-radius:0;
 }

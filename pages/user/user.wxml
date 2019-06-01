@@ -1,4 +1,3 @@
-<view>
-	<view>useruser</view>
-	<bottom-nav isActive='user'></bottom-nav>
+<view class="page-body">
+	<button open-type='getUserInfo' bindgetuserinfo='onGetUserInfo'>获取用户信息</button>
 </view>

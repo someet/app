@@ -28,6 +28,7 @@
 		scroll-y
 		style="height: 100%"
 		scroll-into-view="{{toView}}"
+		enable-back-to-top="true"
 		>
 		<block wx:for="{{actList}}" wx:for-item="item" wx:key="index">
 			<navigator
@@ -43,9 +44,6 @@
 			</navigator>
 			
 		</block>
-			<view class='bottomView'>
-				
-			</view>
 		</scroll-view>
 		
 	</view>

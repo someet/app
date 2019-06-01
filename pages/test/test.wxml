@@ -1,0 +1,8 @@
+<view class="page-body">
+  <view class="page-body-wrapper">
+    <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 800px;"></camera>
+   <cover-view class="pause" style='position:absolute;top:126px;left:0;width:100%;background-color:red;' bindtap="pause">
+      <cover-image class="img" src="http://img.someet.cc/circle.png" />
+  </cover-view>
+  </view>
+</view>

@@ -22,6 +22,7 @@ Component({
   methods: {
 	swichTo:function(e){
 		var action = e.currentTarget.dataset['action'];
+		console.log(action)
 		var routers = getCurrentPages().route;
 		if(action == 'act' && routers !== 'pages/index/index'){
 			wx.switchTab({
