@@ -1,10 +1,14 @@
 var WxParse = require('../wxParse/wxParse.js');
 var req = require('../../common/request.js');
 var user = require('../../common/user.js');
+var util = require('../../utils/util.js'); 
 Page({
   data: {
 	id:0,
-	model:{}
+	model:{},
+	is_click:false,
+	isShow:true,
+	t:util.formatTime(1560417955)
   },
   	onLoad: function (options) {
 		var act_id = options.id
@@ -24,20 +28,23 @@ Page({
 		var that = this;
 		var data = {'id':this.data.id};
 		req.getView(data).then((res)=>{
-			 	var detail = res.data;
+			var detail = res.data;
 			WxParse.wxParse('content', 'html', detail.details, that,0);
 			WxParse.wxParse('review', 'html', detail.review, that,0);
 			WxParse.wxParse('field2', 'html', detail.field2, that,0);
 			WxParse.wxParse('field6', 'html', detail.field6, that,0);
 			that.setData({
-				model:detail
+				model:detail,
+				isShow:false
 			}),
 			wx.hideLoading()
 		}).catch(req.showErr)
   	},
   	//点击报名
   	goAnswer:function(){
-  		console.log('You click the btn')
+  		var that = this;
+  		if(this.data.model.is_answer) return false;
+  		this.is_click = true;
   		//检查自身的状态，是否填写了手机号，微信号
   		//检查活动状态
   		var title;
@@ -62,33 +69,58 @@ Page({
   	},
   	//判断活动状态
   	checkAnswer(){
+  		var that = this;
   		wx.showLoading({
 		  title: '查询报名状态中',
 		})
   		var data = {'id':this.data.id};
   		req.checkAnswer(data).then((res)=>{
-  			console.log(res)
-  			if(res){
+  			wx.hideLoading();
+  			var title = '可以报名';
+  			if(res.success == 0) title = '服务器错误';
+  			if(res.data !== 1){
+  				if(res.data == 'is_empty'){title = '活动查询失败';}
+  				if(res.data == 'is_full'){title = '报名人数已满';}
+  				if(res.data == 'is_conflict'){title = '报名活动冲突';}
+  				if(res.data == 'not_release'){title = '活动尚未发布';}
+  				if(res.data == 'is_answer'){title = '活动已报名';}
   				wx.showToast({
-				  title: '当前状态无法报名',
+				  title: title,
 				  icon: 'none',
 				  duration: 2000
 				})
+				that.is_click = false;
+  			}else{
+  				//开始报名
+  				that.startAnswer()
   			}
-  			wx.hideLoading()
-  		})
+  		}).catch(req.showErr)
+  	},
+  	startAnswer(){
   		// 开始报名流程
-  		req.startAnswer().then((res)=>{
-  			if(res.status == 1){
-  				if(typeof(res.is_set_question) != undefined && res.is_set_question == 1){
-  					//跳转回答问题页面
-  					wx.navigateTo({
-					  url: 'page/question/index'
-					})
-  				}else{
-  					//未设置问题则直接生成报名记录
-  					console.log(res)
-  				}
+  		var data = {'id':this.data.id};
+  		req.startAnswer(data).then((res)=>{
+  			console.log(res)
+  			if(res.success == 0){
+  				wx.showToast({
+				  title: '服务器错误',
+				  icon: 'none',
+				  duration: 2000
+				})
+				that.is_click = false;
+  			}else{
+  				if(res.status == 1){
+	  				if(typeof(res.is_set_question) != undefined && res.is_set_question == 1){
+	  					//跳转回答问题页面
+	  					wx.navigateTo({
+						  url: 'page/question/index'
+						})
+	  				}else{
+	  					//未设置问题则直接生成报名记录
+	  					console.log(res)
+	  					that.is_click = false;
+	  				}
+	  			}
   			}
   		});
   	}

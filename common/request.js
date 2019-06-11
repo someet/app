@@ -1,7 +1,8 @@
 const basApiUrl = 'http://dubin.ngrok.wdevelop.cn';
 const request = {
 	header : {
-		'Authorization':''
+		'Authorization':'',
+		'content-type':'application/x-www-form-urlencoded;charset=utf-8'
 	},
 	//小程序登录获取openid
 	getWxId(data){
@@ -35,18 +36,16 @@ const request = {
 		this.header.Authorization = 'Bearer '+token
 		return this.header
 	},
-	errPicker(err) {
-		  if (typeof err === 'string') {
-		    return err;
-		  }
-
-		  return err.msg || err.errMsg || (err.detail && err.detail.errMsg) || '未知错误';
-	},
 	showErr(err) {
-		const msg = errPicker(err);
+		if (!typeof err === 'string') {
+		    err = err.msg || err || err.errmsg || err.errMsg || (err.detail && err.detail.errMsg) || '未知错误';
+		}else{
+			err = '服务器错误';
+		}
+		wx.hideLoading()
 		wx.showModal({
 		showCancel: false,
-			content: msg
+			content: err
 		});
 	},
 	getView(data){

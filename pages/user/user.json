@@ -1,5 +1,7 @@
 {
   "usingComponents": {
 		"bottom-nav":"../components/bottom-nav"
-	}
+	},
+	"disableScroll": true,
+	"enablePullDownRefresh":false
 }

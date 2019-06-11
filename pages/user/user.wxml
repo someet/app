@@ -1,3 +1,3 @@
-<view class="page-body">
-	<button open-type='getUserInfo' bindgetuserinfo='onGetUserInfo'>获取用户信息</button>
+<view class="page-body" style='width:100%;height: 100%;overflow: hidden;'>
+	<image mode="scaleToFill" style="width: 100%; height: 100%"  src="{{imagefirstsrc}}"></image>
 </view>

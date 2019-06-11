@@ -13,9 +13,10 @@ const user = {
 		  		if(typeof(userInfo) == undefined || !userInfo.id){
 		  			//查询用户信息并保存
 		  			// 正式服务使用unioid 测试服务无法绑定开放平台
+		  			var unionid = idInfo.unionid;
 		  			req.getUserInfo({'unionid':'o28P7ww3frRs9FoLRqbmr_EVKuxg'}).then((res)=>{
 		  				if(res.data){
-		  					wx.setStorageSync('userInfo', res.data)
+		  					wx.setStorageSync('userInfo', res.data.data)
 		  				}else{
 		  					//不存在的用户，无法自动获取信息，则去个人中心时在绑定新的用户
 		  				}

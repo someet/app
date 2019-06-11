@@ -51,7 +51,9 @@
   content: "\e719";
 }
 
-
+page{
+  height:100%;
+}
 /**app.wxss**/
 .container {
   height: 100%;
