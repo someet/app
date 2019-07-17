@@ -1,4 +1,4 @@
-<view>
+<view class="page-body">
 	<!-- //轮播图上方遮罩层 -->
 	<view class="tabBack">
 		<view class='tab  {{currentData == "search" ? "tabBorer" : ""}}'  data-current = "search" bindtap='checkCurrent'>筛选1</view>

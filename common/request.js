@@ -2,7 +2,7 @@ const basApiUrl = 'http://dubin.ngrok.wdevelop.cn';
 const request = {
 	header : {
 		'Authorization':'',
-		'content-type':'application/x-www-form-urlencoded;charset=utf-8'
+		'content-type':'application/x-www-form-urlencoded'
 	},
 	//小程序登录获取openid
 	getWxId(data){
@@ -82,6 +82,34 @@ const request = {
 				method:'post',
 				data:data,
 			  	url:basApiUrl+'/v1/answer/create',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取活动的问题列表
+	getQuestion(id){
+		var that = this;
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:{'id':id},
+			  	url:basApiUrl+'/v1/activity/get-question',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//创建报名事件
+	createAnswer(data){
+		var that = this;
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+			  	url:basApiUrl+'/v1/answer/create-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

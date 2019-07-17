@@ -14,11 +14,12 @@
 				></image>  
 	</view>
 	<view class="tabBar-item {{isActive == 'user'?'tabBar-item-red':''}}" bindtap='swichTo' data-action='user'>
-		<image
+		<navigator
+				url="/pages/user/user"><image
 					 class='tabBar-item-normal'
 					mode="widthFix"
 					src="../image/act.png"
-				></image>  
+				></image>  </navigator>
 	</view>
 	<slot></slot>
 </view>

@@ -52,7 +52,16 @@
 }
 
 page{
-  height:100%;
+	font-size: 0.8rem;
+	color:white;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+}
+.page-body{
+	
 }
 /**app.wxss**/
 .container {

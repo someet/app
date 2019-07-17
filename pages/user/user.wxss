@@ -10,3 +10,29 @@
 .page-body-wrapper{
 	height:800px;
 }
+.activityList{
+	width:100%;
+	text-align: center;
+	position:relative;
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position:0 50%;
+	height: 233px;
+}
+.activityList-title{
+	position: absolute;
+	top:35%;
+	left:15%;
+	width: 70%;
+	color:white;
+}
+.bottomView{
+	height: 2rem;width:100%;
+}
+.activityList-title-text{
+	display: block;
+	color:white;
+	font-size: 1rem;
+	font-weight: 400;
+	width:100%;
+}

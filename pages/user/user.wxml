@@ -1,3 +1,52 @@
 <view class="page-body" style='width:100%;height: 100%;overflow: hidden;'>
-	<image mode="scaleToFill" style="width: 100%; height: 100%"  src="{{imagefirstsrc}}"></image>
+	<view>
+		<scroll-view
+		scroll-y
+		style="height: 100%"
+		enable-back-to-top="true"
+		>
+		<navigator
+			url="/pages/user/details/details"
+		  >
+			<view class="activityList" style="background-image:url('http://img.someet.cc/FlpAnn3vD3OxymlEpLGW8Eoffh1Y');">
+				<view class="activityList-title">
+					<text class="activityList-title-text">这是标题</text>
+					<text class="activityList-title-text">这是北荣</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator
+			url="/pages/user/details/details"
+		  >
+			<view class="activityList" style="background-image:url('http://img.someet.cc/FlpAnn3vD3OxymlEpLGW8Eoffh1Y');">
+				<view class="activityList-title">
+					<text class="activityList-title-text">这是标题</text>
+					<text class="activityList-title-text">这是北荣</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator
+			url="/pages/user/details/details"
+		  >
+			<view class="activityList" style="background-image:url('http://img.someet.cc/FlpAnn3vD3OxymlEpLGW8Eoffh1Y');">
+				<view class="activityList-title">
+					<text class="activityList-title-text">这是标题</text>
+					<text class="activityList-title-text">这是北荣</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator
+			url="/pages/user/details/details"
+		  >
+			<view class="activityList" style="background-image:url('http://img.someet.cc/FlpAnn3vD3OxymlEpLGW8Eoffh1Y');">
+				<view class="activityList-title">
+					<text class="activityList-title-text">这是标题</text>
+					<text class="activityList-title-text">这是北荣</text>
+				</view>
+			</view>
+		</navigator>
+
+		</scroll-view>
+		
+	</view>
 </view>

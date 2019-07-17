@@ -1,0 +1,46 @@
+<view class="page-body question-body">
+	<!-- 回答问题前的提示语 -->
+	 <view class="question-tips">
+		发起人王雨涵将通过筛选问题来选择最终参与活动的用户，认真填写会大大增加通过筛选的可能性。根据平台信用规则，通过活动报名后，未请假情况下不参与活动将会有不良记录，影响下次报名
+	 </view>
+	<!-- 回答问题前的提示语 -->
+	<!-- 发起人头像 -->
+	<view class='question-created-head'>
+		<view class="question-created-head-box">
+			<image class="image" mode='widthFix' src='http://img.someet.cc/FnyKfA8-_4Gf-TA2wjdC8dzCBC4r'></image>
+		</view>
+	</view>
+	<!-- 发起人头像结束 -->
+	<!-- 问题循环开始 -->
+	<form bindsubmit="createAnswer">
+		<input type="text" hidden="true" value="{{id}}" name='activity_id' />
+		<view class="question-item-list">
+			<block wx:for="{{question_item}}" wx:for-item="item" wx:key="index">
+				<view wx:if="{{index !=3}}" class="question-item-list-box">
+					<view class="question-item-list-question">
+						{{item.label}}
+					</view>
+					<view class="question-item-list-answer">
+						<textarea name='question_item{{item.id}}' placeholder-style="color:black;" value="{{answerList[index]}}" class="question-item-list-text" value="">
+						</textarea>
+					</view>
+				</view>
+				<view wx:if="{{index == 3}}" class="question-item-list-box">
+					<view class="question-item-list-question">
+						{{item.label}}
+					</view>
+					<view class="question-item-list-answer">
+						<view class="question-upload-image">
+							<input type="text" hidden="true" name='question_item{{item.id}}' value="{{question_image}}" />
+							<image class="image" style="width: 100%;height: 7rem;" bindtap="uploadImage" mode='scaleToFill' src="{{question_image?question_image:'http://img.someet.cc/Fo_ibBE5E3jgf3MBEYHJGdxufjWF'}}"></image>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+		<!-- 问题循环结束 -->
+		<view class="question-next-box" hidden="{{question_item.length == 0}}">
+			<button class='question-next' form-type="submit">下一步</button>
+		</view>
+	</form>
+</view>

@@ -1,0 +1,8 @@
+{
+	"disableScroll": true,
+	"enablePullDownRefresh":false,
+	"backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "white",
+	"navigationBarTitleText": "环球黑卡",
+	"navigationBarTextStyle": "black"
+}

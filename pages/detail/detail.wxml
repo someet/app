@@ -1,6 +1,6 @@
 <!-- // 引入初始化html内容的模板 -->
 <import src="../wxParse/wxParse.wxml"/>
-<view hidden='{{isShow}}'>
+<view hidden='{{isShow}}' class="page-body">
 	<view class='detail-poster'>
 		<image mode='widthFix' src="{{model.poster}}" class="detail-slide-image"/>
 		<!-- //类型展示，收藏按钮，黑名单按钮 -->
@@ -154,7 +154,7 @@
 		</view>
 	</view>
 	<!-- 此时间段还有其他活动 -->
-	<view class="other-activity-box">
+	<view class="other-activity-box" wx:if="{{model.other.length > 0}}">
 		<view>
 			此时间段还有这些活动
 		</view>
@@ -214,7 +214,7 @@
 				及时接受报名进度通知
 			</view>
 		</view>
-		<!-- 二维码显示 -->
+		<!--  二维码显示 -->
 		<view>
 			<view class="other-activity-poster-box">
 				<image class="other-activity-poster middle-poster" mode='widthFix' src="{{model.profile.headimgurl}}" />
@@ -228,5 +228,6 @@
 		<button wx:if='{{model.is_answer == 1 && model.status == 20}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}">已报名</button>
 		<button wx:if='{{model.status == 30}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已关闭 </button>
 		<button wx:if='{{model.status == 40}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已取消 </button>
+		<button wx:if='{{model.is_end == 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>
 	</view>
 </view>
