@@ -2,14 +2,14 @@ var user = require('./common/user.js');
 App({
 	globalData:{
         apiUrl: 'http://dubin.ngrok.wdevelop.cn',
-				userInfo: null
+		userInfo: null
 	},
-  onLaunch: function () {
-      //隐藏自带的导航栏
-      wx.hideTabBar();
-      //检查用户状态
-      user.checkUserInfo();
-  },
+	onLaunch: function () {
+	  //隐藏自带的导航栏
+	  wx.hideTabBar();
+	  //检查用户状态
+	  user.checkUserInfo();
+	},
 	showMsg(msg,type,duration){
 		var icon = typeof(type) == 'undefined'?'none':type
 		var t = typeof(duration) == 'undefined'?2000:duration

@@ -29,7 +29,7 @@ const request = {
 		})
 	},
 	getToken(){
-		return '6tN6fgDZhdq5k4-dNa-yb36b7LDY67bh';
+		return 'iVHFPhHKUaQg6jPUJRNoFhvQVw33eArt';
 	},
 	getHeader(){
 		var token = this.getToken();
@@ -37,6 +37,7 @@ const request = {
 		return this.header
 	},
 	showErr(err) {
+		console.log(err)
 		if (!typeof err === 'string') {
 		    err = err.msg || err || err.errmsg || err.errMsg || (err.detail && err.detail.errMsg) || '未知错误';
 		}else{
@@ -114,7 +115,46 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//获取我报名的活动列表
+	getMyanswer(data){
+		var that = this;
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:data,
+			  	url:basApiUrl+'/v1/user/get-answers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取我发起的活动
+	getWeekAct(data){
+		var that = this 
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				url:basApiUrl+'/v1/user/get-week-act',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取我发起的活动
+	getHistoryAct(data){
+		var that = this 
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				url:basApiUrl+'/v1/user/get-history-act',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
-
 module.exports = request;

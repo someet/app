@@ -1,10 +1,11 @@
-@font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1553238437875'); /* IE9 */
-  src: url('iconfont.eot?t=1553238437875#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
-  url('iconfont.woff?t=1553238437875') format('woff'),
-  url('iconfont.ttf?t=1553238437875') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('iconfont.svg?t=1553238437875#iconfont') format('svg'); /* iOS 4.1- */
+@font-face {
+  font-family: 'iconfont';  /* project id 877807 */
+  src: url('//at.alicdn.com/t/font_877807_stlafpq161.eot');
+  src: url('//at.alicdn.com/t/font_877807_stlafpq161.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_877807_stlafpq161.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_877807_stlafpq161.woff') format('woff'),
+  url('//at.alicdn.com/t/font_877807_stlafpq161.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_877807_stlafpq161.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -19,6 +20,10 @@
   content: "\e6c5";
 }
 
+.icon-40:before {
+  content: "\e6aa";
+}
+
 .icon-qian:before {
   content: "\e67c";
 }
@@ -31,8 +36,24 @@
   content: "\e662";
 }
 
+.icon-jiantou:before {
+  content: "\e64e";
+}
+
 .icon-zhuyidapx:before {
   content: "\e611";
+}
+
+.icon-icon-test:before {
+  content: "\e62a";
+}
+
+.icon-xinyongqia:before {
+  content: "\e797";
+}
+
+.icon-xingxing:before {
+  content: "\e646";
 }
 
 .icon-zhuyi:before {
@@ -41,6 +62,10 @@
 
 .icon-liucheng:before {
   content: "\e639";
+}
+
+.icon-jubao:before {
+  content: "\e711";
 }
 
 .icon-yonghu:before {
@@ -52,13 +77,15 @@
 }
 
 page{
-	font-size: 0.8rem;
+	font-size: 1rem;
 	color:white;
 	height: 100%;
 	position: absolute;
 	top:0;
 	left:0;
 	right: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 .page-body{
 	
@@ -73,3 +100,66 @@ page{
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+
+/* 个人中心和发起活动和报名的活动通用活动列表样式 */
+.member-top-box-answer{
+	color:#707070;
+	font-size: 0.9rem;
+	padding:1rem;
+	background-color: white;
+
+}
+.member-top-box-myanswers,.member-top-box-opration-box{
+	padding: 0.7rem;
+}
+.member-top-box-opration-btn{
+	right:1rem;
+	background-color: #666666;
+	color:white;
+}
+.member-top-box-scroll-answers{
+	width: 100%;
+	/* height: 6rem; */
+	background: white;
+	/* border:2px solid black; */
+	/* display: flex; */
+}
+.member-top-box-scroll-answers-box{
+	display: flex;
+	padding:0.7rem;
+	color:black;
+}
+.member-top-box-poster{
+	width: 4rem;
+	height: 4rem;
+}
+.member-top-box-title{
+	height: 4rem;
+	padding-left: 0.8rem;
+}
+.member-top-box-title-name{
+	height: 70%;
+}
+.member-top-box-title-time{
+	font-size: 0.8rem;
+}
+.member-top-box-title text{
+	display: block;
+}
+.member-top-box-opration-box{
+	position: relative;
+	height: 2rem;
+}
+.member-top-box-opration-box view{
+	width: 5rem;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	position: absolute;
+}
+.member-top-box-opration-status{
+	left:1rem;
+	color:black;
+}
+/* 个人中心和发起活动和报名的活动通用活动列表样式结束 */

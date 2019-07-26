@@ -1,5 +1,4 @@
 var req = require('./request.js');
-
 const user = {
 	//获取用户的存储的信息
 	checkUserInfo(){
@@ -14,6 +13,7 @@ const user = {
 		  			//查询用户信息并保存
 		  			// 正式服务使用unioid 测试服务无法绑定开放平台
 		  			var unionid = idInfo.unionid;
+					console.log(req)
 		  			req.getUserInfo({'unionid':'o28P7ww3frRs9FoLRqbmr_EVKuxg'}).then((res)=>{
 		  				if(res.data){
 		  					wx.setStorageSync('userInfo', res.data.data)

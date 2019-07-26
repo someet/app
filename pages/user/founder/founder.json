@@ -3,6 +3,6 @@
 	"enablePullDownRefresh":false,
 	"backgroundTextStyle": "light",
 	"navigationBarBackgroundColor": "white",
-	"navigationBarTitleText": "环球黑卡",
+	"navigationBarTitleText": "我发起的活动",
 	"navigationBarTextStyle": "black"
 }

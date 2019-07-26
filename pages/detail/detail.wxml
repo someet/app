@@ -229,5 +229,6 @@
 		<button wx:if='{{model.status == 30}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已关闭 </button>
 		<button wx:if='{{model.status == 40}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已取消 </button>
 		<button wx:if='{{model.is_end == 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>
+		<button wx:if='{{model.status < 20}}' class="answer-goanswer"> 活动异常 </button>
 	</view>
 </view>
