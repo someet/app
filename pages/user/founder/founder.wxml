@@ -19,7 +19,7 @@
 			<view class="history-text">
 				- 本周活动 - 
 			</view>
-			<scroll-view id='week-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;" bindscrolltolower="" lower-threshold="60">
+			<scroll-view id='week-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;" bindscrolltolower="getWeekAct" lower-threshold="30">
 				<block wx:for="{{weekList}}" wx:for-item="item" wx:key="index">
 					<view class="member-top-box-scroll-answers founder-bottom-box">
 						<navigator
@@ -35,9 +35,9 @@
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">活动测试</text>
+									<text class="member-top-box-title-name">{{item.title}}</text>
 									<!-- 活动时间 -->
-									<text class="member-top-box-title-time">08月03日 周六 04：38 - 08月16日 周五 18：25</text>
+									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>
 							</view>
 						</navigator>
@@ -61,11 +61,11 @@
 			<view class="history-text">
 				- 历史活动 - 
 			</view>
-			<scroll-view id='history-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;" bindscrolltolower="" lower-threshold="60">
+			<scroll-view id='history-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;" bindscrolltolower="getHistoryAct" lower-threshold="30">
 				<block wx:for="{{historyList}}" wx:for-item="item" wx:key="index">
 					<view class="member-top-box-scroll-answers founder-bottom-box">
 						<navigator
-							url="/pages/detail/detail?id=1"
+							url="/pages/detail/detail?id={{item.id}}"
 						  >
 							<!-- 上面信息 -->
 							<view class="member-top-box-scroll-answers-box">
@@ -77,9 +77,9 @@
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">活动测试</text>
+									<text class="member-top-box-title-name">{{item.title}}</text>
 									<!-- 活动时间 -->
-									<text class="member-top-box-title-time">08月03日 周六 04：38 - 08月16日 周五 18：25</text>
+									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>
 							</view>
 						</navigator>

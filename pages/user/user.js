@@ -33,7 +33,7 @@ Page({
 	this.setData({
 		isScroll:false
 	})
-	if(that.data.page > that.data.answerPageCount && that.data.answerPageCount !=0){
+	if(that.data.page >= that.data.answerPageCount && that.data.answerPageCount !=0){
 		app.showMsg('没有更多数据了')
 		return false
 	}

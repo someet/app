@@ -10,7 +10,9 @@ Page({
 		weekPageCount:0,
 		historyPage:1,
 		historyPageCount:0,
-		isScroll:true
+		isWeekScroll:true,
+		isHistoryScroll:true,
+		isCollect:0
 	},
 	changeTab(e){
 		var type = e.currentTarget.dataset.type 
@@ -18,7 +20,23 @@ Page({
 		this.setData({
 		  activeTab:type
 		})
-		this.getHistoryAct()
+		if(type != this.data.activeTab){
+			this.setData({
+				weekList:[],
+				historyList:[],
+				weekPage:1,
+				weekPageCount:0,
+				historyPage:1,
+				historyPageCount:0,
+			})
+			if(type == 'collect') {
+				this.setData({
+					isCollect:1
+				})
+			}
+			this.getWeekAct()
+			this.getHistoryAct()
+		}
 	},
 	onLoad(){
 		var that = this
@@ -31,66 +49,92 @@ Page({
 				console.log(that.data.screenHeight)
 			}
 		})
+		this.getWeekAct()
 		this.getHistoryAct()
 	},
 	// 获取本周我发起的活动
 	getWeekAct(){
-		if(!this.data.isScroll){
+		if(!this.data.isWeekScroll){
 			app.showMsg('太快了，别急')
 			return false;
 		}
-		this.scrollDom()
+		app.loadMsg();
+		this.scrollDom('week')
 		var that = this;
-		if(this.data.weekPageCount !=0 && that.data.weekPage > this.data.weekPageCount){
+		if(this.data.weekPageCount !=0 && this.data.weekPage >= this.data.weekPageCount){
 			app.showMsg('没有更多数据了')
+			this.setData({
+				isWeekScroll:true
+			})
 			return false;
 		}
-		that.setData({
-			weekPage:that.data.weekPage+1,
-		})
-		req.getWeekAct({'page':this.data.weekPage}).then((res)=>{
+		var data = {
+			'page':this.data.weekPage,
+			'isCollect':this.data.isCollect
+		}
+		req.getWeekAct(data).then((res)=>{
 			var data = res.data 
+			app.hideLoad()
 			var currentData = [...that.data.weekList,...data.data]
 			if(data.data){
 				that.setData({
 					weekPageCount:data.count,
 					weekList:currentData,
-					isScroll:true
+					isWeekScroll:true
 				})
 			}
 		}).catch(req.showErr)
+		that.setData({
+			weekPage:that.data.weekPage+1,
+		})
 	},
 	// 获取我发起的历史活动
 	getHistoryAct(){
-		if(!this.data.isScroll){
+		if(!this.data.isHistoryScroll){
 			app.showMsg('太快了，别急')
 			return false;
 		}
-		this.scrollDom()
+		app.loadMsg();
+		this.scrollDom('history')
 		var that = this;
-		if(this.data.weekPageCount !=0 && that.data.weekPage > this.data.weekPageCount){
+		if(this.data.historyPageCount !=0 && this.data.historyPage >= this.data.historyPageCount){
 			app.showMsg('没有更多数据了')
+			this.setData({
+				isHistoryScroll:true
+			})
 			return false;
 		}
-		that.setData({
-			historyPage:that.data.historyPage+1,
-		})
-		req.getHistoryAct({'page':this.data.historyPage}).then((res)=>{
+		var data = {
+			'page':this.data.historyPage,
+			'isCollect':this.data.isCollect
+		}
+		req.getHistoryAct(data).then((res)=>{
+			app.hideLoad()
 			var data = res.data 
 			var currentData = [...that.data.historyList,...data.data]
 			if(data.data){
 				that.setData({
 					historyPageCount:data.count,
 					historyList:currentData,
-					isScroll:true
+					isHistoryScroll:true
 				})
 			}
 
 		}).catch(req.showErr)
-	},
-	scrollDom(){
-		this.setData({
-			isScroll:false
+		that.setData({
+			historyPage:that.data.historyPage+1,
 		})
+	},
+	scrollDom(type){
+		if(type == 'week'){
+			this.setData({
+				isWeekScroll:false
+			})
+		}
+		if(type == 'history'){
+			this.setData({
+				isHistoryScroll:false
+			})
+		}
 	}
 })
