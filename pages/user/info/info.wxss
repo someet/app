@@ -1,0 +1,39 @@
+.info-index{
+	width: 100%;
+	background: red;
+	color:black;
+}
+.info-index-box{
+	width: 95%;
+	margin: 0 auto;
+	margin-top:1rem ;
+}
+.info-index-sex{
+	display: flex;
+}
+.info-index-username text{
+	color:black;
+}
+.info-index-sex view{
+	width:auto;
+	text-align: center;
+	height: 2rem;
+	line-break: 2rem;
+	color:black;
+}
+.info-index-sexIcon{
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
+}
+.info-index-username{
+	margin-bottom: 0.5rem;
+}
+.info-index-line{
+	width: 100%;
+	height: 1.5px;
+	background-color: gray;
+	margin-bottom: 1rem;
+}
+.info-index-sex{
+	margin-bottom: 0.5rem;
+}

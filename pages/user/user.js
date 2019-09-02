@@ -12,7 +12,8 @@ Page({
 	isScroll:true,
 	page:1,
 	answerPageCount:0,
-	myAnswer:[]
+	myAnswer:[],
+	isClick:false
   },
   onLoad(){
 	this.getMyanswers();  
@@ -58,5 +59,97 @@ Page({
       imagewidth: imageSize.imageWidth,
       imageheight: imageSize.imageHeight
     })
+  },
+  //请假
+  leaveAnswer(e){
+		var that = this;
+		// if(this.data.isClick){
+		// 	app.showMsg('太快了，别急')
+		// 	return false
+		// }
+		this.setData({
+			isClick:true
+		})
+		wx.showModal({
+			title: '提示',
+			content: '请假会获得黄牌',
+			success (res) {
+				if (res.confirm) {
+					var data = e.currentTarget;
+					var leaveData = {
+						'aid':data.dataset.aid
+					}
+					req.leaveAnswer(leaveData).then((res)=>{
+						console.log(res)
+						if(res.data.status == 1){
+							that.setData({
+								isClick:false
+							})
+							//循环查找更改的活动
+							var myAnswer = that.data.myAnswer
+							for (let row of myAnswer) {
+								row.leave_status = 1;
+							}
+							that.setData({
+								myAnswer:myAnswer
+							})
+							console.log(that.data.myAnswer)
+						}
+						
+					}).catch(app.showErr)
+				} else if (res.cancel) {
+					console.log('用户点击取消')
+				}
+			}
+		})
+  },
+  // 取消报名
+  cancelAnswer(e){
+		var that = this;
+		if(this.data.isClick){
+			app.showMsg('太快了，别急')
+			return false
+		}
+		this.setData({
+			isClick:true
+		})
+		wx.showModal({
+			title: '提示',
+			content: '取消后无法再报名',
+			success (res) {
+				if (res.confirm) {
+					var data = e.currentTarget;
+					var leaveData = {
+						'aid':data.dataset.aid
+					}
+					req.cancelAnswer(leaveData).then((res)=>{
+						console.log(res)
+						if(res.data.status == 1){
+							that.setData({
+								isClick:false
+							})
+							//循环查找更改的活动
+							var myAnswer = that.data.myAnswer
+							for (let row of myAnswer) {
+								row.apply_status = 1;
+							}
+							that.setData({
+								myAnswer:myAnswer
+							})
+							console.log(that.data.myAnswer)
+						}
+						
+					}).catch(app.showErr)
+				} else if (res.cancel) {
+					console.log('用户点击取消')
+				}
+			}
+		})
+  },
+  //去个人编辑页面
+  goInfo(){
+	  wx.navigateTo({
+		  url:'./info/info'
+	  })
   }
 })

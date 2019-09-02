@@ -30,7 +30,7 @@
 								<!-- 活动封面和名称 -->
 								<view class="member-top-box-poster">
 									<!-- 活动封面 -->
-									<image style="width: 4rem;height: 4rem;" src="http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0" mode="widthFix"></image>
+									<image style="width: 4rem;height: 4rem;" src="{{item.poster}}" mode="aspectFill"></image>
 								</view>
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">

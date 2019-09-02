@@ -1,4 +1,4 @@
-const basApiUrl = 'http://dubin.ngrok.wdevelop.cn';
+const basApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1';
 const request = {
 	header : {
 		'Authorization':'',
@@ -9,7 +9,7 @@ const request = {
 		return new Promise((resolve,reject)=>{
 			wx.request({
 				data:data,
-			  	url:basApiUrl+'/v1/wechat/login',
+			  	url:basApiUrl+'/wechat/login',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -22,7 +22,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/v1/user/get-info',
+			  	url:basApiUrl+'/user/get-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -55,7 +55,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/v1/activity/view',
+			  	url:basApiUrl+'/activity/view',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -68,7 +68,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/v1/answer/check-answer',
+			  	url:basApiUrl+'/answer/check-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -82,7 +82,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-			  	url:basApiUrl+'/v1/answer/create',
+			  	url:basApiUrl+'/answer/create',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -96,7 +96,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:{'id':id},
-			  	url:basApiUrl+'/v1/activity/get-question',
+			  	url:basApiUrl+'/activity/get-question',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -110,7 +110,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-			  	url:basApiUrl+'/v1/answer/create-answer',
+			  	url:basApiUrl+'/answer/create-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -124,7 +124,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:data,
-			  	url:basApiUrl+'/v1/user/get-answers',
+			  	url:basApiUrl+'/user/get-answers',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -137,7 +137,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				url:basApiUrl+'/v1/user/get-week-act',
+				url:basApiUrl+'/user/get-week-act',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -150,7 +150,36 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				url:basApiUrl+'/v1/user/get-history-act',
+				method:'post',
+				url:basApiUrl+'/user/get-history-act',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	// 取消活动
+	cancelAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:basApiUrl+'/user/cancel-answer',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	// 请假
+	leaveAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:basApiUrl+'/user/leave-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

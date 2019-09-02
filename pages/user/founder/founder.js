@@ -17,9 +17,6 @@ Page({
 	changeTab(e){
 		var type = e.currentTarget.dataset.type 
 		console.log(type)
-		this.setData({
-		  activeTab:type
-		})
 		if(type != this.data.activeTab){
 			this.setData({
 				weekList:[],
@@ -28,10 +25,15 @@ Page({
 				weekPageCount:0,
 				historyPage:1,
 				historyPageCount:0,
+				activeTab:type
 			})
 			if(type == 'collect') {
 				this.setData({
 					isCollect:1
+				})
+			}else{
+				this.setData({
+					isCollect:0
 				})
 			}
 			this.getWeekAct()

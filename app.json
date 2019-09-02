@@ -6,7 +6,8 @@
     "pages/user/user",
     "pages/user/founder/founder",
     "pages/map/map",
-    "pages/test/test"
+    "pages/test/test",
+	"pages/user/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",

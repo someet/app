@@ -63,6 +63,9 @@ Page({
 								}
 							}
 					})
+				},
+				fail(res){
+					this.data.isClickUpload = false
 				}
 			})
 		}else{
@@ -82,12 +85,8 @@ Page({
 					return false
 			}
 		}
-		//组装数据发送到后台
-		var data;
-		data = e.detail.value
 		//发送数据
-		req.createAnswer(data).then((res)=>{
-			console.log(res)
+		req.createAnswer(formData).then((res)=>{
 			if(res.data.status != 0){
 				app.showMsg(res.data.msg);
 				if(res.data.status == 1){

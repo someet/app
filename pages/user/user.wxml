@@ -8,7 +8,7 @@
 			<image src='http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0' mode="widthFix" style="width: 100%;"></image>
 		</view>
 		<!-- 右箭头 -->
-		<view class="iconfont icon-jiantou white block-icon member-top-box-right"></view>
+		<view class="iconfont icon-jiantou white block-icon member-top-box-right" bindtap="goInfo"></view>
 		<!-- 用户姓名 -->
 		<view class="member-top-box-username">
 			<text>如画看流苏</text>
@@ -32,27 +32,37 @@
 								<!-- 活动封面和名称 -->
 								<view class="member-top-box-poster">
 									<!-- 活动封面 -->
-									<image style="width: 4rem;height: 4rem;" src="http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0" mode="widthFix"></image>
+									<image style="width: 4rem;height: 4rem;" src="{{item.activity.poster}}" mode="aspectFill"></image>
 								</view>
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">活动测试</text>
+									<text class="member-top-box-title-name">{{item.activity.title}}</text>
 									<!-- 活动时间 -->
-									<text class="member-top-box-title-time">08月03日 周六 04：38 - 08月16日 周五 18：25</text>
+									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>
 							</view>
 						</navigator>
 						<view class="member-line"></view>
 						<!-- 操作按钮 -->
 						<view class="member-top-box-opration-box">
-							<!-- 状态栏 -->
+							<!-- 状态栏{{item.view_status}} -->
 							<view class="member-top-box-opration-status">
-								待筛选
+								<view wx:if="">
+									<text>去评价</text>
+								</view>
+								<view wx:else>
+									<text wx:if="{{item.apply_status == 1}}">已取消</text>
+									<text wx:elif="{{item.leave_status == 1}}">已请假</text>
+									<text wx:else>{{item.view_status}}</text>
+								</view>
 							</view>
 							<!-- 操作按钮 -->
-							<view bindtap="getMyanswers" class="member-top-box-opration-btn">
+							<view wx:if="{{item.status == 10 && item.apply_status == 0}}" bindtap="cancelAnswer" data-aid="{{item.id}}" class="member-top-box-opration-btn">
 								取消报名
+							</view>
+							<view wx:if="{{item.status == 20 && item.leave_status == 0}}" bindtap="leaveAnswer" data-aid="{{item.id}}" class="member-top-box-opration-btn">
+								活动请假
 							</view>
 						</view>
 					</view>

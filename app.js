@@ -20,8 +20,15 @@ App({
 		})
 	},
 	loadMsg(){
+		var t = '正在努力加载...';
 		wx.showLoading({
-			title: '正在努力加载...',
+			title: t,
+		})
+	},
+	loadTitle(title){
+		var t = typeof(title) == undefined?'正在努力加载...':title;
+		wx.showLoading({
+			title: t,
 		})
 	},
 	hideLoad(){

@@ -1,0 +1,35 @@
+<view>
+	<view>
+		<!-- 轮播图开始（正方形） -->
+		<view class="info-index">
+			<swiper indicator-dots="true"
+			autoplay="false" interval="2000" duration="500" style="width:100%;height: {{scrollHeight}}px">
+				<swiper-item>
+					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix' />
+				</swiper-item>
+				<swiper-item>
+					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
+				</swiper-item>
+				<swiper-item>
+					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
+				</swiper-item>
+			</swiper>
+		</view>
+		<!-- 姓名开始 -->
+		<view class="info-index-box">
+			<!-- 姓名 -->
+			<view class="info-index-username">
+				<text>如画流苏</text>
+			</view>
+			<!-- 年龄 -->
+			<view class="info-index-sex">
+				<!-- 性别 -->
+				<view><text>男</text></view>
+				<view class="info-index-sexIcon"><text class="iconfont icon-nansheng"></text></view>
+				<view><text>27岁</text></view>
+			</view>
+			//下划线
+			<view class="info-index-line"></view>
+		</view>
+	</view>
+</view>
