@@ -31,5 +31,36 @@
 			//下划线
 			<view class="info-index-line"></view>
 		</view>
+		<view class="info-index-box">
+			<view class="info-index-username">
+				<text>我的个人名片</text>
+			</view>
+			<view class="info-index-tags">
+				<view style="height: auto;display: block;" class="map_friend_profile_title_content map_friend_profile_title_tags">
+					<view class="size0">永远在减肥</view>
+					<view class="size0">永远</view>
+					<view class="size0">永远在肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">减肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">永远减肥</view>
+					<view class="size0">永减肥</view>
+					<view class="size0">减肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">永减肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">减肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">永远肥</view>
+					<view class="size0">永远单独减肥</view>
+					<view class="size0">永远在辅导费减肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">肥</view>	
+					<view class="size0">永远方法创造性肥</view>
+					<view class="size0">永远在减肥</view>
+					<view class="size0">永在减肥</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </view>

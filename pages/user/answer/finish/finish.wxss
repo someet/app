@@ -1,0 +1,20 @@
+.answer-finish-btn{
+	width: 100%;
+	display: flex;
+}
+.answer-finish-btn view{
+	width: 50%;
+	box-sizing: border-box;
+	color: white;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	margin-left:10%;
+	margin-right:10%;
+}
+.answer-finish-btn-left{
+	background-color: #666666;
+}
+.answer-finish-btn-right{
+	background-color: red;
+}

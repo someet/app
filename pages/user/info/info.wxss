@@ -37,3 +37,32 @@
 .info-index-sex{
 	margin-bottom: 0.5rem;
 }
+.info-index-tags{
+	
+}
+.map_friend_profile_title{
+    width: 100%;
+    text-align: center;
+}
+.map_friend_profile_title > view{
+    /*display: block;*/
+    width: 100%;
+    text-align: left;
+    font-size: 0.8rem;
+    padding-left: 1rem;
+    display: flex;
+}
+view.size0{
+    display: inline-block;
+    font-size: 0.7rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    box-sizing: border-box;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    background: rgb(241,43,54);
+    color: white;
+    width: auto;
+    margin: 0.2rem;
+    border-radius: 1.5rem;
+}

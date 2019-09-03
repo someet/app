@@ -1,4 +1,4 @@
-const basApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1';
+const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
 const request = {
 	header : {
 		'Authorization':'',
@@ -180,6 +180,20 @@ const request = {
 				data:data,
 				method:'post',
 				url:basApiUrl+'/user/leave-answer',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取个人信息
+	getInfo(id){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:{'id':id},
+				method:'post',
+				url:basApiUrl+'/user/get-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

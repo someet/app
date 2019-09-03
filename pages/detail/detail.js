@@ -70,7 +70,13 @@ Page({
   		}
   	},
   	goback(){
-  		console.log('goback')
+  // 		wx.navigateBack({
+		//   delta: 1
+		// })
+		console.log('1111')
+		wx.redirectTo({
+		  url: '/pages/user/answer/finish/finish'
+		})
   	},
   	//判断活动状态
   	checkAnswer(){
@@ -134,12 +140,18 @@ Page({
 	  				if(typeof(res.is_set_question) != undefined && res.is_set_question == 1){
 	  					//跳转回答问题页面
 	  					wx.navigateTo({
-						  url: '../question/index'
+						  url: '../question/index?id='+that.data.id
 						})
 	  				}else{
 	  					//未设置问题则直接生成报名记录
 	  					console.log(res)
 	  					that.is_click = false;
+						if(res.status == 1){
+							//跳转到报名成功页面
+							wx.redirectTo({
+							  url: '/pages/user/answer/finish/finish'
+							})
+						}
 	  				}
 	  			}
   			}

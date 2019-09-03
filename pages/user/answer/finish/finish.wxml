@@ -1,0 +1,13 @@
+<view>
+	<view>
+		<image style="width: 100%;" src='http://img.someet.cc/php4rn5ty' mode="widthFix"></image>
+	</view>
+	<view class="answer-finish-btn">
+		<view bindtap="goIndex" class="answer-finish-btn-left">
+			返回首页
+		</view>
+		<view class="answer-finish-btn-right">
+			邀请好友
+		</view>
+	</view>
+</view>
