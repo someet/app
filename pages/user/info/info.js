@@ -24,9 +24,17 @@ Page({
 	},
 	//获取我的跟人信息
 	getInfo(){
-		console.log(this.data.id)
+		const that = this
 		req.getInfo(this.data.id).then((res)=>{
 			console.log(res.data.data)
+			that.setData({
+				userInfo:res.data.data
+			})
+		})
+	},
+	goEdit(){
+		wx.navigateTo({
+			url:'./edit/edit'
 		})
 	}
 })

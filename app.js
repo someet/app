@@ -1,7 +1,7 @@
 var user = require('./common/user.js');
 App({
 	globalData:{
-        apiUrl: 'http://dubin.ngrok.wdevelop.cn',
+        apiUrl: 'http://mac.ngrok.wdevelop.cn',
 		userInfo: null
 	},
 	onLaunch: function () {

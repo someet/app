@@ -8,7 +8,9 @@
     "pages/map/map",
     "pages/test/test",
 	"pages/user/info/info",
-	"pages/user/answer/finish/finish"
+	"pages/user/answer/finish/finish",
+	"pages/user/info/edit/edit",
+	"pages/components/upload/upload"
   ],
   "window": {
     "backgroundTextStyle": "light",

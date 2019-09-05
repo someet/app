@@ -1,0 +1,7 @@
+{
+	"disableScroll": false,
+	"usingComponents": {
+       "image-cropper": "/pages/image-cropper/src/image-cropper"
+    },
+    "navigationBarTitleText": "编辑信息"
+}

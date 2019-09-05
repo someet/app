@@ -1,0 +1,41 @@
+<view style="overflow-y: scroll;">
+	<view style="padding-bottom: 4rem;">
+		<view class="map_friend_album_box_div">
+            <view class="map_friend_album_box">
+                <view class="map_friend_album_box_left map_upload_img">
+					<cover-image bindtap="uploadImg" data-id='my_head_img_1' src="{{my_head_img_1?my_head_img_1:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+                </view>
+                <view class="map_friend_album_box_right">
+                    <view class="map_friend_album_box_right_small map_upload_img">
+						<cover-image bindtap="uploadImg" data-id='my_head_img_2' src="{{my_head_img_2?my_head_img_2:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+                    </view>
+                    <view class="map_friend_album_box_right_small map_upload_img">
+						<cover-image bindtap="uploadImg" data-id='my_head_img_3' src="{{my_head_img_3?my_head_img_3:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="map_friend_album_box_tips">
+                请上传可看清人脸的头像,大家都迫不及待的想认识你
+            </view>
+        </view>
+		<view class="map_friend_profile">
+            <view class="map_friend_profile_box">
+                <view class="map_friend_profile_title">
+                    <view class="map_friend_profile_title_span weight_text">123123213213</view>
+                    <view class="map_friend_profile_title_content" style="font-size: 0.65rem;color:#bbb">点击编辑个人信息(昵称,年龄,手机号等)</view>
+                </view>
+                <view class="map_friend_profile_icon middle_show">
+                    <view class="map_friend_profile_icon_box">
+                        <image src="http://img.someet.cc/php37tPRV"></image>
+                        <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+                    </view>
+                </view>
+            </view>
+		</view>
+		<view class="info-index-line-small"></view>
+	</view>
+	<view class="go-answer">
+		<button class="answer-goback"> 返回</button>
+		<button class="answer-goanswer"> 完成 </button>
+	</view>
+</view>

@@ -1,0 +1,7 @@
+{
+	"disableScroll": true,
+	"usingComponents": {
+       "image-cropper": "/pages/image-cropper/src/image-cropper"
+    },
+    "navigationBarTitleText": "上传图片"
+}

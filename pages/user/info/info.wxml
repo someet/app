@@ -1,5 +1,5 @@
-<view>
-	<view>
+<view style="overflow-y: scroll;">
+	<view style="padding-bottom: 4rem;">
 		<!-- 轮播图开始（正方形） -->
 		<view class="info-index">
 			<swiper indicator-dots="true"
@@ -19,16 +19,23 @@
 		<view class="info-index-box">
 			<!-- 姓名 -->
 			<view class="info-index-username">
-				<text>如画流苏</text>
+				<text>{{userInfo.username}}</text>
 			</view>
 			<!-- 年龄 -->
 			<view class="info-index-sex">
 				<!-- 性别 -->
-				<view><text>男</text></view>
-				<view class="info-index-sexIcon"><text class="iconfont icon-nansheng"></text></view>
-				<view><text>27岁</text></view>
+				<view>
+					<text wx:if="{{userInfo.profile.sex == 1}}">男</text>
+					<text wx:if="{{userInfo.profile.sex == 2}}">女</text>
+					<text wx:if="{{userInfo.profile.sex != 1 && userInfo.profile.sex != 2}}">外星人</text>
+				</view>
+				<view class="info-index-sexIcon">
+					<text wx:if="{{userInfo.profile.sex == 1}}" class="iconfont icon-nansheng"></text>
+					<text wx:if="{{userInfo.profile.sex == 2}}" class="iconfont icon-nvsheng"></text>
+				</view>
+				<view><text>{{userInfo.profile.age}}岁</text></view>
 			</view>
-			//下划线
+			<!-- //下划线 -->
 			<view class="info-index-line"></view>
 		</view>
 		<view class="info-index-box">
@@ -37,30 +44,61 @@
 			</view>
 			<view class="info-index-tags">
 				<view style="height: auto;display: block;" class="map_friend_profile_title_content map_friend_profile_title_tags">
-					<view class="size0">永远在减肥</view>
-					<view class="size0">永远</view>
-					<view class="size0">永远在肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">减肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">永远减肥</view>
-					<view class="size0">永减肥</view>
-					<view class="size0">减肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">永减肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">减肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">永远肥</view>
-					<view class="size0">永远单独减肥</view>
-					<view class="size0">永远在辅导费减肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">肥</view>	
-					<view class="size0">永远方法创造性肥</view>
-					<view class="size0">永远在减肥</view>
-					<view class="size0">永在减肥</view>
+					<view wx:for="{{userInfo.tags}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 				</view>
 			</view>
 		</view>
+		<!-- uga 回答 -->
+		<view class="info-index-box">
+			<view class="info-index-username">
+				<text>我的回答</text>
+			</view>
+			<view class="info-margin-bottom">
+				<view class="map_uga_answers" wx:for="{{userInfo.uga}}" wx:for-item="item" wx:key="index">
+					<view class="map_uga_question">
+						{{item.uga_question}}
+					</view>
+					<view class="map_uga_answer">
+						{{item.uga_answer}}
+					</view>
+				</view>
+				
+				<view class="map_uga_answers" wx:if="{{userInfo.uga.length == 0}}">
+					<view class="map_uga_question" style="color: black;font-weight: bold;">
+						未设置问题
+					</view>
+				</view>
+			</view>
+			<view class="info-index-line"></view>
+			<!-- //报名活动场数和发布活动场数 -->
+			<view class="map_friend_profile_box">
+				<view class="map_friend_profile_title  map_profile_view_box">
+					<view class="map_friend_profilegroup_activity">报名活动</view>
+				</view>
+				<view class="map_friend_profile_icon map_friend_profilegroup_activity">
+					<view class="map_friend_profile_icon_box">
+						{{userinfo.answer_count}}场
+						<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+					</view>
+				</view>
+			</view>
+			<view class="info-index-line"></view>
+			<view class="map_friend_profile_box">
+				<view class="map_friend_profile_title  map_profile_view_box">
+					<view class="map_friend_profilegroup_activity">报名活动</view>
+				</view>
+				<view class="map_friend_profile_icon map_friend_profilegroup_activity">
+					<view class="map_friend_profile_icon_box">
+						{{userinfo.act_count}}场
+						<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+					</view>
+				</view>
+			</view>
+			<view class="info-index-line"></view>
+		</view>
+	</view>
+	<view class="go-answer">
+		<button class="answer-goback"> 返回个人中心 </button>
+		<button class="answer-goanswer" bindtap="goEdit"> 编辑 </button>
 	</view>
 </view>

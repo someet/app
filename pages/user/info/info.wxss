@@ -4,7 +4,7 @@
 	color:black;
 }
 .info-index-box{
-	width: 95%;
+	width: 90%;
 	margin: 0 auto;
 	margin-top:1rem ;
 }
@@ -30,9 +30,9 @@
 }
 .info-index-line{
 	width: 100%;
-	height: 1.5px;
+	height: 1px;
 	background-color: gray;
-	margin-bottom: 1rem;
+	/* margin-bottom: 1rem; */
 }
 .info-index-sex{
 	margin-bottom: 0.5rem;
@@ -43,14 +43,6 @@
 .map_friend_profile_title{
     width: 100%;
     text-align: center;
-}
-.map_friend_profile_title > view{
-    /*display: block;*/
-    width: 100%;
-    text-align: left;
-    font-size: 0.8rem;
-    padding-left: 1rem;
-    display: flex;
 }
 view.size0{
     display: inline-block;
@@ -65,4 +57,81 @@ view.size0{
     width: auto;
     margin: 0.2rem;
     border-radius: 1.5rem;
+}
+.map_uga_answers{
+    text-align: left;
+    /* padding-left: 1rem; */
+    /*margin-bottom: 1rem;*/
+    margin-top: 1rem;
+}
+.map_uga_question{
+    font-size: 0.9rem;
+	color: rgb(241,43,54);font-weight: bold;
+}
+.map_uga_answer{
+    font-size:0.8rem;
+	color:black;
+}
+.map_friend_profile_box{
+    height: 3rem;
+    width: 100%;
+	display: flex;
+}
+.map_friend_profile_title > view{
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    display: flex;
+}
+.map_friend_profile_icon{
+    width: 20%;
+    text-align: center;
+    margin-right: 1rem;
+}
+.map_friend_profilegroup_activity{
+    height: 3rem;
+    line-height: 3rem;
+}
+.map_friend_profile_icon_box{
+    font-size:0.8rem;
+}
+.map_profile_view_box{
+    width: 100%;
+}
+.info-margin-bottom{
+	margin-bottom: 1rem;
+}
+.go-answer{
+	position: fixed;
+	bottom: 0px;
+	left:0px;
+	width:100%;
+	height: 3rem;
+	text-align: center;
+	line-height: 3rem;
+	background-color:red;
+	color:white;
+	font-weight:800;
+	display:flex;
+}
+.go-answer>button:after{
+	border:0;
+}
+.answer-goback{
+	width:35%;
+	height:3rem;
+	line-height:3rem;
+	border-radius: 0;
+	background-color: #bbb;
+	color:white;
+	font-size: 1rem;
+}
+.answer-goanswer{
+	width:65%;
+	height:3rem;
+	line-height:3rem;
+	color:white;
+	background-color:red;
+	border-radius:0;
+	font-size: 1rem;
 }

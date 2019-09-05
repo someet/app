@@ -3,14 +3,14 @@
 			<image
 					class='tabBar-item-normal'
 					mode="widthFix"
-					src="../image/act.png"
+					src="/pages/image/act.png"
 				></image>
 	</view>
 	<view class="tabBar-item {{isActive == 'map'?'tabBar-item-red':''}} tabBar-item-find-view" bindtap='swichTo' data-action='map'>
 		<image
 					class='tabBar-item-find'
 					mode="widthFix"
-					src="../image/find.png"
+					src="/pages/image/find.png"
 				></image>  
 	</view>
 	<view class="tabBar-item {{isActive == 'user'?'tabBar-item-red':''}}" bindtap='swichTo' data-action='user'>
@@ -18,7 +18,7 @@
 				url="/pages/user/user"><image
 					 class='tabBar-item-normal'
 					mode="widthFix"
-					src="../image/act.png"
+					src="/pages/image/act.png"
 				></image>  </navigator>
 	</view>
 	<slot></slot>
