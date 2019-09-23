@@ -7,7 +7,7 @@
             </view>
 
         </view>
-        <view class="tag_job_text weight_text" id='my_select' style="height: 3rem;margin-top: 1.3rem;">
+        <view class="tag_job_text weight_text" id='my_select'>
 			通过以下哪些特征可区别你与其它人类？
            <!-- <?php if($type->id ==2){
                 echo "除了现在的职业，你还有什么能够养家糊口的技能吗？";

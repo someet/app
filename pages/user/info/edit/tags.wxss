@@ -20,10 +20,9 @@
     overflow: hidden;
 }
 .tag_job_text{
-
+	height: 3rem;margin-top: 1.3rem;
     width: 100%;
-    height:1.5rem;
-    line-height: 1.5rem;
+    line-height: 3rem;
     text-align: left;
     margin-top:0.7rem;
     margin-bottom:-0.6rem;
