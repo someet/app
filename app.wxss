@@ -185,12 +185,12 @@ page{
 /* 个人标签的样式 */
 view.size0{
     display: inline-block;
-    font-size: 0.7rem;
-    height: 1.2rem;
-    line-height: 1.2rem;
+    font-size: 1rem;
+    height: 2rem;
+    line-height: 2rem;
     box-sizing: border-box;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
     background: rgb(241,43,54);
     color: white;
     width: auto;
@@ -203,3 +203,6 @@ view.size0{
     display: inline-flex;
 }
 /* 个人标签的样式 */
+.placehokderClass{
+	font-size: 1rem;
+}

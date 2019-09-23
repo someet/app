@@ -37,7 +37,9 @@
             <view class="size0" data-tid='1'>啦啦啦</view>
         </view>
         <view class="tags_input">
-			<input  id='tags' placeholder="没找到，我要自己添加" style='font-size:0.7rem;' />
+			<view id='tags'>
+				<input placeholder-class="placehokderClass" placeholder="没找到，我要自己添加"/>
+			</view>
             <view id="input_tips">添加</view>
         </view>
         <view class="tags_input_rest" style="margin-bottom: 1rem;">
