@@ -27,11 +27,31 @@ Page({
 	},
 	//获取我的跟人信息
 	getInfo(){
+		const that = this
 		console.log(this.data.id)
 		req.getInfo(this.data.id).then((res)=>{
 			console.log(res.data.data)
+			that.setData({
+				userInfo:res.data.data
+			})
 		})
 	},
+	// 点击更改进入标签页
+	editTags(e){
+		const type = e.currentTarget.dataset.type,that = this
+		wx.navigateTo({
+			url:'/pages/user/info/edit/tags',
+			events:{
+				changeTags(data){
+					console.log(data)
+				}
+			},
+			success(res){
+				res.eventChannel.emit('tagType',{data:type})
+			}
+		})
+	},
+	// 上传图片
 	uploadImg(e){
 		var type = e.currentTarget.dataset.id,that = this
 		wx.navigateTo({

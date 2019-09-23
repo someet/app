@@ -1,0 +1,50 @@
+<view class="content">
+    <view class="content user_tags_content">
+        <view style="display: block;width: 100%;margin-top: 0.4rem;"><strong style="font-size:1.2rem;">2 </strong>/ 3 再介绍一下自己</view>
+        <view class='map_bried' style=' left: 0;width: 100%;display: flex;font-size: 0.6rem;height: 1rem;line-height: 1rem;'>
+            <view>
+                <view><view class="red_bried"> 技能</view></view>
+            </view>
+
+        </view>
+        <view class="tag_job_text weight_text" id='my_select' style="height: 3rem;margin-top: 1.3rem;">
+			通过以下哪些特征可区别你与其它人类？
+           <!-- <?php if($type->id ==2){
+                echo "除了现在的职业，你还有什么能够养家糊口的技能吗？";
+            }elseif($type->id==3){
+                echo "通过以下哪些特征可区别你与其它人类？";
+            }elseif($type->id==4){
+                echo "选出那些吓呆小伙伴的特殊经历吧！";
+            }elseif($type->id==5){
+                echo "画风一转，严肃选择你的人生信条！";
+            }elseif($type->id==6){
+                echo "需要知道你的哪些个人偏好才能和你做朋友？";
+            }?> -->
+
+        </view>
+
+        <view class="tag_select_list">
+            <view class="size0" data-tid='1'>送达</view>
+        </view>
+        <view class="tag_job_text" id='tag_job_text_top'>
+			<view id='my_unselect'></view>
+            <!-- 热门标签 -->
+            <view class="get_more_tags">
+                <view class='get_more_btn'>换一批</view>
+            </view>
+        </view>
+        <view class="tag_unselect_list">
+            <view class="size0" data-tid='1'>啦啦啦</view>
+        </view>
+        <view class="tags_input">
+			<input  id='tags' placeholder="没找到，我要自己添加" style='font-size:0.7rem;' />
+            <view id="input_tips">添加</view>
+        </view>
+        <view class="tags_input_rest" style="margin-bottom: 1rem;">
+            还可以输入15个字
+        </view>
+    </view>
+    <view class="tag_next_btn">
+        保存
+    </view>
+</view>

@@ -129,12 +129,20 @@
     display: block;
     width: 100%;
     text-align: left;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     margin-top: 1rem;
     margin-bottom: 1rem;
+	font-size: 0.65rem;
+	color:#bbb
 }
 .middle_show{
     align-items: center;
     vertical-align: middle;
     display: inline-flex;
+}
+.tags_tips{
+    width: 80%;
+}
+.edit_opacity{
+	opacity: 0;
 }

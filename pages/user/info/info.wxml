@@ -43,7 +43,7 @@
 				<text>我的个人名片</text>
 			</view>
 			<view class="info-index-tags">
-				<view style="height: auto;display: block;" class="map_friend_profile_title_content map_friend_profile_title_tags">
+				<view class="map_friend_profile_title_content map_friend_profile_title_tags">
 					<view wx:for="{{userInfo.tags}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 				</view>
 			</view>

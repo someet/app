@@ -10,6 +10,7 @@
 	"pages/user/info/info",
 	"pages/user/answer/finish/finish",
 	"pages/user/info/edit/edit",
+	"pages/user/info/edit/tags",
 	"pages/components/upload/upload"
   ],
   "window": {

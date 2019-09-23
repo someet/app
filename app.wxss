@@ -94,8 +94,8 @@ page{
 	overflow-x: hidden;
 	box-sizing: border-box;
 }
-.page-body{
-	
+.content{
+	height: 100%;
 }
 .info-index-line{
 	width: 100%;
@@ -182,3 +182,24 @@ page{
 	color:black;
 }
 /* 个人中心和发起活动和报名的活动通用活动列表样式结束 */
+/* 个人标签的样式 */
+view.size0{
+    display: inline-block;
+    font-size: 0.7rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    box-sizing: border-box;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    background: rgb(241,43,54);
+    color: white;
+    width: auto;
+    margin: 0.2rem;
+    border-radius: 1.5rem;
+}
+.middle_show{
+    align-items: center;
+    vertical-align: middle;
+    display: inline-flex;
+}
+/* 个人标签的样式 */

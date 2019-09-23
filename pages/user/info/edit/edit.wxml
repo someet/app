@@ -19,20 +19,152 @@
             </view>
         </view>
 		<view class="map_friend_profile">
+			<!-- 个人信息列开始 -->
             <view class="map_friend_profile_box">
                 <view class="map_friend_profile_title">
                     <view class="map_friend_profile_title_span weight_text">123123213213</view>
-                    <view class="map_friend_profile_title_content" style="font-size: 0.65rem;color:#bbb">点击编辑个人信息(昵称,年龄,手机号等)</view>
+                    <view class="map_friend_profile_title_content">点击编辑个人信息(昵称,年龄,手机号等)</view>
                 </view>
-                <view class="map_friend_profile_icon middle_show">
+                <view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
                     <view class="map_friend_profile_icon_box">
                         <image src="http://img.someet.cc/php37tPRV"></image>
                         <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
                     </view>
                 </view>
             </view>
+			<view class="info-index-line-small"></view>
+			<!-- 个人信息列开始 -->
+			<!-- 我的个人标签开始 -->
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='zy'>
+			            <view class="tags_tips">
+			                工作经历
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.zy.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.zy}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='tsjn'>
+			            <view class="tags_tips">
+			                技能
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.tsjn.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.tsjn}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='grsx'>
+			            <view class="tags_tips">
+			                个人属性
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.grsx.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.grsx}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='tsjl'>
+			            <view class="tags_tips">
+			                特殊经历
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.tsjl.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.tsjl}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='rstd'>
+			            <view class="tags_tips">
+			                人生态度
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.rstd.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.rstd}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 工作经历开始 -->
+			<view class="map_friend_profile_box">
+			    <view class="map_friend_profile_title">
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='ph'>
+			            <view class="tags_tips">
+			                个人喜好
+			            </view>
+			            <view class="map_friend_profile_icon">
+			                <view class="map_friend_profile_icon_box">
+			                    <image class="{{userInfo.usertags.ph.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+			                </view>
+			            </view>
+			        </view>
+			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
+						<view wx:for="{{userInfo.usertags.ph}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+			        </view>
+			    </view>		
+			</view>
+			<!-- 工作经历结束 -->
+			<view class="info-index-line-small"></view>
+			<!-- 我的个人标签结束 -->
 		</view>
-		<view class="info-index-line-small"></view>
 	</view>
 	<view class="go-answer">
 		<button class="answer-goback"> 返回</button>
