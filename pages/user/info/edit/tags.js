@@ -68,6 +68,12 @@ Page({
 	// 点击未选择的分类
 	selectTag(e){
 		console.log('未除选择项')
+		if(this.data.tagType == 1){
+			if(this.data.selectTags.length >=3){
+				app.showMsg('最多选三个')
+				return false;
+			}
+		}
 		this.addTags(e.currentTarget.dataset);
 	},
 	// 增加未选择的标签
