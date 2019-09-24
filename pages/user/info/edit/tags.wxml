@@ -24,7 +24,7 @@
         </view>
 
         <view class="tag_select_list">
-            <view class="size0" data-tid='1'>送达</view>
+			<view wx:for="{{selectTags}}" wx:for-item="item" wx:key="index" class="size0" data-id="{{item.id}}" data-title="{{item.tag_title}}" bindtap="unselectTag">{{item.tag_title}}</view>
         </view>
         <view class="tag_job_text" id='tag_job_text_top'>
 			<view id='my_unselect'></view>
@@ -34,19 +34,25 @@
             </view>
         </view>
         <view class="tag_unselect_list">
-            <view class="size0" data-tid='1'>啦啦啦</view>
+            <view wx:for="{{unselectTags}}" wx:for-item="item" wx:key="index" class="size0" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="selectTag">{{item.title}}</view>
         </view>
-        <view class="tags_input">
-			<view id='tags'>
-				<input placeholder-class="placehokderClass" placeholder="没找到，我要自己添加"/>
+		<!-- 提交自己的标签 -->
+		<form bindsubmit="subTags">
+			<view class="tags_input">
+				<view id='tags'>
+					<input placeholder-class="placehokderClass" placeholder="没找到，我要自己添加"/>
+				</view>
+				<!-- <view id="input_tips">添加</view> -->
+				<view id="input_tips">
+					<button id="input_tips" class="defaultButtonNone" hover-class="none" formType="submit">添加</button>
+				</view>
 			</view>
-            <view id="input_tips">添加</view>
-        </view>
+		</form>
         <view class="tags_input_rest" style="margin-bottom: 1rem;">
             还可以输入15个字
         </view>
     </view>
-    <view class="tag_next_btn">
+    <view class="tag_next_btn" bindtap="saveAndBack">
         保存
     </view>
 </view>

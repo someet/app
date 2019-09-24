@@ -22,7 +22,11 @@ Page({
 			scrollHeight:clientHeight,
 			id:id
 		})
-		console.log(this.data.id)
+		//接收修改后的返回值
+		const eventChannel = this.getOpenerEventChannel()
+		eventChannel.on('tagType', function(data){
+			console.log(data)
+		});
 		this.getInfo()
 	},
 	//获取我的跟人信息

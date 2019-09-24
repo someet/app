@@ -198,6 +198,20 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//获取我选择的标签和未选择的单分类标签
+	getMyTags(type){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:{'type':type},
+				url:basApiUrl+'/user/get-mytags',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;

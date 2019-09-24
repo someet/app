@@ -94,6 +94,10 @@ page{
 	overflow-x: hidden;
 	box-sizing: border-box;
 }
+form{
+	width: 100%;
+	display: block;
+}
 .content{
 	height: 100%;
 }
@@ -205,4 +209,17 @@ view.size0{
 /* 个人标签的样式 */
 .placehokderClass{
 	font-size: 1rem;
+}
+
+/**	
+ * 清除自带按钮的样式
+ */
+.defaultButtonNone{
+	position: static;
+	padding: 0px;
+	font-size: 1rem;
+	display: inline;
+}
+button::after{
+	position: static;
 }

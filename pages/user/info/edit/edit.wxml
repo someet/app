@@ -39,7 +39,7 @@
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
 			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='zy'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='1'>
 			            <view class="tags_tips">
 			                工作经历
 			            </view>
@@ -61,7 +61,7 @@
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
 			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='tsjn'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='2'>
 			            <view class="tags_tips">
 			                技能
 			            </view>
@@ -82,7 +82,7 @@
 			<!-- 工作经历开始 -->
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='grsx'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='3'>
 			            <view class="tags_tips">
 			                个人属性
 			            </view>
@@ -103,7 +103,7 @@
 			<!-- 工作经历开始 -->
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='tsjl'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='4'>
 			            <view class="tags_tips">
 			                特殊经历
 			            </view>
@@ -124,7 +124,7 @@
 			<!-- 工作经历开始 -->
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='rstd'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='5'>
 			            <view class="tags_tips">
 			                人生态度
 			            </view>
@@ -145,7 +145,7 @@
 			<!-- 工作经历开始 -->
 			<view class="map_friend_profile_box">
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='ph'>
+			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='6'>
 			            <view class="tags_tips">
 			                个人喜好
 			            </view>
