@@ -35,7 +35,15 @@ Page({
 	// 自己添加标签
 	subTags(){
 		console.log('上传了')
-		return false
+		var e = {
+			currentTarget:{
+				dataset:{
+					id:222,
+					title:'嘿嘿'
+				}
+			}
+		}
+		this.selectTag(e)
 	},
 	// 选择完成并返回
 	saveAndBack(){
@@ -78,7 +86,9 @@ Page({
 	},
 	// 增加未选择的标签
 	addTags(obj){
+		console.log(obj)
 		var selectTags,unselectTags,selectTagsId,unSelectTagsId;
+		selectTags = this.data.selectTags
 		selectTagsId = this.data.selectTagsId
 		unSelectTagsId = this.data.unSelectTagsId
 		unselectTags = this.data.unselectTags
@@ -90,14 +100,14 @@ Page({
 				if(unSelectTagsId.indexOf(obj.id) != -1){
 					unselectTagsId.splice(unSelectTagsId.indexOf(obj.id),1)
 				}
-				if(selectTagsId.indexOf(obj.id) == -1){
-					selectTagsId = [...this.data.selectTagsId,obj.id]
-					selectTags = [...this.data.selectTags,{
-						id:obj.id,
-						tag_title:obj.title
-					}]
-				}
 			}
+		}
+		if(selectTagsId.indexOf(obj.id) == -1){
+			selectTagsId = [...this.data.selectTagsId,obj.id]
+			selectTags = [...this.data.selectTags,{
+				id:obj.id,
+				tag_title:obj.title
+			}]
 		}
 		this.setData({
 			selectTags:selectTags,
@@ -110,6 +120,7 @@ Page({
 		selectTags = this.data.selectTags
 		selectTagsId = this.data.selectTagsId
 		unSelectTagsId = this.data.unSelectTagsId
+		unselectTags = this.data.unselectTags
 		// 把元素从已选择列表中移除
 		for (var [key,val] of selectTags.entries()) {
 			if(val.id == obj.id){
@@ -118,15 +129,15 @@ Page({
 				if(selectTags.indexOf(obj.id) != -1){
 					selectTags.splice(selectTags.indexOf(obj.id),1)
 				}
-				if(unSelectTagsId.indexOf(obj.id) == -1){
-					unSelectTagsId = [...this.data.unSelectTagsId,obj.id]
-					// 增加未选择列表
-					unselectTags = [...this.data.unselectTags,{
-						id:obj.id,
-						title:obj.title	
-					}]
-				}
 			}
+		}
+		if(unSelectTagsId.indexOf(obj.id) == -1){
+			unSelectTagsId = [...this.data.unSelectTagsId,obj.id]
+			// 增加未选择列表
+			unselectTags = [...this.data.unselectTags,{
+				id:obj.id,
+				title:obj.title	
+			}]
 		}
 		this.setData({
 			selectTags:selectTags,
