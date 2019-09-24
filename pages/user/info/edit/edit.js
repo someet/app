@@ -11,7 +11,13 @@ Page({
 		id:0,
 		my_head_img_1:'',
 		my_head_img_2:'',
-		my_head_img_3:''
+		my_head_img_3:'',
+		zy:{},
+		grsx:{},
+		rstd:{},
+		tsjl:{},
+		ph:{},
+		tsjn:{}
 	},
 	onLoad(options){
 		var client = wx.getSystemInfoSync();
@@ -22,11 +28,6 @@ Page({
 			scrollHeight:clientHeight,
 			id:id
 		})
-		//接收修改后的返回值
-		const eventChannel = this.getOpenerEventChannel()
-		eventChannel.on('tagType', function(data){
-			console.log(data)
-		});
 		this.getInfo()
 	},
 	//获取我的跟人信息
@@ -36,7 +37,13 @@ Page({
 		req.getInfo(this.data.id).then((res)=>{
 			console.log(res.data.data)
 			that.setData({
-				userInfo:res.data.data
+				userInfo:res.data.data.usertags,
+				zy:res.data.data.usertags.zy,
+				grsx:res.data.data.usertags.grsx,
+				rstd:res.data.data.usertags.rstd,
+				tsjl:res.data.data.usertags.tsjl,
+				ph:res.data.data.usertags.ph,
+				tsjn:res.data.data.usertags.tsjn
 			})
 		})
 	},
@@ -46,8 +53,41 @@ Page({
 		wx.navigateTo({
 			url:'/pages/user/info/edit/tags',
 			events:{
-				changeTags(data){
-					console.log(data)
+				//接收修改后的返回值
+				tagType:function(res){
+					console.log(res)
+					switch(res.type){
+						case "1":
+							that.setData({
+								zy:res.data
+							})
+						break;
+						case "2":
+							that.setData({
+								tsjn:res.data
+							})
+						break;
+						case "3":
+							that.setData({
+								grsx:res.data
+							})
+						break;
+						case "4":
+							that.setData({
+								tsjl:res.data
+							})
+						break;
+						case "5":
+							that.setData({
+								rstd:res.data
+							})
+						break;
+						case "6":
+							that.setData({
+								ph:res.data
+							})
+						break;
+					}
 				}
 			},
 			success(res){

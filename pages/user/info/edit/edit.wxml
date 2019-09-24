@@ -45,13 +45,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.zy.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{zy.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.zy}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{zy}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>
@@ -67,13 +67,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.tsjn.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{tsjn.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.tsjn}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{tsjn}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>
@@ -88,13 +88,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.grsx.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{grsx.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.grsx}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{grsx}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>
@@ -109,13 +109,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.tsjl.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{tsjl.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.tsjl}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{tsjl}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>
@@ -130,13 +130,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.rstd.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{rstd.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.rstd}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{rstd}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>
@@ -151,13 +151,13 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{userInfo.usertags.ph.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{ph.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
 			        </view>
 			        <view class="map_friend_profile_title_content map_friend_profile_title_tags">
-						<view wx:for="{{userInfo.usertags.ph}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
+						<view wx:for="{{ph}}" wx:for-item="item" wx:key="index" class="size0">{{item.tag_title}}</view>
 			        </view>
 			    </view>		
 			</view>

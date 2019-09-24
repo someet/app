@@ -94,6 +94,9 @@ page{
 	overflow-x: hidden;
 	box-sizing: border-box;
 }
+view{
+	box-sizing: border-box;
+}
 form{
 	width: 100%;
 	display: block;
@@ -172,7 +175,7 @@ form{
 }
 .member-top-box-opration-box{
 	position: relative;
-	height: 2rem;
+	height: 3rem;
 }
 .member-top-box-opration-box view{
 	width: 5rem;
@@ -200,6 +203,7 @@ view.size0{
     width: auto;
     margin: 0.2rem;
     border-radius: 1.5rem;
+	white-space:nowrap;
 }
 .middle_show{
     align-items: center;

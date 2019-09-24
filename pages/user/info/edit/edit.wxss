@@ -85,15 +85,17 @@
     /* height: 4rem; */
     display: flex;
 }
+.map_friend_profile_title_tags{
+	padding-left: 1rem;
+}
 .map_friend_profile_title{
     width: 100%;
     text-align: center;
 }
-.map_friend_profile_title > view{
+.map_friend_profile_title > .map_friend_profile_title_span{
     /*display: block;*/
     width: 100%;
     text-align: left;
-    font-size: 0.8rem;
     padding-left: 1rem;
     display: flex;
 }
@@ -101,7 +103,6 @@
     line-height: 1rem;
     font-size: 0.7rem;
     margin-top: 1rem;
-
 }
 .set_question{
     margin-top: 1rem;

@@ -24,14 +24,6 @@ Page({
 		});
 		this.getMyTags()
 	},
-	confirmSub(){
-		//返回上层并传值
-		const eventChannel = that.getOpenerEventChannel()
-		eventChannel.emit('imgIndex', {data: '123',type:'zy'});
-		wx.navigateBack({
-		  delta: 1
-		})
-	},
 	// 自己添加标签
 	subTags(){
 		console.log('上传了')
@@ -47,8 +39,12 @@ Page({
 	},
 	// 选择完成并返回
 	saveAndBack(){
-		const eventChannel = that.getOpenerEventChannel()
-		eventChannel.emit('tagType',{data:'1111'});
+		console.log(111)
+		const eventChannel = this.getOpenerEventChannel()
+		eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
+		wx.navigateBack({
+		  delta: 1
+		})
 	},
 	// 获取单个分类标签的选取和未选取的标签
 	getMyTags(){

@@ -45,6 +45,7 @@ Page({
 		app.hideLoad()
 		var current_page = that.data.page
 		var answerData = [...that.data.myAnswer,...data.userAnswer];
+		console.log(answerData)
 		this.setData({
 			page:current_page+1,
 			answerPageCount:data.pageCount,
