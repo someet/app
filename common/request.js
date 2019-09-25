@@ -212,6 +212,35 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	// 添加我自定义的标签
+	addMyTga(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:basApiUrl+'/user/add-user-tags',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//保存我选择的标签
+	saveTags(data,type){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				dataType:'JSON',
+				method:'post',
+				data:data,
+				url:basApiUrl+'/user/save-tags?id='+type,
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;
