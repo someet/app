@@ -37,7 +37,7 @@ Page({
 		req.getInfo(this.data.id).then((res)=>{
 			console.log(res.data.data)
 			that.setData({
-				userInfo:res.data.data.usertags,
+				userInfo:res.data.data,
 				zy:res.data.data.usertags.zy,
 				grsx:res.data.data.usertags.grsx,
 				rstd:res.data.data.usertags.rstd,

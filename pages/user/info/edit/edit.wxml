@@ -20,18 +20,27 @@
         </view>
 		<view class="map_friend_profile">
 			<!-- 个人信息列开始 -->
-            <view class="map_friend_profile_box">
-                <view class="map_friend_profile_title">
-                    <view class="map_friend_profile_title_span weight_text">123123213213</view>
-                    <view class="map_friend_profile_title_content">点击编辑个人信息(昵称,年龄,手机号等)</view>
-                </view>
-                <view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
-                    <view class="map_friend_profile_icon_box">
-                        <image src="http://img.someet.cc/php37tPRV"></image>
-                        <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
-                    </view>
-                </view>
-            </view>
+            <view class="map_friend_profile_title_span weight_text myAnswers">我的名字</view>
+            <view>
+            	<view class="map_friend_profile_box">
+            	    <view class="tags_tips">
+            	        <view class="map_uga_answers" style="margin-bottom: 1rem;">
+            	            <view class="map_uga_question map_friend_profile_title_content">
+            	                点击编辑个人信息（昵称,年龄,性别）
+            	            </view>
+            	            <!-- <view class="map_uga_answer">
+            	                还未设置好友申请问题
+            	            </view> -->
+            	        </view>
+            	    </view>
+            	    <view class="map_friend_profile_icon">
+            	        <view class="map_friend_profile_icon_box">
+            				<image src="http://img.someet.cc/php37tPRV"></image>
+            				<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+            	        </view>
+            		</view>
+            	</view>
+			</view>
 			<view class="info-index-line-small"></view>
 			<!-- 个人信息列开始 -->
 			<!-- 我的个人标签开始 -->
@@ -164,6 +173,71 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 我的个人标签结束 -->
+			<!-- 我的会打开时 -->
+			<view class="map_friend_profile_title_span weight_text myAnswers">我的回答</view>
+			<view wx:for="{{userInfo.uga}}" wx:for-item="item" wx:key="index">
+				<view class="map_friend_profile_box">
+				    <view class="map_friend_profile_title">
+				        <view class="map_uga_answers " style="margin-bottom: 1rem;">
+				            <view class="map_uga_question">
+				                {{item.uga_question}}
+				            </view>
+				            <view class="map_uga_answer">
+				                {{item.uga_answer}}
+				            </view>
+				        </view>
+				    </view>
+				    <view class="map_friend_profile_icon middle_show">
+				        <view class="map_friend_profile_icon_box">
+				            <view class="mp-delete-item" data-id="{{item.id}}">
+				                删除
+				            </view>
+							<image src="http://img.someet.cc/php37tPRV" style="margin-top: 0.8rem;"></image>
+							<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+				        </view>
+					</view>
+				</view>
+				<view class="info-index-line-small"></view>
+			</view>
+			<view class="map_friend_profile_box">
+				<view class="map_friend_profile_title">
+					<view class="map_uga_answers">
+						添加问题
+					</view>
+				</view>
+				<view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
+					<view class="map_friend_profile_icon_box">
+						<image src="http://img.someet.cc/php37tPRV" style="margin-top: 0.8rem;"></image>
+						<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+					</view>
+				</view>
+			</view>
+			<view class="info-index-line-small"></view>
+			<!-- 我的回答结束 -->
+			
+			<!-- 我的好友问题设置 -->
+			<view class="map_friend_profile_title_span weight_text myAnswers">设置好友申请问题</view>
+			<view>
+				<view class="map_friend_profile_box">
+				    <view class="map_friend_profile_title">
+				        <view class="map_uga_answers " style="margin-bottom: 1rem;">
+				            <view class="map_uga_question">
+				                你可以设置一个问题作为筛选好友的依据
+				            </view>
+				            <view class="map_uga_answer">
+				                还未设置好友申请问题
+				            </view>
+				        </view>
+				    </view>
+				    <view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
+				        <view class="map_friend_profile_icon_box">
+							<image src="http://img.someet.cc/php37tPRV" style="opacity:1;"></image>
+							<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
+				        </view>
+					</view>
+				</view>
+				<view class="info-index-line-small"></view>
+			</view>
 		</view>
 	</view>
 	<view class="go-answer">
