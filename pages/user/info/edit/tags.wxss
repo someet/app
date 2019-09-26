@@ -142,22 +142,3 @@
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 }
-
-.red_bried {
-	color: red;
-	font-size: 0.75rem;
-}
-
-.gray_bried {
-	color: #aaa;
-	font-size: 0.6rem;
-}
-
-.map_bried {
-	left: 0;
-	width: 100%;
-	display: flex;
-	font-size: 0.6rem;
-	height: 1rem;
-	line-height: 1rem;
-}

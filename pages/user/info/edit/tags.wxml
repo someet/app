@@ -1,6 +1,6 @@
 <view class="content">
 	<view class="content user_tags_content">
-		<view style="width: 100%;margin-top: 0.4rem;"><strong style="font-size:1.2rem;">2 </strong>/ 3 再介绍一下自己</view>
+		<view class="profileTitle"><strong style="font-size:1.2rem;">2 </strong>/ 3 再介绍一下自己</view>
 		<view class='map_bried'>
 			<view class="{{tagType == 1?'red_bried':'gray_bried'}}"> 职业></view>
 			<view class="{{tagType == 2?'red_bried':'gray_bried'}}"> 技能></view>

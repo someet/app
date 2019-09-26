@@ -11,6 +11,7 @@
 	"pages/user/answer/finish/finish",
 	"pages/user/info/edit/edit",
 	"pages/user/info/edit/tags",
+	"pages/user/info/edit/addUga",
 	"pages/components/upload/upload"
   ],
   "window": {

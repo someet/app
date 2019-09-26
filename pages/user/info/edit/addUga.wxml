@@ -1,0 +1,28 @@
+<view>
+	<view class="content user_tags_content" style="background: none;" id="uga_content">
+        <view  class="profileTitle  {{editOrAdd != 'new'?'opacityHidden':''}}" ><strong style="font-size:1.2rem;">3 </strong>/ 3 再介绍一下自己</view>
+        <view class="map_bried  {{editOrAdd != 'new'?'opacityHidden':''}}">
+        	<view class="red_bried"> 第一个问题></view>
+        	<view class="red_bried"> 第二个问题></view>
+        	<view class="red_bried"> 第三个问题</view>
+        </view>
+        <view class="change_button" bindtap="changeQuestion">
+            换一题
+        </view>
+        <view class="question_box">
+            <view class="question_span">
+                {{question}}
+            </view>
+            <view class="question_answer_box">
+                <textarea name="myAnswer" id="" bindconfirm="textbindblur" bindinput="textbindblur" bindblur="textbindblur" cols="30" rows="10" class="question_textarea" value="{{answer}}"></textarea>
+            </view>
+            <view class="question_items">
+               {{question_nums}} / {{rest}}
+            </view>
+
+        </view>
+        <view class="my-answer-save" bindtap="saveAndBack">
+            下一步
+        </view>
+    </view>
+</view>

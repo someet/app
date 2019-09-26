@@ -17,7 +17,8 @@ Page({
 		rstd:{},
 		tsjl:{},
 		ph:{},
-		tsjn:{}
+		tsjn:{},
+		myUga:{}
 	},
 	onLoad(options){
 		var client = wx.getSystemInfoSync();
@@ -43,7 +44,8 @@ Page({
 				rstd:res.data.data.usertags.rstd,
 				tsjl:res.data.data.usertags.tsjl,
 				ph:res.data.data.usertags.ph,
-				tsjn:res.data.data.usertags.tsjn
+				tsjn:res.data.data.usertags.tsjn,
+				myUga:res.data.data.uga
 			})
 		})
 	},
@@ -123,6 +125,70 @@ Page({
 			},
 			success(res){
 				res.eventChannel.emit('imgIndex', { data: type })
+			}
+		})
+	},
+	//删除uga问题
+	delUgaAnswer(e){
+		var delId = e.currentTarget.dataset.id,that = this,index = e.currentTarget.dataset.index
+		wx.showModal({
+			  title: '删除提示',
+			  content: '确定要删除吗?',
+			  success (res) {
+				if (res.confirm) {
+				  req.delUgaAnswer({'id':delId}).then((res)=>{
+				  	console.log(index)
+				  	var data = res.data
+					var myUga = that.data.myUga
+				  	if(data.status == 1){
+						myUga.splice(index,1)
+						that.setData({
+							myUga:myUga
+						})
+				  		app.showMsg('删除已完成');
+				  	}
+				  })
+				} else if (res.cancel) {
+				  console.log('用户点击取消')
+				}
+			  }
+		})
+	},
+	// 跳转添加问题
+	goAddUga(e){
+		var id = e.currentTarget.dataset.id
+		var type = e.currentTarget.dataset.type
+		var that = this
+		wx.navigateTo({
+			url:'/pages/user/info/edit/addUga',
+			events:{
+				changeUgaById(data){
+					var myUga = that.data.myUga
+					console.log(data)
+					for (let row in myUga) {
+						if(data.id == myUga[row].id){
+							myUga[row].uga_answer = data.uga_answer
+							console.log(data.uga_answer)
+							console.log('-----')
+							console.log(myUga[row].uga_answer)
+							that.setData({
+								myUga:myUga
+							})
+							return
+						}else{
+							myUga = [...that.data.myUga,data];
+							console.log(myUga)
+							that.setData({
+								myUga:myUga
+							})
+							console.log(that.data.myUga)
+							return 
+						}
+					}
+				}
+			},
+			success(res){
+				res.eventChannel.emit('editUgaIndex', { 'type': type,'id':id })
 			}
 		})
 	}

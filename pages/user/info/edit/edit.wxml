@@ -46,9 +46,9 @@
 			<!-- 我的个人标签开始 -->
 			<!-- 工作经历开始 -->
 			<view class="map_friend_profile_box">
-			    <view class="map_friend_profile_title">
+			    <view class="map_friend_profile_title"  bindtap="editTags" data-type='1'>
 			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='1'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                工作经历
 			            </view>
@@ -67,10 +67,10 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 工作经历开始 -->
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box"  bindtap="editTags" data-type='2'>
 			    <view class="map_friend_profile_title">
 			        <view class="map_friend_profile_title_span weight_text">我的个人标签</view>
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='2'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                技能
 			            </view>
@@ -89,9 +89,9 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 工作经历开始 -->
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box" bindtap="editTags" data-type='3'>
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='3'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                个人属性
 			            </view>
@@ -110,9 +110,9 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 工作经历开始 -->
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box" bindtap="editTags" data-type='4'>
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='4'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                特殊经历
 			            </view>
@@ -131,9 +131,9 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 工作经历开始 -->
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box"  bindtap="editTags" data-type='5'>
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='5'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                人生态度
 			            </view>
@@ -152,9 +152,9 @@
 			<!-- 工作经历结束 -->
 			<view class="info-index-line-small"></view>
 			<!-- 工作经历开始 -->
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box"  bindtap="editTags" data-type='6'>
 			    <view class="map_friend_profile_title">
-			        <view class="map_friend_profile_title_span" bindtap="editTags" data-type='6'>
+			        <view class="map_friend_profile_title_span">
 			            <view class="tags_tips">
 			                个人喜好
 			            </view>
@@ -175,10 +175,10 @@
 			<!-- 我的个人标签结束 -->
 			<!-- 我的会打开时 -->
 			<view class="map_friend_profile_title_span weight_text myAnswers">我的回答</view>
-			<view wx:for="{{userInfo.uga}}" wx:for-item="item" wx:key="index">
+			<view wx:for="{{myUga}}" wx:for-item="item" wx:key="index">
 				<view class="map_friend_profile_box">
 				    <view class="map_friend_profile_title">
-				        <view class="map_uga_answers " style="margin-bottom: 1rem;">
+				        <view class="map_uga_answers " style="margin-bottom: 1rem;" data-type='edit' data-id="{{item.uga_id}}" bindtap="goAddUga">
 				            <view class="map_uga_question">
 				                {{item.uga_question}}
 				            </view>
@@ -189,7 +189,7 @@
 				    </view>
 				    <view class="map_friend_profile_icon middle_show">
 				        <view class="map_friend_profile_icon_box">
-				            <view class="mp-delete-item" data-id="{{item.id}}">
+				            <view class="mp-delete-item" data-id="{{item.id}}" data-index="{{index}}" bindtap="delUgaAnswer">
 				                删除
 				            </view>
 							<image src="http://img.someet.cc/php37tPRV" style="margin-top: 0.8rem;"></image>
@@ -199,17 +199,22 @@
 				</view>
 				<view class="info-index-line-small"></view>
 			</view>
-			<view class="map_friend_profile_box">
+			<view class="map_friend_profile_box" data-id="0" data-type='add' bindtap="goAddUga">
 				<view class="map_friend_profile_title">
-					<view class="map_uga_answers">
-						添加问题
-					</view>
+				    <view class="map_uga_answers " style="margin-bottom: 1rem;">
+				        <view class="map_uga_question">
+				            添加问题
+				        </view>
+				        <view class="map_uga_answer map_friend_profile_title_content">
+							点击添加问题
+				        </view>
+				    </view>
 				</view>
 				<view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
-					<view class="map_friend_profile_icon_box">
-						<image src="http://img.someet.cc/php37tPRV" style="margin-top: 0.8rem;"></image>
+				    <view class="map_friend_profile_icon_box">
+						<image src="http://img.someet.cc/php37tPRV" style="opacity:0;"></image>
 						<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
-					</view>
+				    </view>
 				</view>
 			</view>
 			<view class="info-index-line-small"></view>
@@ -224,14 +229,14 @@
 				            <view class="map_uga_question">
 				                你可以设置一个问题作为筛选好友的依据
 				            </view>
-				            <view class="map_uga_answer">
+				            <view class="map_uga_answer map_friend_profile_title_content">
 				                还未设置好友申请问题
 				            </view>
 				        </view>
 				    </view>
 				    <view class="map_friend_profile_icon middle_show" style="margin-right: 0rem;">
 				        <view class="map_friend_profile_icon_box">
-							<image src="http://img.someet.cc/php37tPRV" style="opacity:1;"></image>
+							<image src="http://img.someet.cc/php37tPRV" style="opacity:0;"></image>
 							<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 				        </view>
 					</view>

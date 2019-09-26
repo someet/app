@@ -237,6 +237,63 @@ const request = {
 				method:'post',
 				data:data,
 				url:basApiUrl+'/user/save-tags?id='+type,
+				
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//删除uga 
+	delUgaAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:basApiUrl+'/user/delete-uga-answer',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取回答uga 问题页面的额初始化信息
+	getUgaPageInfo(id){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:{'uga_id':id},
+				url:basApiUrl+'/user/get-uga-page',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//更换uga问题
+	changeQuestion(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:basApiUrl+'/user/change-uga-question',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//保存我的Uga 
+	saveUgaAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:basApiUrl+'/user/add-uga-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
