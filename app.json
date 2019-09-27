@@ -12,6 +12,7 @@
 	"pages/user/info/edit/edit",
 	"pages/user/info/edit/tags",
 	"pages/user/info/edit/addUga",
+	"pages/user/info/edit/useredit",
 	"pages/components/upload/upload"
   ],
   "window": {

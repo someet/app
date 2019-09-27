@@ -34,7 +34,7 @@ Page({
 	//获取我的跟人信息
 	getInfo(){
 		const that = this
-		console.log(this.data.id)
+		app.loadTitle('获取信息中...')
 		req.getInfo(this.data.id).then((res)=>{
 			console.log(res.data.data)
 			that.setData({
@@ -47,6 +47,7 @@ Page({
 				tsjn:res.data.data.usertags.tsjn,
 				myUga:res.data.data.uga
 			})
+			app.hideLoad()
 		})
 	},
 	// 点击更改进入标签页
@@ -189,6 +190,20 @@ Page({
 			},
 			success(res){
 				res.eventChannel.emit('editUgaIndex', { 'type': type,'id':id })
+			}
+		})
+	},
+	goUserEdit(){
+		var that = this
+		wx.navigateTo({
+			url:'/pages/user/info/edit/useredit',
+			events:{
+				changeMyName(data){
+					console.log(data)
+				}
+			},
+			success(res){
+				res.eventChannel.emit('editUserFrom', { 'from':'profile' })
 			}
 		})
 	}

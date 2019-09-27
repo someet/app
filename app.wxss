@@ -249,9 +249,9 @@ view.size0 {
 	font-size: 1rem;
 	display: inline;
 }
-
 button::after {
 	position: static;
+	content: none;
 }
 
 /* 面包屑 */

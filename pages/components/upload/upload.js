@@ -2,10 +2,11 @@ var app = getApp();
 Page({
 	data: {
 		src:'',
-		width:250,//宽度
-		height: 250,//高度
+		width:400,//宽度
+		height: 400,//高度
 		imgIndex:'',
 		apiUrl:app.globalData.apiUrl,
+		uploadType:'profile'
 	},
 	onLoad: function (options) {
 		var that = this
@@ -14,6 +15,12 @@ Page({
 			console.log(data)
 			that.setData({
 				imgIndex:data.data
+			})
+		});
+		eventChannel.on('uploadType', function(data){
+			console.log(data)
+			that.setData({
+				uploadType:data.type
 			})
 		});
 		//获取到image-cropper对象

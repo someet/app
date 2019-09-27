@@ -192,8 +192,22 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:{'id':id},
-				method:'post',
+				method:'get',
 				url:basApiUrl+'/user/get-info',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取个人信息
+	getBaseInfo(id){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:{'id':id},
+				method:'get',
+				url:basApiUrl+'/user/get-base-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -298,6 +312,21 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	// 虎丘手机号
+	getPhoneNumber(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:basApiUrl+'/wechat/get-phone-number',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
+	
 }
 module.exports = request;
