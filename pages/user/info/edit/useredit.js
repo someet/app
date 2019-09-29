@@ -9,12 +9,14 @@ Page({
 		id:0,
 		editFrom:'profile',
 		headImgUrl:'',
-		nickName:'',
+		username:'',
 		wechat_id:'',
 		mobile:'',
-		sex:'',
+		sex:'3',
 		birthDay:'',
-		diyPhone:0
+		bio:'',
+		diyPhone:0,
+		isSave:0
 	},
 	onLoad(options){
 		const that = this
@@ -34,8 +36,26 @@ Page({
 	},
 	// 获取个人信息
 	getUserInfo(){
+		const that = this
 		req.getBaseInfo(0).then((res)=>{
 			console.log(res)
+			var data = res.data.data
+			that.setData({
+				editFrom:data.from,
+				headImgUrl:data.profile.headimgurl,
+				username:data.username,
+				wechat_id:data.wechat_id,
+				mobile:data.mobile,
+				birthDay:data.profile.birth_year+'-'+data.profile.birth_month+'-'+data.profile.birth_day,
+				bio:data.profile.bio
+			})
+		})
+	},
+	changeSex(e){
+		const that = this
+		var data = e.currentTarget.dataset
+		this.setData({
+			sex:data.sex
 		})
 	},
 	// 上传图片
@@ -45,8 +65,11 @@ Page({
 			url:'/pages/components/upload/upload',
 			events: {
 				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-				changeHeadImg: function(data) {
+				imgIndex: function(data) {
 				  console.log(data)
+				  that.setData({
+					  headImgUrl:data.data
+				  })
 				}
 			},
 			success(res){
@@ -80,5 +103,28 @@ Page({
 			})
 		}
 		
+	},
+	//提价用户信息
+	userInfoSubmit(e){
+		console.log(e.detail.value)
+		this.setData({
+			isSave:1
+		})
+		var that = this
+		req.saveUserInfo(e.detail.value).then((res)=>{
+			console.log(res)
+			// app.showMsg('保存成功')
+			// that.setData({
+			// 	isSave:1
+			// })
+			// wx.redirectTo({'url':'/pages/user/info/info'})
+		})
+	},
+	//日期选择
+	bindDateChange(e){
+		console.log(e.detail.value)
+		this.setData({
+			birthDay:e.detail.value
+		})
 	}
 })

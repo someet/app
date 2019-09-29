@@ -29,8 +29,13 @@ Component({
 				url:'../index/index'
 			})
 		}else if(action == 'map' && routers !== 'pages/index/index'){
-			wx.switchTab({
-				url:'../map/map'
+			// wx.switchTab({
+			// 	url:'../map/map'
+			// })
+			wx.showToast({
+			  title: '程序猿大哥忙不过来了，敬请期待',
+			  icon: 'none',
+			  duration: 2000
 			})
 		}else if(action == 'user' && routers !== 'pages/user/user'){
 			wx.switchTab({

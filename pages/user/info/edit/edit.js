@@ -203,7 +203,7 @@ Page({
 				}
 			},
 			success(res){
-				res.eventChannel.emit('editUserFrom', { 'from':'profile' })
+				res.eventChannel.emit('editUserFrom', { 'from':'profile','userInfo':that.data.userInfo })
 			}
 		})
 	}

@@ -264,7 +264,10 @@ button::after {
 	color: #aaa;
 	font-size: 0.6rem;
 }
-
+.grayTitle{
+	color: gray;
+	font-size: 0.8rem;
+}
 .map_bried {
 	left: 0;
 	width: 100%;
@@ -278,4 +281,12 @@ button::after {
 }
 .opacityHidden{
 	opacity: 0;
+}
+.datePicker{
+	width: 100%;
+	height: 3rem;
+	z-index:2;
+}
+.width1rem{
+	width: 1rem
 }

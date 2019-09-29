@@ -32,6 +32,13 @@ Page({
 		var list = that.getActList();
 		
 	},
+	searchAct(){
+		wx.showToast({
+		  title: '还没做，先等着吧',
+		  icon: 'none',
+		  duration: 2000
+		})
+	},
 	//点击切换，滑块index赋值
 	checkCurrent:function(e){
 		const that = this;

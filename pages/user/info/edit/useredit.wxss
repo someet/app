@@ -75,7 +75,6 @@
     display: block;
     width:69%;
     max-width: 69%;
-	margin-left: 0.8rem;
     box-sizing: border-box;
 }
 .answer-send-code {
@@ -109,11 +108,11 @@
     background: rgb(241,43,54);
     color:white;
     border:none;
-
     display: inline-block;
-    position: absolute;
-    z-index: 2008;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
 }
 .edit_sex_list .edit_sex_box{
     width: 30%;
@@ -143,4 +142,14 @@
 	line-height: 2rem;
 	margin-top: 0.5rem;
 	width: auto;
+}
+.question-item-list-text{
+	border:1px solid gray;
+	height: 7rem;
+	margin:0 auto;
+	border-radius: 0.2rem;
+	margin-bottom: 1rem;
+	position: static;
+	width: 100%;
+	padding: 0.4rem;
 }
