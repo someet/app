@@ -44,6 +44,7 @@
 	background-color:rgb(226,24,56);
 	position: absolute;
 	bottom: 1rem;
+	color:white;
 }
 .member-top-box-username text{
 	margin-top: -0.2rem;
@@ -58,4 +59,11 @@
 	height: 1px;
 	background-color: rgb(220,220,220);
 	margin-left: 0.8rem;
+}
+.getUserInfoButton{
+	width: 25%;
+	height: 2rem;
+	line-height: 2rem;
+	color: white;
+
 }

@@ -13,17 +13,64 @@ Page({
 	page:1,
 	answerPageCount:0,
 	myAnswer:[],
-	isClick:false
+	isClick:false,
+	userInfo:{},
+	isGetInfo:0
   },
   onLoad(){
 	this.getMyanswers();  
+	var userInfo = wx.getStorageSync('userInfo')
+	if(userInfo.id){
+		var data = {
+			id:userInfo.id,
+			username:userInfo.username,
+			headimgurl:userInfo.profile.headimgurl
+		}
+		console.log(data)
+		this.setData({
+			userInfo:data
+		})
+	}
   },
   onGetUserInfo(e){
-  	console.log(e)
+	var idInfo = wx.getStorageSync('session')
+	if(idInfo.unionid){
+		var data =e.detail.userInfo
+		data.openid = idInfo.openid
+		data.unionid = idInfo.unionid
+		data.session_key = idInfo.session_key
+		this.getUserInfo(data)
+	}
   	try {
-	  wx.setStorageSync('userInfoForSave', e.detail.userInfo)
-	} catch (e) {}
+	  // wx.setStorageSync('userInfoForSave', e.detail.userInfo)
+	} catch (e) {
+		
+	}
 	//先获取openid 再查询是否存在 不存在则创建
+  },
+  getUserInfo(data){
+	  console.log(data)
+	  var that = this;
+	  if(this.data.isGetInfo){
+		  app.showMsg('请稍后')
+		  return false
+	  }
+	  this.setData({
+		  isGetInfo:1
+	  })
+	  var checkInfo = wx.getStorageSync('userInfo')
+	 req.createUser(data).then((res)=>{
+		 console.log(res)
+		 if(res.data.status == 1){
+			 that.setData({
+				 userInfo:res.data.data,
+				 isGetInfo:0
+			 })
+			if(!checkInfo.id){
+				user.checkSession()
+			}
+		 }
+	 })
   },
   getMyanswers(e){
 	var that = this;

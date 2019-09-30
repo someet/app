@@ -10,19 +10,30 @@ Page({
 		model:{},
 		is_click:false,
 		isShow:true,
-		t:util.formatTime(1560417955)
+		t:util.formatTime(1560417955),
+		isLogin:0
   },
   	onLoad: function (options) {
 		var act_id = options.id
 		this.setData({
 			id:act_id
 		})
+		this.checkLogin()
 		this.getDetail();
+		
   	},
   	onReady:function(){
 	 	req.getHeader();
 	 	var userInfo = user.getUserInfo()
   	},
+	checkLogin(){
+		var userInfo = wx.getStorageSync('userInfo')
+		if(userInfo.id){
+			this.setData({
+				isLogin:1
+			})
+		}
+	},
   	getDetail:function(){
 		wx.showLoading({
 		  title: '加载中',
@@ -48,6 +59,13 @@ Page({
   	//点击报名
   	goAnswer:function(){
   		var that = this;
+		if(this.data.isLogin == 0 || !this.data.isLogin){
+			app.showMsg('请先登录')
+			wx.redirectTo({
+				'url':'/pages/user/user'
+			})
+			return false
+		}
   		if(this.data.model.is_answer) return false;
   		this.is_click = true;
   		//检查自身的状态，是否填写了手机号，微信号
@@ -94,9 +112,9 @@ Page({
 					title = '请先完善个人信息';
 					app.showMsg(title);
 					//跳转到修改个人信息页面
-					
-					
-					
+					wx.redirectTo({
+						url:'/pages/user/info/info'
+					})
 					return false;
 				}
   				if(res.data == 'is_empty'){title = '活动查询失败';}

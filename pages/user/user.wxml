@@ -5,16 +5,19 @@
 		<image src='https://m.someet.cc/image/common/me.png' mode="widthFix" style="width: 100%;"></image>
 		<!-- 头像 -->
 		<view class="member-top-box-header">
-			<image src='http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0' mode="widthFix" style="width: 100%;"></image>
+			<image src='{{userInfo.headimgurl?userInfo.headimgurl:"http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0"}}' mode="widthFix" style="width: 100%;"></image>
 		</view>
 		<!-- 右箭头 -->
 		<view class="iconfont icon-jiantou white block-icon member-top-box-right" bindtap="goInfo"></view>
 		<!-- 用户姓名 -->
-		<view class="member-top-box-username">
-			<text>如画看流苏</text>
+		<view class="member-top-box-username" wx:if="{{userInfo.id}}">
+			<text>{{userInfo.username}}</text>
 		</view>
+		<view class="member-top-box-username" wx:if="{{!userInfo.id}}">
+			<button type="primary" class="getUserInfoButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"> 快速登录 </button>
+		</view>	
 	</view>
-	<view class="member-top-box-grayBack">
+	<view class="member-top-box-grayBack" wx:if="{{userInfo.id}}">
 		<!-- 我报名的活动 -->
 		<view class="iconfont icon-rili white block-icon member-top-box-answer">
 			<text>我报名的活动</text>

@@ -1,4 +1,5 @@
 const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
+// const basApiUrl = 'https://someetapi.someet.cc/v1';
 const request = {
 	header : {
 		'Authorization':'',
@@ -10,6 +11,19 @@ const request = {
 			wx.request({
 				data:data,
 			  	url:basApiUrl+'/wechat/login',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	createUser(data){
+		var that = this;
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+			  	url:basApiUrl+'/user/create-user',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -29,7 +43,9 @@ const request = {
 		})
 	},
 	getToken(){
-		return 'iVHFPhHKUaQg6jPUJRNoFhvQVw33eArt';
+		var info = wx.getStorageSync('userInfo')
+		if(info.access_token) return info.access_token
+		return '';
 	},
 	getHeader(){
 		var token = this.getToken();
