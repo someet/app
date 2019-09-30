@@ -1,6 +1,6 @@
 .info-index{
 	width: 100%;
-	background: red;
+	/* background: red; */
 	color:black;
 }
 .info-index-box{

@@ -18,7 +18,7 @@
 				url="/pages/user/user"><image
 					 class='tabBar-item-normal'
 					mode="widthFix"
-					src="/pages/image/act.png"
+					src="/pages/image/me.png"
 				></image>  </navigator>
 	</view>
 	<slot></slot>

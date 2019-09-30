@@ -4,15 +4,15 @@
 		<view class="info-index">
 			<swiper indicator-dots="true"
 			autoplay="false" interval="2000" duration="500" style="width:100%;height: {{scrollHeight}}px">
-				<swiper-item>
-					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix' />
+				<swiper-item wx:for="{{userInfo.album}}" wx:for-item="item" wx:key="index">
+					<image data-id="{{item.id}}" src="{{item.headimgurl}}" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix' />
 				</swiper-item>
-				<swiper-item>
+				<!-- <swiper-item>
 					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
 				</swiper-item>
 				<swiper-item>
 					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
-				</swiper-item>
+				</swiper-item> -->
 			</swiper>
 		</view>
 		<!-- 姓名开始 -->

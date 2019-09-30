@@ -20,7 +20,7 @@
         </view>
 		<view class="map_friend_profile">
 			<!-- 个人信息列开始 -->
-            <view class="map_friend_profile_title_span weight_text myAnswers">我的名字</view>
+            <view class="map_friend_profile_title_span weight_text myAnswers">{{userInfo.username}}</view>
             <view bindtap="goUserEdit">
             	<view class="map_friend_profile_box">
             	    <view class="tags_tips">

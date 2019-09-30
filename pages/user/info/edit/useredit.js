@@ -40,15 +40,23 @@ Page({
 		req.getBaseInfo(0).then((res)=>{
 			console.log(res)
 			var data = res.data.data
+			var birth
+			if(!data.profile.birth_year || !data.profile.birth_month || !data.profile.birth_day) {
+				birth = '';
+			}else{
+				birth = data.profile.birth_year+'-'+data.profile.birth_month+'-'+data.profile.birth_day
+			}
+			
 			that.setData({
 				editFrom:data.from,
 				headImgUrl:data.profile.headimgurl,
 				username:data.username,
 				wechat_id:data.wechat_id,
 				mobile:data.mobile,
-				birthDay:data.profile.birth_year+'-'+data.profile.birth_month+'-'+data.profile.birth_day,
+				birthDay:birth,
 				bio:data.profile.bio
 			})
+			console.log(this.data.wechat_id)
 		})
 	},
 	changeSex(e){
@@ -113,11 +121,11 @@ Page({
 		var that = this
 		req.saveUserInfo(e.detail.value).then((res)=>{
 			console.log(res)
-			// app.showMsg('保存成功')
-			// that.setData({
-			// 	isSave:1
-			// })
-			// wx.redirectTo({'url':'/pages/user/info/info'})
+			app.showMsg('保存成功')
+			that.setData({
+				isSave:1
+			})
+			wx.redirectTo({'url':'/pages/user/info/info'})
 		})
 	},
 	//日期选择

@@ -60,7 +60,7 @@
 					</view>
 					<view class="edit_input_div">
 						<view class="edit_item">生日 </view><view class='width1rem'>|</view>
-						<input style="display: none;" type="text"  id="birthday" name="birthday" value="{{birthDay}}"  />
+						<input style="display: none;" type="text"  id="birthday" name="birthday" value="{{birthDay?birthDay:''}}"  />
 						<view style="width: 60%;">
 							<picker mode="date" value="{{birthDay}}" class="datePicker" start="1960-09-01" bindchange="bindDateChange">
 							    <view class="datePicker">
@@ -75,7 +75,7 @@
 							<textarea class="question-item-list-text" placeholder="请填写个人简介" name="bio" value='{{bio}}'/>
 						</view>
 					</view>
-					<button loading="isSave" disabled="isSave" class="edit_btn_box" form-type='submit'>保存</button>
+					<button  disabled="{{isSave}}" class="edit_btn_box" form-type='submit'>保存</button>
 				</form>
 
 			</view>
