@@ -88,12 +88,8 @@ Page({
   		}
   	},
   	goback(){
-  // 		wx.navigateBack({
-		//   delta: 1
-		// })
-		console.log('1111')
-		wx.redirectTo({
-		  url: '/pages/user/answer/finish/finish'
+	  	wx.navigateBack({
+		  delta: 1
 		})
   	},
   	//判断活动状态
