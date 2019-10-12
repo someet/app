@@ -60,9 +60,9 @@ Page({
   	goAnswer:function(){
   		var that = this;
 		var userInfoComplete = user.checkUserInfoComplete()
-		if(this.data.isLogin == 0 || !this.data.isLogin || !userInfoComplete){
+		if(this.data.isLogin == 0 || !this.data.isLogin || userInfoComplete !='complete'){
 			app.showMsg('请先登录')
-			wx.setStorageSync('editUserFrom', {'from':'act',id:that.data.id})
+			wx.setStorageSync('editUserFrom', {'fromPage':'act',id:that.data.id})
 			wx.redirectTo({
 				'url':'/pages/user/info/edit/edit'
 			})

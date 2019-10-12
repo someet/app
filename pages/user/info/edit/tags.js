@@ -13,12 +13,19 @@ Page({
 		selectTagsId:[],
 		unSelectTags:{},
 		unSelectTagsId:[],
-		myTag:''
+		myTag:'',
+		step:''
 	},
 	onLoad(options){
 		const that = this
 		const eventChannel = that.getOpenerEventChannel()
 		eventChannel.on('tagType', function(data){
+			if(typeof(data.fromPage) != undefined || data.fromPage){
+				//按步骤填写
+				that.setData({
+					step:data.fromPage
+				})
+			}
 			that.setData({
 				tagType:data.data
 			})
@@ -67,16 +74,41 @@ Page({
 	saveAndBack(){
 		//保存所选择的标签
 		//获取我选择的标签
+		var that = this;
 		var selectTagsId = this.data.selectTagsId
 		console.log(selectTagsId)
 		req.saveTags(selectTagsId,this.data.tagType).then((res)=>{
 			console.log(res);
 		})
 		const eventChannel = this.getOpenerEventChannel()
-		eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
-		wx.navigateBack({
-		  delta: 1
-		})
+		if(this.data.step != 0){
+			wx.navigateTo({
+				url:'/pages/user/info/edit/tags',
+				events:{
+				},
+				success(res){
+					var type = that.data.tagType+1
+					if(type == 7){
+						//查询是否完善uga，晚上则判断是否存在活动id，存在则跳转到响应的活动详情页，否则跳转到个人profile中心页
+						//刷新用户信息
+						userFunc.resetUserInfo()
+						userFunc.checkUserInfoComplete()
+						wx.redirectTo({
+							url:'/pages/user/info/edit/addUga'
+						})
+					}else{
+						//未全部填写标签则继续跳转填写标签
+						res.eventChannel.emit('tagType',{data:type,'fromPage':type})
+					}
+				}
+			})
+		}else{
+			eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
+			wx.navigateBack({
+			  delta: 1
+			})
+		}
+		
 	},
 	// 获取单个分类标签的选取和未选取的标签
 	getMyTags(){

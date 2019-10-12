@@ -27,7 +27,7 @@ Page({
 		eventChannel.on('editUserFrom', function(data){
 			console.log(data)
 			that.setData({
-				editFrom:data.from,
+				editFrom:data.fromPage,
 				id:id
 			})
 			if(!wx.getStorageSync('editUserFrom')){
@@ -57,7 +57,7 @@ Page({
 			}
 			
 			that.setData({
-				editFrom:data.from,
+				editFrom:data.fromPage,
 				headImgUrl:data.profile.headimgurl,
 				username:data.username,
 				wechat_id:data.wechat_id,
@@ -124,7 +124,6 @@ Page({
 	//提价用户信息
 	userInfoSubmit(e){
 		app.loadTitle('正在保存...')
-		console.log(e.detail.value)
 		this.setData({
 			isSave:1
 		})
@@ -138,23 +137,37 @@ Page({
 			})
 			//设置完成用户是否完善信息
 			var userInfo = userFunc.getUserInfo();
-			user.wechat_id = e.detail.value.wechat_id;
+			userInfo.wechat_id = e.detail.value.wechat_id;
 			userInfo.mobile = e.detail.value.mobile
 			userFunc.setUserInfo(userInfo);
 			//检查是否是报名活动完善信息
 			var userInfoComplete = userFunc.checkUserInfoComplete();
-			if(userInfoComplete){
+			console.log(userInfoComplete)
+			if(userInfoComplete == 'complete'){
 				// 检查是否是从活动报名过lai/
 				var userFrom = wx.getStorageSync('editUserFrom')
-				if(userFrom == 'act'){
+				if(userFrom.fromPage == 'act'){
 					//跳转到活动页面之前删除保存的from 信息
 					wx.removeStorageSync('editFrom')
 					wx.redirectTo({
 						url:'/pages/details.detail?id='+userFrom.id
 					})
 				}
+			}else if(userInfoComplete == 'tags'){
+				// 跳转到填写标签页面,从第一页开始
+				wx.navigateTo({
+					url:'/pages/user/info/edit/tags',
+					events:{
+					},
+					success(res){
+						res.eventChannel.emit('tagType',{data:1,'method':1})
+					}
+				})
+			}else if(userInfoComplete == 'uga'){
+				// 跳转到填写uga 的页面从第一条开始
+				
 			}
-			console.log(userFunc.getUserInfo())
+			userFunc.checkUserInfoComplete()
 			// wx.redirectTo({'url':'/pages/user/info/info'})
 		})
 	},

@@ -20,6 +20,10 @@ Page({
   onLoad(){
 	this.getMyanswers();  
 	var userInfo = wx.getStorageSync('userInfo')
+	var idInfo = wx.getStorageSync('session')
+	if(!idInfo.unionid){
+		userFunc.checkUserInfo();
+	}
 	if(userInfo.id){
 		var data = {
 			id:userInfo.id,
@@ -40,6 +44,9 @@ Page({
 		data.unionid = idInfo.unionid
 		data.session_key = idInfo.session_key
 		this.getUserInfo(data)
+	}else{
+		console.log('31231')
+		userFunc.checkUserInfo();
 	}
   	try {
 	  // wx.setStorageSync('userInfoForSave', e.detail.userInfo)

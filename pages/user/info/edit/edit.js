@@ -37,12 +37,14 @@ Page({
 		// 	})
 		// });
 		var fromInfo = wx.getStorageSync('editUserFrom')
-		if(fromInfo.from && fromInfo.id){
-				that.setData({
-					editFrom:fromInfo.from,
-					id:fromInfo.id
-				})
+		console.log((fromInfo.fromPage && fromInfo.id))
+		if(fromInfo.fromPage && fromInfo.id){
+			that.setData({
+				editFrom:fromInfo,
+				id:fromInfo.id
+			})
 		}
+		console.log(this.data.editFrom)
 		var checkInfo = wx.getStorageSync('userInfo')
 		id = checkInfo.id
 		this.setData({
@@ -50,6 +52,7 @@ Page({
 			id:id
 		})
 		this.getInfo()
+		user.checkUserInfoComplete()
 	},
 	//获取我的跟人信息
 	getInfo(){
@@ -212,6 +215,16 @@ Page({
 	},
 	goUserEdit(){
 		var that = this
+		var fromData;
+		if(that.data.editFrom && that.data.editFrom.fromPage == 'act'){
+			fromData = {
+				'fromPage':'act',
+				'id':that.data.id
+			}
+		}else{
+			fromData = { 'fromPage':'profile','userInfo':that.data.userInfo },
+			wx.setStorageSync('editUserFrom', fromData)
+		}
 		wx.navigateTo({
 			url:'/pages/user/info/edit/useredit',
 			events:{
@@ -220,16 +233,6 @@ Page({
 				}
 			},
 			success(res){
-				var fromData;
-				if(that.editFrom == 'act'){
-					fromData = {
-						'from':'act',
-						'id':that.data.id
-					}
-				}else{
-					fromData = { 'from':'profile','userInfo':that.data.userInfo },
-					wx.setStorageSync('editUserFrom', fromData)
-				}
 				res.eventChannel.emit('editUserFrom', fromData)
 			}
 		})
