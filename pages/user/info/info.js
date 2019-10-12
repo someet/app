@@ -15,6 +15,10 @@ Page({
 		var clientHeight = client.windowWidth;
 		var id;
 		id = typeof(options.id) == 'undefined' ? 0:options.id
+		if(!id){
+			var checkInfo = wx.getStorageSync('userInfo')
+			id = checkInfo.id
+		}
 		this.setData({
 			scrollHeight:clientHeight,
 			id:id

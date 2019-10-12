@@ -1,4 +1,4 @@
-var user = require('../../common/user.js');
+var userFunc = require('../../common/user.js');
 var imageUtil = require('../../utils/util.js');
 var req = require('../../common/request.js');
 var user = require('../../common/user.js');
@@ -15,7 +15,7 @@ Page({
 	myAnswer:[],
 	isClick:false,
 	userInfo:{},
-	isGetInfo:0
+	isGetInfo:0                                                  
   },
   onLoad(){
 	this.getMyanswers();  
@@ -67,7 +67,7 @@ Page({
 				 isGetInfo:0
 			 })
 			if(!checkInfo.id){
-				user.checkSession()
+				userFunc.checkSession()
 			}
 		 }
 	 })

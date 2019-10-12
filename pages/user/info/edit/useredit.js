@@ -1,4 +1,4 @@
-var user = require('../../../../common/user.js');
+var userFunc = require('../../../../common/user.js');
 var imageUtil = require('../../../../utils/util.js');
 var req = require('../../../../common/request.js');
 var user = require('../../../../common/user.js');
@@ -20,12 +20,19 @@ Page({
 	},
 	onLoad(options){
 		const that = this
+		var checkInfo = wx.getStorageSync('userInfo')
+		var id = checkInfo.id
 		const eventChannel = that.getOpenerEventChannel()
+		//保存是否从活动报名提醒完善信息过来，详情页可能是 跳转而不是二级页面，暂时不用 
 		eventChannel.on('editUserFrom', function(data){
 			console.log(data)
 			that.setData({
-				editFrom:data.from
+				editFrom:data.from,
+				id:id
 			})
+			if(!wx.getStorageSync('editUserFrom')){
+				wx.setStorageSync('editUserFrom', data)
+			}
 		});
 		this.getUserInfo()
 	},
@@ -37,8 +44,10 @@ Page({
 	// 获取个人信息
 	getUserInfo(){
 		const that = this
+		app.loadTitle('正在保存...')
 		req.getBaseInfo(0).then((res)=>{
 			console.log(res)
+			app.hideLoad()
 			var data = res.data.data
 			var birth
 			if(!data.profile.birth_year || !data.profile.birth_month || !data.profile.birth_day) {
@@ -114,6 +123,7 @@ Page({
 	},
 	//提价用户信息
 	userInfoSubmit(e){
+		app.loadTitle('正在保存...')
 		console.log(e.detail.value)
 		this.setData({
 			isSave:1
@@ -121,11 +131,31 @@ Page({
 		var that = this
 		req.saveUserInfo(e.detail.value).then((res)=>{
 			console.log(res)
+			app.hideLoad()
 			app.showMsg('保存成功')
 			that.setData({
 				isSave:1
 			})
-			wx.redirectTo({'url':'/pages/user/info/info'})
+			//设置完成用户是否完善信息
+			var userInfo = userFunc.getUserInfo();
+			user.wechat_id = e.detail.value.wechat_id;
+			userInfo.mobile = e.detail.value.mobile
+			userFunc.setUserInfo(userInfo);
+			//检查是否是报名活动完善信息
+			var userInfoComplete = userFunc.checkUserInfoComplete();
+			if(userInfoComplete){
+				// 检查是否是从活动报名过lai/
+				var userFrom = wx.getStorageSync('editUserFrom')
+				if(userFrom == 'act'){
+					//跳转到活动页面之前删除保存的from 信息
+					wx.removeStorageSync('editFrom')
+					wx.redirectTo({
+						url:'/pages/details.detail?id='+userFrom.id
+					})
+				}
+			}
+			console.log(userFunc.getUserInfo())
+			// wx.redirectTo({'url':'/pages/user/info/info'})
 		})
 	},
 	//日期选择

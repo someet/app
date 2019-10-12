@@ -1,10 +1,11 @@
-// const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
-const basApiUrl = 'https://someetapi.someet.cc/v1';
+const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
+// const basApiUrl = 'https://someetapi.someet.cc/v1';
 const request = {
 	header : {
 		'Authorization':'',
 		'content-type':'application/x-www-form-urlencoded'
 	},
+	
 	//小程序登录获取openid
 	getWxId(data){
 		return new Promise((resolve,reject)=>{
@@ -29,7 +30,7 @@ const request = {
 			})
 		})
 	},
-	//获取用户信息
+	//获取用户信息                                                                                                                                                                                                                                                                                                                                                                                                            
 	getUserInfo(data){
 		var that = this;
 		return new Promise((resolve,reject)=>{

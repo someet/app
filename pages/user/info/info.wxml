@@ -13,6 +13,10 @@
 				<swiper-item>
 					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
 				</swiper-item> -->
+				<!-- //没有照片是显示 -->
+				<swiper-item wxz:if="{{userInfo.album.length == 0}}">
+					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
+				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 姓名开始 -->

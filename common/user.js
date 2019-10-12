@@ -43,6 +43,10 @@ const user = {
 									wx.setStorageSync('userInfo', res.data.data)
 								}else{
 									//不存在的用户，无法自动获取信息，则去个人中心时在绑定新的用户
+									//跳转到登录界面
+									wx.redirectTo({
+										url:'/pages/user/user'
+									})
 								}
 							})
 						}
@@ -61,6 +65,17 @@ const user = {
 		} catch (e) {
 		  // Do something when catch error
 		}
+	},
+	checkUserInfoComplete(){
+		var userInfoComplete = 1;
+		var value = wx.getStorageSync('userInfo')
+		if(!value.wechat_id || !value.mobile || !value.tags || !value.uga){
+			userInfoComplete = 0
+		}
+		wx.setStorageSync('userInfoComplete', userInfoComplete)
+	},
+	setUserInfo(data){
+		wx.setStorageSync('userInfo', data)
 	}
 }
 module.exports = user;

@@ -9,6 +9,7 @@ App({
 	  wx.hideTabBar();
 	  //检查用户状态
 	  user.checkUserInfo();
+	  wx.removeStorageSync('editFrom')
 	},
 	showMsg(msg,type,duration){
 		var icon = typeof(type) == 'undefined'?'none':type

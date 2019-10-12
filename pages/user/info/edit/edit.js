@@ -18,13 +18,33 @@ Page({
 		tsjl:{},
 		ph:{},
 		tsjn:{},
-		myUga:{}
+		myUga:{},
+		editFrom:'',
+		id:0
 	},
 	onLoad(options){
 		var client = wx.getSystemInfoSync();
 		var clientHeight = client.windowWidth;
-		var id;
-		id = typeof(options.id) == 'undefined' ? 0:options.id
+		var id,that = this;
+		//从哪跳转到修改信息也
+		// eidtFrom
+		// const eventChannel = that.getOpenerEventChannel()
+		// eventChannel.on('editUserFrom', function(data){
+		// 	console.log(data)
+		// 	that.setData({
+		// 		editFrom:data.from,
+		// 		id:id
+		// 	})
+		// });
+		var fromInfo = wx.getStorageSync('editUserFrom')
+		if(fromInfo.from && fromInfo.id){
+				that.setData({
+					editFrom:fromInfo.from,
+					id:fromInfo.id
+				})
+		}
+		var checkInfo = wx.getStorageSync('userInfo')
+		id = checkInfo.id
 		this.setData({
 			scrollHeight:clientHeight,
 			id:id
@@ -169,9 +189,6 @@ Page({
 					for (let row in myUga) {
 						if(data.id == myUga[row].id){
 							myUga[row].uga_answer = data.uga_answer
-							console.log(data.uga_answer)
-							console.log('-----')
-							console.log(myUga[row].uga_answer)
 							that.setData({
 								myUga:myUga
 							})
@@ -203,7 +220,17 @@ Page({
 				}
 			},
 			success(res){
-				res.eventChannel.emit('editUserFrom', { 'from':'profile','userInfo':that.data.userInfo })
+				var fromData;
+				if(that.editFrom == 'act'){
+					fromData = {
+						'from':'act',
+						'id':that.data.id
+					}
+				}else{
+					fromData = { 'from':'profile','userInfo':that.data.userInfo },
+					wx.setStorageSync('editUserFrom', fromData)
+				}
+				res.eventChannel.emit('editUserFrom', fromData)
 			}
 		})
 	}

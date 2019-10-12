@@ -35,7 +35,7 @@
             	    </view>
             	    <view class="map_friend_profile_icon">
             	        <view class="map_friend_profile_icon_box">
-            				<image src="http://img.someet.cc/php37tPRV"></image>
+            				<image src="http://img.someet.cc/php37tPRV" class="{{userInfo.wechat_id && userInfo.mobile?'':'edit_opacity'}}"></image>
             				<text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
             	        </view>
             		</view>
@@ -54,7 +54,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{zy.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{zy.length == 0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>

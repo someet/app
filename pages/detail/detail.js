@@ -59,10 +59,12 @@ Page({
   	//点击报名
   	goAnswer:function(){
   		var that = this;
-		if(this.data.isLogin == 0 || !this.data.isLogin){
+		var userInfoComplete = user.checkUserInfoComplete()
+		if(this.data.isLogin == 0 || !this.data.isLogin || !userInfoComplete){
 			app.showMsg('请先登录')
+			wx.setStorageSync('editUserFrom', {'from':'act',id:that.data.id})
 			wx.redirectTo({
-				'url':'/pages/user/user'
+				'url':'/pages/user/info/edit/edit'
 			})
 			return false
 		}
