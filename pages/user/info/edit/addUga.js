@@ -1,4 +1,3 @@
-var user = require('../../../../common/user.js');
 var imageUtil = require('../../../../utils/util.js');
 var req = require('../../../../common/request.js');
 var user = require('../../../../common/user.js');
@@ -125,6 +124,7 @@ Page({
 				var data = res.data.data
 				const eventChannel = this.getOpenerEventChannel()
 				eventChannel.emit('changeUgaById',data);
+				user.setUserInfoByUnionId();
 				wx.navigateBack({
 				  delta: 1
 				})

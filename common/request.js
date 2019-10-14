@@ -53,6 +53,13 @@ const request = {
 		this.header.Authorization = 'Bearer '+token
 		return this.header
 	},
+	getHeaderForUpload(){
+		var token = this.getToken();
+		var headerForUpload = {
+			'Authorization':'Bearer '+token
+		}
+		return headerForUpload
+	},
 	showErr(err) {
 		console.log(err)
 		if (!typeof err === 'string') {

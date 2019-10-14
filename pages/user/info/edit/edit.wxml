@@ -3,14 +3,14 @@
 		<view class="map_friend_album_box_div">
             <view class="map_friend_album_box">
                 <view class="map_friend_album_box_left map_upload_img">
-					<cover-image bindtap="uploadImg" data-id='my_head_img_1' src="{{my_head_img_1?my_head_img_1:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+					<cover-image bindtap="uploadImg" data-id='my_head_img_1' src="{{my_head_img_1.headimgurl?my_head_img_1.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                 </view>
                 <view class="map_friend_album_box_right">
                     <view class="map_friend_album_box_right_small map_upload_img">
-						<cover-image bindtap="uploadImg" data-id='my_head_img_2' src="{{my_head_img_2?my_head_img_2:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+						<cover-image bindtap="uploadImg" data-id='my_head_img_2' src="{{my_head_img_2.headimgurl?my_head_img_2.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                     </view>
                     <view class="map_friend_album_box_right_small map_upload_img">
-						<cover-image bindtap="uploadImg" data-id='my_head_img_3' src="{{my_head_img_3?my_head_img_3:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+						<cover-image bindtap="uploadImg" data-id='my_head_img_3' src="{{my_head_img_3.headimgurl?my_head_img_3.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                     </view>
                 </view>
             </view>
@@ -221,7 +221,7 @@
 			<!-- 我的回答结束 -->
 			
 			<!-- 我的好友问题设置 -->
-			<view class="map_friend_profile_title_span weight_text myAnswers">设置好友申请问题</view>
+			<!-- <view class="map_friend_profile_title_span weight_text myAnswers">设置好友申请问题</view>
 			<view>
 				<view class="map_friend_profile_box">
 				    <view class="map_friend_profile_title">
@@ -242,11 +242,11 @@
 					</view>
 				</view>
 				<view class="info-index-line-small"></view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 	<view class="go-answer">
-		<button class="answer-goback"> 返回</button>
-		<button class="answer-goanswer"> 完成 </button>
+		<button class="answer-goback" bindtap="goBack"> 返回</button>
+		<button class="answer-goanswer" bindtap="completeUser"> 完成 </button>
 	</view>
 </view>

@@ -40,5 +40,10 @@ Page({
 		wx.navigateTo({
 			url:'./edit/edit'
 		})
+	},
+	goMember(){
+		wx.switchTab(({
+			url:'/pages/user/user'
+		}))
 	}
 })

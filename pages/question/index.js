@@ -1,4 +1,5 @@
 var app = getApp();
+var user = require('../../common/user.js');
 var req = require('../../common/request.js');
 Page({
 	data:{
@@ -7,7 +8,8 @@ Page({
 		question_image:'',
 		id:0,
 		question_item:[],//问题了列表
-		anwerList:[]//答案列表
+		anwerList:[],//答案列表,
+		isClick:0
 	},
   onLoad(options) {
     console.log(options)
@@ -74,10 +76,16 @@ Page({
 	},
 	//创建报名信息
 	createAnswer(e){
+		if(this.data.isClick == 1){
+			return false
+		}
+		this.setData({
+			isClick:1
+		})
 		//检查问题是否为空值
 		console.log(e.detail)
 		//检查回答的问题是否完整
-		var formData = e.detail.value;
+		var formData = e.detail.value,that = this;
 		for (let index of Object.keys(formData)) {
 			console.log(index+'----'+formData[index])
 			if(!formData[index]){
@@ -91,9 +99,20 @@ Page({
 				app.showMsg(res.data.msg);
 				if(res.data.status == 1){
 					//跳转到报名成功页面
+					wx.redirectTo({
+						url:'/pages/user/answer/finish/finish'
+					})
 				}else if(res.data.status == 2){
 					//跳转到填写标签页面
+					wx.setStorageSync('editUserFrom', {'fromPage':'answer',id:0})
+					user.checkUserInfoComplete()
+					wx.redirectTo({
+						url:'/pages/user/info/edit/edit'
+					})
 				}
+				this.setData({
+					isClick:0
+				})
 			}
 		}).catch(req.showErr)
 	}

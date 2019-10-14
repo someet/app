@@ -93,18 +93,33 @@ const user = {
 		  // Do something when catch error
 		}
 	},
+	setUserInfoByUnionId(){
+		var idInfo = wx.getStorageSync('session')
+		var unionid = idInfo.unionid
+		try {
+		  req.getUserInfo({'unionid':unionid}).then((res)=>{
+		  	if(res.data){
+		  		wx.setStorageSync('userInfo', res.data.data)
+		  	}else{
+		  		//不存在的用户，无法自动获取信息，则去个人中心时在绑定新的用户
+		  	}
+		  })
+		} catch (e) {
+		  // Do something when catch error
+		}
+	},
 	checkUserInfoComplete(){
 		console.log('刷新信息')
 		var userInfoComplete = 'complete';
 		var value = wx.getStorageSync('userInfo')
-		if(!value.wechat_id || !value.mobile){
-			userInfoComplete = 'baseInfo'
-		}
 		if(!value.uga || value.uga.length == 0){
 			userInfoComplete = 'uga'
 		}
 		if(!value.tags || value.tags.length == 0){
 			userInfoComplete = 'tags'
+		}
+		if(!value.wechat_id || !value.mobile){
+			userInfoComplete = 'baseInfo'
 		}
 		wx.setStorageSync('userInfoComplete', userInfoComplete)
 		return userInfoComplete;

@@ -1,4 +1,6 @@
 var app = getApp();
+var req = require('../../../common/request.js');
+var user = require('../../../common/user.js');
 Page({
 	data: {
 		src:'',
@@ -34,8 +36,14 @@ Page({
 			sizeType: ['compressed'],
 			sourceType: ['album', 'camera'],
 			success (res) {
+				console.log(res)
 				// tempFilePath可以作为img标签的src属性显示图片
 				const tempFilePaths = res.tempFilePaths
+				const size = res.tempFiles[0].size
+				if(size > 3000*1000){
+					app.showMsg('图片不能超过3M');
+					return false;
+				}
 				that.setData({
 					src:tempFilePaths,
 				});
@@ -73,16 +81,25 @@ Page({
 	},
 	okUpload(){
 		var that = this
+		var header = req.getHeaderForUpload();
+		var index = this.data.imgIndex
+		if(index == 'my_head_img_1') index = 1;
+		if(index == 'my_head_img_2') index = 2;
+		if(index == 'my_head_img_3') index = 3;
 		this.cropper.getImg((data)=>{
 			console.log(data.url)
 			app.loadTitle('正在上传...')
 			wx.uploadFile({
 				url: that.data.apiUrl+'/back/upload/upload-file', 
 				filePath: data.url,
-				name: 'file',
+				formData:{'uploadType':that.data.uploadType,'imgIndex':index},
+				name: 'file', 
+				header:header,
 				success (res){
 					const data = JSON.parse(res.data).data
 					if(data.status == 200){
+						console.log('开始更新信息')
+						user.setUserInfoByUnionId()
 						app.hideLoad()
 						app.showMsg('上传成功');
 						//返回上层并传值

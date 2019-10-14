@@ -74,7 +74,7 @@ Page({
 				 isGetInfo:0
 			 })
 			if(!checkInfo.id){
-				userFunc.checkSession()
+				userFunc.checkUserInfo()
 			}
 		 }
 	 })

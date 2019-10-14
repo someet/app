@@ -14,18 +14,11 @@ Page({
 		unSelectTags:{},
 		unSelectTagsId:[],
 		myTag:'',
-		step:''
 	},
 	onLoad(options){
 		const that = this
 		const eventChannel = that.getOpenerEventChannel()
 		eventChannel.on('tagType', function(data){
-			if(typeof(data.fromPage) != undefined || data.fromPage){
-				//按步骤填写
-				that.setData({
-					step:data.fromPage
-				})
-			}
 			that.setData({
 				tagType:data.data
 			})
@@ -81,31 +74,21 @@ Page({
 			console.log(res);
 		})
 		const eventChannel = this.getOpenerEventChannel()
-		if(this.data.step != 0){
-			wx.navigateTo({
-				url:'/pages/user/info/edit/tags',
-				events:{
-				},
-				success(res){
-					var type = that.data.tagType+1
-					if(type == 7){
-						//查询是否完善uga，晚上则判断是否存在活动id，存在则跳转到响应的活动详情页，否则跳转到个人profile中心页
-						//刷新用户信息
-						userFunc.resetUserInfo()
-						userFunc.checkUserInfoComplete()
-						wx.redirectTo({
-							url:'/pages/user/info/edit/addUga'
-						})
-					}else{
-						//未全部填写标签则继续跳转填写标签
-						res.eventChannel.emit('tagType',{data:type,'fromPage':type})
-					}
-				}
-			})
+		var tags = wx.getStorageSync('userInfo').userTags
+		
+		if(tags.zy.length == 0){
+			//更换标签id,
+			
 		}else{
-			eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
-			wx.navigateBack({
-			  delta: 1
+			// eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
+			// wx.navigateBack({
+			//   delta: 1
+			// })
+			// userFunc.resetUserInfo()
+			// userFunc.checkUserInfoComplete()
+			user.setUserInfoByUnionId()
+			wx.redirectTo({
+				url:'/pages/user/info/edit/edit'
 			})
 		}
 		

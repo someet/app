@@ -14,7 +14,7 @@
 					<image src="http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
 				</swiper-item> -->
 				<!-- //没有照片是显示 -->
-				<swiper-item wxz:if="{{userInfo.album.length == 0}}">
+				<swiper-item wx:if="{{userInfo.album.length == 0}}">
 					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" style="width:100%;height: {{scrollHeight}}px" class="slide-image" width="100%" mode='widthFix'/>
 				</swiper-item>
 			</swiper>
@@ -102,7 +102,7 @@
 		</view>
 	</view>
 	<view class="go-answer">
-		<button class="answer-goback"> 返回个人中心 </button>
+		<button class="answer-goback" bindtap="goMember"> 返回个人中心 </button>
 		<button class="answer-goanswer" bindtap="goEdit"> 编辑 </button>
 	</view>
 </view>

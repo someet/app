@@ -60,11 +60,20 @@ Page({
   	goAnswer:function(){
   		var that = this;
 		var userInfoComplete = user.checkUserInfoComplete()
-		if(this.data.isLogin == 0 || !this.data.isLogin || userInfoComplete !='complete'){
+		if(this.data.isLogin == 0 || !this.data.isLogin){
 			app.showMsg('请先登录')
-			wx.setStorageSync('editUserFrom', {'fromPage':'act',id:that.data.id})
 			wx.redirectTo({
-				'url':'/pages/user/info/edit/edit'
+				'url':'/pages/user/user'
+			})
+			return false
+		}
+		if(userInfoComplete !='complete'){
+			wx.setStorageSync('editUserFrom', {'fromPage':'act',id:that.data.id})
+			app.showMsg('请先完善信息')
+			var item = wx.getStorageSync('userInfoComplete'),url;
+			url = '/pages/user/info/edit/edit'
+			wx.redirectTo({
+				url:url
 			})
 			return false
 		}
@@ -110,8 +119,11 @@ Page({
 					title = '请先完善个人信息';
 					app.showMsg(title);
 					//跳转到修改个人信息页面
+					//查询缓存里的未完成的信息
+					var item = wx.getStorageSync('userInfoComplete'),url;
+					url = '/pages/user/info/edit/edit'
 					wx.redirectTo({
-						url:'/pages/user/info/info'
+						url:url
 					})
 					return false;
 				}

@@ -59,18 +59,30 @@ Page({
 		const that = this
 		app.loadTitle('获取信息中...')
 		req.getInfo(this.data.id).then((res)=>{
-			console.log(res.data.data)
+			var userData = res.data.data
+			var album = userData.album
 			that.setData({
-				userInfo:res.data.data,
-				zy:res.data.data.usertags.zy,
-				grsx:res.data.data.usertags.grsx,
-				rstd:res.data.data.usertags.rstd,
-				tsjl:res.data.data.usertags.tsjl,
-				ph:res.data.data.usertags.ph,
-				tsjn:res.data.data.usertags.tsjn,
-				myUga:res.data.data.uga
+				userInfo:userData,
+				zy:userData.usertags.zy,
+				grsx:userData.usertags.grsx,
+				rstd:userData.usertags.rstd,
+				tsjl:userData.usertags.tsjl,
+				ph:userData.usertags.ph,
+				tsjn:userData.usertags.tsjn,
+				myUga:userData.uga,
+				my_head_img_1:album[0],
+				my_head_img_2:album[1],
+				my_head_img_3:album[2]
 			})
 			app.hideLoad()
+			var userInfoComplete = wx.getStorageSync('userInfoComplete')
+			if(userInfoComplete == 'tags'){
+				app.showMsg('请先完善标签信息')
+			}else if(userInfoComplete == 'uga'){
+				app.showMsg('请先完善uga问题')
+			}else if(userInfoComplete == 'baseInfo'){
+				app.showMsg('请先完善基本信息')
+			}
 		})
 	},
 	// 点击更改进入标签页
@@ -149,6 +161,7 @@ Page({
 			},
 			success(res){
 				res.eventChannel.emit('imgIndex', { data: type })
+				res.eventChannel.emit('uploadType', { type: 'profile' })
 			}
 		})
 	},
@@ -235,6 +248,23 @@ Page({
 			success(res){
 				res.eventChannel.emit('editUserFrom', fromData)
 			}
+		})
+	},
+	//完场
+	completeUser(){
+		var editFrom = wx.getStorageSync('editFrom'),url;
+		if(editFrom && editFrom == 'act'){
+			url = '/pages/detail/detail?id='+editFrom.id
+		}else{
+			url = '/pages/user/info/info'
+		}
+		wx.redirectTo(({
+			url:url
+		}))
+	},
+	goBack(){
+		wx.navigateBack({
+		  delta: 1
 		})
 	}
 })
