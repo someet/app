@@ -74,10 +74,10 @@ Page({
 			console.log(res);
 		})
 		const eventChannel = this.getOpenerEventChannel()
-		var tags = wx.getStorageSync('userInfo').userTags
+		var tags = wx.getStorageSync('userInfo').tags
 		
-		if(tags.zy.length == 0){
-			//更换标签id,
+		if(tags.length == 0 && this.data.tagType ==1){
+			//更换标签id,刷新标签继续保存
 			
 		}else{
 			// eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
