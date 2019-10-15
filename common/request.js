@@ -181,6 +181,32 @@ const request = {
 			})
 		})
 	},
+	//获取我发起的活动
+	getWeekActForAnswer(data){
+		var that = this 
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				url:basApiUrl+'/user/get-week-act-for-answer',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取我发起的活动
+	getHistoryActForAnswer(data){
+		var that = this 
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				url:basApiUrl+'/user/get-history-act-for-answer',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
 	// 取消活动
 	cancelAnswer(data){
 		var that = this
@@ -271,7 +297,6 @@ const request = {
 		return new Promise((resolve,reject)=>{
 			wx.request({
 				header:that.getHeader(),
-				dataType:'JSON',
 				method:'post',
 				data:data,
 				url:basApiUrl+'/user/save-tags?id='+type,
@@ -360,6 +385,19 @@ const request = {
 				method:'post',
 				data:data,
 				url:basApiUrl+'/user/save-user-info',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取黄牌记录
+	getYellowCard(){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:{},
+				url:basApiUrl+'/yellowcard/get-yellow-card',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

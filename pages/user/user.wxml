@@ -19,9 +19,13 @@
 	</view>
 	<view class="member-top-box-grayBack" wx:if="{{userInfo.id}}">
 		<!-- 我报名的活动 -->
-		<view class="iconfont icon-rili white block-icon member-top-box-answer">
-			<text>我报名的活动</text>
-		</view>
+		<navigator
+			url="/pages/user/answer/answer"
+		  >
+			<view class="iconfont icon-rili white block-icon member-top-box-answer">
+				<text>我报名的活动</text>
+			</view>
+		</navigator>
 		<!-- 我报名的活动的列表 -->
 		<view class="member-top-box-myanswers" wx:if="{{myAnswer.length > 0}}">
 			<scroll-view scroll-y="isScroll" style="height: 9rem;" bindscrolltolower="getMyanswers" lower-threshold="60">
@@ -83,9 +87,13 @@
 			</navigator>
 			<view class="member-line"></view>
 			<!-- 信用记录 -->
-			<view class="iconfont icon-cc-card white block-icon member-top-box-answer">
-				<text>信用记录</text>
-			</view>
+			<navigator
+				url="/pages/user/other/yellowcard"
+			  >
+				<view class="iconfont icon-cc-card white block-icon member-top-box-answer">
+					<text>信用记录</text>
+				</view>
+			</navigator>
 			<view class="member-line"></view>
 			<!-- 活动收藏和黑名单 -->
 			<view class="iconfont icon-xingxing white block-icon member-top-box-answer">

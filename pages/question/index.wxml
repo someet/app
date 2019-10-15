@@ -1,13 +1,13 @@
 <view class="page-body question-body">
 	<!-- 回答问题前的提示语 -->
 	 <view class="question-tips">
-		发起人王雨涵将通过筛选问题来选择最终参与活动的用户，认真填写会大大增加通过筛选的可能性。根据平台信用规则，通过活动报名后，未请假情况下不参与活动将会有不良记录，影响下次报名
+		发起人{{founderInfo.username}}将通过筛选问题来选择最终参与活动的用户，认真填写会大大增加通过筛选的可能性。根据平台信用规则，通过活动报名后，未请假情况下不参与活动将会有不良记录，影响下次报名
 	 </view>
 	<!-- 回答问题前的提示语 -->
 	<!-- 发起人头像 -->
 	<view class='question-created-head'>
 		<view class="question-created-head-box">
-			<image class="image" mode='widthFix' src='http://img.someet.cc/FnyKfA8-_4Gf-TA2wjdC8dzCBC4r'></image>
+			<image class="image" mode='widthFix' src="{{founderInfo.headimgurl}}"></image>
 		</view>
 	</view>
 	<!-- 发起人头像结束 -->

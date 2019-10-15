@@ -1,0 +1,53 @@
+<view>
+	<view class="yellowcard-top">
+		<view class="yellowcard-record">
+			信用记录
+		</view>
+		<view class="yellowcard-record">
+			平台信用规则
+		</view>
+	</view>
+	<!-- //黄牌记录 -->
+	<view>
+		<view class="credit-tips">
+		    30内天累计获得三张以上黄牌，处于黑牌状态，不能报名，距离解禁还有
+		</view>
+	</view>
+	
+	<view class="credit-list" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+		<view class="row">
+			<view class="credit-img col-20">
+				<image src='http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0' mode="widthFix"></image>
+				<view class="row appeal_card_num">
+					3张黄牌
+				</view>
+			</view>
+			<view class="credit-text col-60">
+				<view class="credit-act-title">
+					{{item.activity.title}}
+				</view>
+				<view class="credit-act-time">
+					{{item.time}}
+				</view>
+			</view>
+			<view class="credit-appeal col-20">
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 0 && item.isDisabled == 0}}">申诉</view>
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 2}}">申诉中</view>
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 3}}">申诉成功</view>
+				<view class="row appeal_content" wx:if="{{item.appeal_status == 1}}">
+					<view class="col-30">
+						申诉驳回:
+					</view>
+					<view
+					 class="col-70">
+						被驳回大萨达撒大大所多
+					</view>
+				</view>
+				<view class="col-30" wx:if="{{item.appeal_status == 0 && item.isDisabled == 1}}">
+					  已失效
+				</view>
+			</view>
+		</view>
+	</view>
+	
+</view>

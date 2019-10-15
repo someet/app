@@ -5,11 +5,13 @@
     "pages/detail/detail",
     "pages/user/user",
     "pages/user/founder/founder",
+	"pages/user/answer/answer",
     "pages/map/map",
     "pages/test/test",
 	"pages/user/info/info",
 	"pages/user/answer/finish/finish",
 	"pages/user/info/edit/edit",
+	"pages/user/other/yellowcard",
 	"pages/user/info/edit/tags",
 	"pages/user/info/edit/addUga",
 	"pages/user/info/edit/useredit",
@@ -18,7 +20,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "Someet",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

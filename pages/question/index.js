@@ -9,13 +9,22 @@ Page({
 		id:0,
 		question_item:[],//问题了列表
 		anwerList:[],//答案列表,
-		isClick:0
+		isClick:0,
+		founderInfo:{}
 	},
   onLoad(options) {
-    console.log(options)
+		var that = this;
+		console.log(options)
 		this.setData({
 			id:options.id
 		})
+		const eventChannel = that.getOpenerEventChannel()
+		eventChannel.on('founderInfo', function(data){
+			console.log(data)
+			that.setData({
+				founderInfo:data.data
+			})
+		});
 		//获取该活动的问题列表
 		this.getQuestion(this.data.id);
   },

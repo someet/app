@@ -1,0 +1,8 @@
+{
+	"disableScroll": true,
+	"enablePullDownRefresh":false,
+	"backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "white",
+	"navigationBarTitleText": "我报名的活动",
+	"navigationBarTextStyle": "black"
+}

@@ -69,28 +69,42 @@ Page({
 		//获取我选择的标签
 		var that = this;
 		var selectTagsId = this.data.selectTagsId
+		var tags = wx.getStorageSync('userInfo').tags
 		console.log(selectTagsId)
 		req.saveTags(selectTagsId,this.data.tagType).then((res)=>{
-			console.log(res);
+			console.log(res)
+			console.log(res.data);
+			if(res.data.status == 1){
+				if(that.data.tagType != 6 && (tags.zy.length == 0)){
+					var tagType = ++that.data.tagType
+					that.setData({
+						tagType:tagType
+					})
+					console.log(that.data.tagType,'++++++++',tagType)
+					that.getMyTags()
+				}else{
+					user.setUserInfoByUnionId()
+					wx.redirectTo({
+						url:'/pages/user/info/edit/edit'
+					})
+				}
+			}
 		})
-		const eventChannel = this.getOpenerEventChannel()
-		var tags = wx.getStorageSync('userInfo').tags
-		
-		if(tags.length == 0 && this.data.tagType ==1){
-			//更换标签id,刷新标签继续保存
-			
-		}else{
-			// eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
-			// wx.navigateBack({
-			//   delta: 1
-			// })
-			// userFunc.resetUserInfo()
-			// userFunc.checkUserInfoComplete()
-			user.setUserInfoByUnionId()
-			wx.redirectTo({
-				url:'/pages/user/info/edit/edit'
-			})
-		}
+		// const eventChannel = this.getOpenerEventChannel()
+		// if(tags.length == 0 && this.data.tagType ==1){
+		// 	//更换标签id,刷新标签继续保存
+		// }else{
+		// 	// eventChannel.emit('tagType',{'data':this.data.selectTags,'type':this.data.tagType});
+		// 	// wx.navigateBack({
+		// 	//   delta: 1
+		// 	// })
+		// 	// userFunc.resetUserInfo()
+		// 	// userFunc.checkUserInfoComplete()
+		// 	user.setUserInfoByUnionId()
+		// 	wx.redirectTo({
+		// 		url:'/pages/user/info/edit/edit'
+		// 	})
+		// }
 		
 	},
 	// 获取单个分类标签的选取和未选取的标签

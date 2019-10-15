@@ -62,7 +62,7 @@ Page({
 		var userInfoComplete = user.checkUserInfoComplete()
 		if(this.data.isLogin == 0 || !this.data.isLogin){
 			app.showMsg('请先登录')
-			wx.redirectTo({
+			wx.navigateTo({
 				'url':'/pages/user/user'
 			})
 			return false
@@ -146,11 +146,24 @@ Page({
   	},
   	startAnswer(is_set_question){
   		// 开始报名流程
-  		var data = {'id':this.data.id};
+		// console.log(this.data.model.profile.headimgurl)
+		// return false
+  		var that = this;
 		if(is_set_question){
 			//跳转到回答问题页面
 			wx.navigateTo({
-			  url: '../question/index?id='+this.data.id
+				url: '../question/index?id='+this.data.id,
+				events:{
+					
+				},
+				success(res){
+					var founderInfo = {
+						headimgurl: that.data.model.profile.headimgurl,
+						username:that.data.model.user.username
+					}
+					console.log(founderInfo)
+					res.eventChannel.emit('founderInfo',{data:founderInfo})
+				}
 			})
 			return false
 		}
