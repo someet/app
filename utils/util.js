@@ -11,7 +11,16 @@ const formatTime = t => {
   // return [year, month, day].map(formatNumber).join('/') + ' ' +weekday[week] +' ' [hour, minute].map(formatNumber).join(':')
   return formatNumber(month)+'/'+formatNumber(day) +'/ '+' '+weekday[week]+' '+formatNumber(hour)+':'+formatNumber(minute)
 }
-
+const formatTimeSingle = t => {
+  var date = new Date(t*1000);
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  // return [year, month, day].map(formatNumber).join('/') + ' ' +weekday[week] +' ' [hour, minute].map(formatNumber).join(':')
+  return year+'-'+formatNumber(month)+'-'+formatNumber(day)
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -42,5 +51,6 @@ function imageUtil(e) {
  
 module.exports = {
   formatTime: formatTime,
-  imageUtil: imageUtil
+  imageUtil: imageUtil,
+  formatTimeSingle:formatTimeSingle
 }

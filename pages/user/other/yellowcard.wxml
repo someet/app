@@ -31,16 +31,16 @@
 				</view>
 			</view>
 			<view class="credit-appeal col-20">
-				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 0 && item.isDisabled == 0}}">申诉</view>
-				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 2}}">申诉中</view>
-				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 3}}">申诉成功</view>
-				<view class="row appeal_content" wx:if="{{item.appeal_status == 1}}">
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 0 && item.isDisabled == 0}}" bindtap="goAppeal" data-index="{{index}}" data-id="{item.id}">申诉</view>
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 1}}">申诉中</view>
+				<view class='credit-appeal-btn' wx:if="{{item.appeal_status == 2}}">申诉成功</view>
+				<view class="row appeal_content" wx:if="{{item.appeal_status == 3}}">
 					<view class="col-30">
 						申诉驳回:
 					</view>
 					<view
 					 class="col-70">
-						被驳回大萨达撒大大所多
+						{{'adsdasdas'}}
 					</view>
 				</view>
 				<view class="col-30" wx:if="{{item.appeal_status == 0 && item.isDisabled == 1}}">

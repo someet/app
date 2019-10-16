@@ -16,7 +16,7 @@
 				<input type="text" style="display: none;" value="{{headImgUrl}}" />
 			</view>
 			<view class="user_edit_input">
-				<form class="user_edit_form" id='formUser'bindsubmit="userInfoSubmit">
+				<form class="user_edit_form" id='formUser' bindsubmit="userInfoSubmit">
 					<view class="edit_input_div">
 						<view class="edit_item">昵称 </view><view class='width1rem'>|</view>
 						<view><input type="text" name="username" id="username" value="{{username}}" /></view>

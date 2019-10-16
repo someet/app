@@ -1,0 +1,75 @@
+/*投诉*/
+
+.yc-appeal-page {
+	background-color: #262626;
+	width: 100%;
+	height: 100%;
+}
+
+.yc-appeal-header {
+	/*height: 5rem;*/
+	padding: 1rem;
+}
+
+.yc-appeal-title {
+	font-size: 1rem;
+	color: #fff;
+}
+
+.yc-appeal-text {
+	font-size: 0.6rem;
+	color: #fff;
+	margin-top: 0.3rem;
+}
+
+.yc-appeal-content {
+	font-size: 0.7rem;
+	color: #fff;
+	margin-top: 0.3rem;
+}
+
+.yc-appeal-reason {
+	text-align: left;
+	padding: 0.2rem;
+	margin-top: 1rem;
+	background-color: #fff;
+	width: 90%;
+	min-height: 6rem;
+	border: 1px solid #ededed;
+	background-color: #fff;
+	border-radius: 0.3rem;
+	margin: 0 auto;
+}
+
+.yc-appeal-area {
+	width: 98%;
+	border-radius: 0.3rem;
+	margin: auto;
+	border: 0;
+	height: 5rem;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 0.3rem;
+}
+
+.yc-appeal-br {
+	border: 1px solid #fff;
+	width: 80%;
+	margin: 1rem 0;
+}
+
+.yc-appeal-commit {
+	border: 0;
+	border-radius: 0.3rem;
+	background-color: #f6303f;
+	width: 7rem;
+	height: 2rem;
+	line-height: 1.8rem;
+	text-align: center;
+	font-size: 0.8rem;
+	margin-left: 10px;
+	color: #fff;
+	display: block;
+	/*border:1px solid #000;*/
+	margin: 2rem auto;
+}

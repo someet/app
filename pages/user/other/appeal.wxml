@@ -1,0 +1,28 @@
+<view style="height: 100%;">
+	<view  class="yc-appeal-page">
+		<view class="yc-appeal-header">
+			<text style="color:white;">{{detail.activity.title}}</text>
+			<view class="yc-appeal-br">
+
+			</view>
+			<view class="yc-appeal-content">
+				<text wx:if="{{detail.card_category == 1}}">因为吃到</text>
+				<text wx:if="{{detail.card_category == 2}}">报名通过后请假</text>
+				<text wx:if="{{detail.card_category == 3}}">报名通过后距离活动开始时间小于24小时请假</text>
+				<text wx:if="{{detail.card_category == 4}}">报名通过后未参加活动</text>
+				，所以收到{{detail.card_num}}张黄牌，黄牌过期时间为 {{disableTime}}
+			</view>
+		</view>
+		<form bindsubmit="appealSubmit">
+			<view class="yc-appeal-reason">
+				<textarea class="yc-appeal-area" name="appeal_reason" id="yc-appeal-area" cols="30" rows="10" placeholder="请说明你申诉的理由"
+				></textarea>
+			</view>
+			<input type="hidden" name="id" value="{{detail.id}}" />
+			<button class="yc-appeal-commit" id="yc-appeal-commit" form-type='submit'>
+				提交申诉理由
+			</button>
+		</form>
+	</view>
+
+</view>
