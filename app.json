@@ -5,6 +5,7 @@
     "pages/detail/detail",
     "pages/user/user",
     "pages/user/founder/founder",
+	"pages/user/founder/filter",
 	"pages/user/answer/answer",
     "pages/map/map",
     "pages/test/test",

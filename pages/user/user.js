@@ -10,14 +10,17 @@ Page({
     imageheight: 0,//缩放后的高,
 	isScroll:true,
 	page:1,
+	weekPage:1,
 	answerPageCount:0,
 	myAnswer:[],
 	isClick:false,
 	userInfo:{},
-	isGetInfo:0                                                  
+	isGetInfo:0,
+	weekPageCount:0,
+	weekList:[],
+	isWeekScroll:true
   },
   onLoad(){
-	this.getMyanswers();  
 	var userInfo = wx.getStorageSync('userInfo')
 	console.log(userInfo)
 	var idInfo = wx.getStorageSync('session')
@@ -34,6 +37,8 @@ Page({
 		this.setData({
 			userInfo:data
 		})
+		this.getMyanswers();
+		this.getMyWeekAct();
 	}
   },
   onGetUserInfo(e){
@@ -107,6 +112,36 @@ Page({
 			isScroll:true
 		})
 	}).catch(req.showErr)
+  },
+  getMyWeekAct(e){
+  	if(!this.data.isWeekScroll){
+  		app.showMsg('太快了，别急')
+  		return false;
+  	}
+  	// this.scrollDom('week')
+  	var that = this;
+  	if(this.data.weekPageCount !=0 && this.data.weekPage >= this.data.weekPageCount){
+  		app.showMsg('没有更多数据了')
+  		this.setData({
+  			isWeekScroll:true
+  		})
+  		return false;
+  	}
+  	var data = {
+  		'page':this.data.weekPage
+  	}
+  	req.getWeekAct(data).then((res)=>{
+		var current_page = that.data.weekPage
+  		var currentData = [...that.data.weekList,...res.data.data]
+  		if(res.data.data){
+  			that.setData({
+  				weekPageCount:data.count,
+  				weekList:currentData,
+  				isWeekScroll:true,
+				weekPage:that.data.weekPage+1,
+  			})
+  		}
+  	}).catch(req.showErr)
   },
   imageLoad: function (e) {
     var imageSize = imageUtil.imageUtil(e)
@@ -205,6 +240,19 @@ Page({
   goInfo(){
 	  wx.navigateTo({
 		  url:'./info/info'
+	  })
+  },
+  // 去筛选「
+  goFilter(e){
+	  const val = e.currentTarget.dataset.id;
+	  wx.navigateTo({
+		  url:'/pages/user/founder/filter',
+		  events:{
+			  
+		  },
+		  success:function(res){
+			  res.eventChannel.emit('actInfo',{data:val})
+		  }
 	  })
   }
 })

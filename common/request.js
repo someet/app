@@ -416,6 +416,20 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//获取待选人员
+	getAnswers(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'get',
+				url:basApiUrl+'/answer/get-filter-answers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 	
 }

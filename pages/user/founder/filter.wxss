@@ -1,0 +1,51 @@
+.filter-box{
+	width: 95%;
+	margin: 0 auto;
+	height: 100%;
+}
+.filter-tips,.filter-tips-flex{
+	font-size: 0.8rem;
+	height: 2.5rem;
+}
+.filter-tips-fontsize{
+	font-size: 1rem;
+}
+.filter-tips-flex{
+	display: flex;
+	box-sizing: border-box;
+}
+.filter-tips-flex view{
+	width: 50%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+.filter-tips-view{
+	margin-left: 8%;
+}
+.filter-tips-l{
+	font-size: 1.1rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	color:blue;
+}
+.filter-tab{
+	display: flex;
+	width: 100%;
+	box-sizing: border-box;
+}
+.filter-tab-item{
+	width: calc(100% / 4);
+	box-sizing: border-box;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	color:black;
+	text-align: center;
+}
+.filter-tab-item-selected{
+	color:red;
+	border-bottom: 3px solid red;
+}
+.filter-answers{
+	width: 98%;
+	margin: 0 auto;
+}

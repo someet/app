@@ -1,0 +1,67 @@
+<view class="filter-box">
+	<view>
+		<view>
+			温馨提示：
+		</view>
+		<view class="filter-tips-view">
+			<view class="filter-tips">
+				1.通过与不通过后将即时发送给用户，发送后则不能调整
+			</view>
+			<view class="filter-tips">
+				2.晚上21点至第二天早上9点的消息将在第二天统一发送
+			</view>
+			<view class="filter-tips">
+				3.不及时筛选用户，用户可能会取消报名
+			</view>
+		</view>
+	</view>
+	
+	<view class="filter-tips-fontsize filter-tips-l">
+		查看活动详情 -> -> ->
+	</view>
+	<view class="filter-tips-fontsize">
+		活动理想人数
+	</view>
+	<view class="filter-tips-flex">
+		<view>
+			报名上限：40
+		</view>
+		<view>
+			已报名：2
+		</view>
+	</view>
+	<!-- //切换栏 -->
+	<view class="filter-tab">
+		<view class="filter-tab-item {{selectedItem == 'wait'?'filter-tab-item-selected':''}}" data-item='wait' bindtap="changeItem">
+			待定12
+		</view>
+		<view class="filter-tab-item {{selectedItem == 'pass'?'filter-tab-item-selected':''}}" data-item='pass' bindtap="changeItem">
+			通过3
+		</view>
+		<view class="filter-tab-item {{selectedItem == 'reject'?'filter-tab-item-selected':''}}" data-item='reject' bindtap="changeItem">
+			拒绝2
+		</view>
+		<view class="filter-tab-item {{selectedItem == 'cancel'?'filter-tab-item-selected':''}}" data-item='cancel' bindtap="changeItem">
+			不能到场4
+		</view>
+	</view>
+	<!-- //切换兰的内容 -->
+	<view>
+		<!-- 待定人员 -->
+		<view class="filter-answers" wx:if="{{selectedItem == 'wait'}}">
+			待定
+		</view>
+		<!-- 通过人员 -->
+		<view class="filter-answers" wx:if="{{selectedItem == 'pass'}}">
+			通过人员
+		</view>
+		<!-- 拒绝人员 -->
+		<view class="filter-answers" wx:if="{{selectedItem == 'reject'}}">
+			拒绝
+		</view>
+		<!-- 不能到场人员 -->
+		<view class="filter-answers" wx:if="{{selectedItem == 'cancel'}}">
+			不能到场
+		</view>
+	</view>
+</view>
