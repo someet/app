@@ -33,35 +33,179 @@
 	<!-- //切换栏 -->
 	<view class="filter-tab">
 		<view class="filter-tab-item {{selectedItem == 'wait'?'filter-tab-item-selected':''}}" data-item='wait' bindtap="changeItem">
-			待定12
+			待定{{list.waitList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'pass'?'filter-tab-item-selected':''}}" data-item='pass' bindtap="changeItem">
-			通过3
+			通过{{list.passList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'reject'?'filter-tab-item-selected':''}}" data-item='reject' bindtap="changeItem">
-			拒绝2
+			拒绝{{list.rejectList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'cancel'?'filter-tab-item-selected':''}}" data-item='cancel' bindtap="changeItem">
-			不能到场4
+			不能到场{{list.leaveList.length}}
 		</view>
 	</view>
 	<!-- //切换兰的内容 -->
 	<view>
 		<!-- 待定人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'wait'}}">
-			待定
+			<view class="credit-list" wx:for="{{list.waitList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+				<view class="row">
+					<view class="credit-img col-20">
+						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
+					</view>
+					<view class="credit-text col-60">
+						<view class="credit-act-title">
+							{{item.user.username}} 
+							<text class="sexAndage" wx:if="{{item.profile.sex == 1}}">男</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 2}}">女</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 3}}">性别不明</text>
+							<text class="sexAndage">{{item.profile.age}}</text>
+						</view>
+						<view class="credit-act-time">
+							{{item.created_at}}
+						</view>
+					</view>
+					<view class="credit-appeal col-20">
+						<view class='credit-appeal-btn'>展开筛选</view>
+					</view>
+				</view>
+				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
+					<view class="info-index-line-small-filter"></view>
+					<view class="filter-question" wx:for="{{item.answerItemList}}" wx:for-item="question" wx:key="index">
+						<text>Q:{{question.question_label}}</text>
+						<text>A:{{question.question_value}}</text>
+					</view>
+					<view class="filter-answer-box">
+						<view data-type="pass" data-id="{{item.user_id}}" bindtap="filterUser">
+							通过
+						</view>
+						<view data-type="reject" data-id="{{item.user_id}}" bindtap="filterUser">
+							不通过
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 		<!-- 通过人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'pass'}}">
-			通过人员
+			<view class="credit-list" wx:for="{{list.passList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+				<view class="row">
+					<view class="credit-img col-20">
+						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
+					</view>
+					<view class="credit-text col-60">
+						<view class="credit-act-title">
+							{{item.user.username}}
+							<text class="sexAndage" wx:if="{{item.profile.sex == 1}}">男</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 2}}">女</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 3}}">性别不明</text>
+							<text class="sexAndage">{{item.profile.age}}</text>
+						</view>
+						<view class="credit-act-time">
+							{{item.created_at}}
+						</view>
+					</view>
+					<view class="credit-appeal col-20">
+						<view class='credit-appeal-btn'>展开筛选</view>
+					</view>
+				</view>
+				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
+					<view class="info-index-line-small-filter"></view>
+					<view class="filter-question" wx:for="{{item.answerItemList}}" wx:for-item="question" wx:key="index">
+						<text>Q:{{question.question_label}}</text>
+						<text>A:{{question.question_value}}</text>
+					</view>
+					<view class="filter-answer-box">
+						<view data-type="pass" data-id="{{item.user_id}}">
+							已通过
+						</view>
+						<view style="background-color: gray;" data-type="reject" data-id="{{item.user_id}}">
+							不通过
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 		<!-- 拒绝人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'reject'}}">
-			拒绝
+			<view class="credit-list" wx:for="{{list.rejectList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+				<view class="row">
+					<view class="credit-img col-20">
+						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
+					</view>
+					<view class="credit-text col-60">
+						<view class="credit-act-title">
+							{{item.user.username}}
+							<text class="sexAndage" wx:if="{{item.profile.sex == 1}}">男</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 2}}">女</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 3}}">性别不明</text>
+							<text class="sexAndage">{{item.profile.age}}</text>
+						</view>
+						<view class="credit-act-time">
+							{{item.created_at}}
+						</view>
+					</view>
+					<view class="credit-appeal col-20">
+						<view class='credit-appeal-btn'>展开筛选</view>
+					</view>
+				</view>
+				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
+					<view class="info-index-line-small-filter"></view>
+					<view class="filter-question" wx:for="{{item.answerItemList}}" wx:for-item="question" wx:key="index">
+						<text>Q:{{question.question_label}}</text>
+						<text>A:{{question.question_value}}</text>
+					</view>
+					<view class="filter-answer-box">
+						<view style="background-color: gray;" data-type="pass" data-id="{{item.user_id}}">
+							通过
+						</view>
+						<view data-type="reject" data-id="{{item.user_id}}">
+							不通过
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 		<!-- 不能到场人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'cancel'}}">
-			不能到场
+			<view class="credit-list" wx:for="{{list.leaveList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+				<view class="row">
+					<view class="credit-img col-20">
+						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
+					</view>
+					<view class="credit-text col-60">
+						<view class="credit-act-title">
+							{{item.user.username}}
+							<text class="sexAndage" wx:if="{{item.profile.sex == 1}}">男</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 2}}">女</text>
+							<text class="sexAndage" wx:if="{{item.profile.sex == 3}}">性别不明</text>
+							<text class="sexAndage">{{item.profile.age}}</text>
+						</view>
+						<view class="credit-act-time">
+							{{item.created_at}}
+						</view>
+					</view>
+					<view class="credit-appeal col-20">
+						<view class='credit-appeal-btn'>展开筛选</view>
+					</view>
+				</view>
+				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
+					<view class="info-index-line-small-filter"></view>
+					<view class="filter-question" wx:for="{{item.answerItemList}}" wx:for-item="question" wx:key="index">
+						<text>Q:{{question.question_label}}</text>
+						<text>A:{{question.question_value}}</text>
+					</view>
+					<view class="filter-answer-box">
+						<view style="background-color: gray;" data-type="pass" data-id="{{item.user_id}}">
+							通过
+						</view>
+						<view style="background-color: gray;" data-type="reject" data-id="{{item.user_id}}">
+							不通过
+						</view>
+					</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </view>

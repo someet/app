@@ -4,7 +4,9 @@ Page({
 	data: {
 		id:0,
 		page:1,
-		selectedItem:'wait'
+		selectedItem:'wait',
+		list:[],
+		selectItemId:0
 	},
 	onLoad(){
 		var that = this
@@ -25,9 +27,10 @@ Page({
 		req.getAnswers({'id':id}).then((res)=>{
 			console.log(res)
 			that.setData({
-				page:that.dat.page++
+				page:that.data.page++,
+				list:res.data.data
 			})
-			console.log(that.data.page)
+			console.log(that.data.data)
 		})
 	},
 	//切换选项卡
@@ -35,6 +38,14 @@ Page({
 		var item = e.currentTarget.dataset.item
 		this.setData({
 			selectedItem:item
+		})
+	},
+	// 展开筛选
+	showAnswer(e){
+		const val = e.currentTarget.dataset.id;
+		console.log(val)
+		this.setData({
+			selectItemId:val
 		})
 	}
 })

@@ -49,3 +49,125 @@
 	width: 98%;
 	margin: 0 auto;
 }
+.credit-list {
+				/*border: 1px solid #000;*/
+				/*height: 3.5rem;*/
+				width: 100%;
+				border-radius: 0.3rem;
+				margin-top: 0.4rem;
+				padding: 0.5rem 0.1rem 0.5rem 0.5rem;
+				border:1px solid red;
+				margin-bottom: 1rem;
+}
+.appeal_content {
+				margin-top: 0.5rem;
+}
+.credit-page {
+				padding: 5px;
+				background-color: #fff;
+				height: 100%;
+				width: 100%;
+}
+.credit-img {
+				height: 2rem;
+				width: 2rem;
+}
+.credit-img image {
+				height: 2rem;
+				width: 2rem;
+}
+.credit-appeal {
+				font-size: 0.6rem;
+				/* line-height: 0.6rem; */
+				vertical-align: middle;
+				color: #f6303f;
+				margin-left: 0.1rem;
+				word-wrap: break-word;
+}
+.credit-appeal-btn {
+				font-size: 0.7rem;
+				text-align: center;
+				line-height: 1.2rem;
+				vertical-align: middle;
+				color: #f6303f;
+				margin-left: 0.1rem;
+				border: 1px solid #f6303f;
+				border-radius: 0.3rem;
+				height: 1.2rem;
+}
+.credit-appeal a {
+				color: #f6303f;
+}
+.credit-act-time {
+				font-size: 0.6rem;
+				color: #f6303f;
+}
+.appeal_card_num {
+				margin-left: 3.5rem;
+				/*margin-top: 0.5rem;*/
+				font-size: 0.8rem;
+}
+.credit-tips{
+	width: 100%;
+	padding: 1rem;
+	text-align: center;
+}
+.row{
+	overflow: hidden;
+	margin-left: 4%;
+}
+.row .col-20{
+	width: 20%;
+	/* margin-left: 4%; */
+	box-sizing: border-box;
+	float: left;
+}
+.row .col-60{
+	width: 59%;
+	/* margin-left: 4%; */
+	box-sizing: border-box;
+	float: left;
+}
+.filter-question text:first-child{
+	display: block;
+	font-size: 0.8rem;
+	width: 98%;
+	margin: 0 auto;
+	color:gray;
+	margin-top: 0.1rem;
+}
+.filter-question text:nth-child(2){
+	display: block;
+	font-size: 0.8rem;
+	width: 98%;
+	margin: 0 auto;
+	margin-top: 0.5rem;
+}
+.filter-answer-box{
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+}
+.filter-answer-box view{
+	width: calc(100% / 2);
+	line-height: 2.5rem;
+	height: 2.5rem;
+	color:white;
+	/* background-color:red; */
+	text-align: center;
+	margin: 0.15rem;
+}
+.filter-answer-box view:first-child{
+	background-color:#07c160;
+}
+.filter-answer-box view:nth-child(2){
+	background-color:red;
+}
+.info-index-line-small-filter{
+	width: 98%;
+	height: 1px;
+	margin: 0 auto;
+	background-color: gray;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
