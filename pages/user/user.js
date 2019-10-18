@@ -52,6 +52,7 @@ Page({
 	}else{
 		console.log('31231')
 		userFunc.checkUserInfo();
+		console.log(12312312)
 	}
   	try {
 	  // wx.setStorageSync('userInfoForSave', e.detail.userInfo)

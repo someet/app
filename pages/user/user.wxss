@@ -10,7 +10,7 @@
 .member-top-box{
 	position: relative;
 	background-color: rgb(220,220,220);
-	padding-bottom: 1rem;
+	/*padding-bottom: 1rem;*/
 	background-color: rgb(221,31,60);
 }
 .member-top-box-grayBack{
@@ -42,8 +42,8 @@
 	text-align: center;
 	width: 100%;
 	background-color:rgb(226,24,56);
-	position: absolute;
-	bottom: 1rem;
+	/*position: absolute;*/
+	/*bottom: 1rem;*/
 	color:white;
 }
 .member-top-box-username text{

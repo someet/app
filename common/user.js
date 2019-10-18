@@ -35,6 +35,7 @@ const user = {
 				}else{
 					//检查是否保存了用户信息
 					var userInfo = wx.getStorageSync('userInfo')
+					console.log(userInfo)
 					if(typeof(userInfo) == undefined || !userInfo.id){
 						//查询用户信息并保存
 						// 正式服务使用unioid 测试服务无法绑定开放平台
@@ -47,14 +48,18 @@ const user = {
 								//不存在的用户，无法自动获取信息，则去个人中心时在绑定新的用户
 							}
 						})
+					}else{
+						console.log('有缓存')
 					}
 				}
 		  },
 		  fail () {
+		  	console.log('登录失败了')
 		    // session_key 已经失效，需要重新执行登录流程
 			var that = this
 		    wx.login({
 		    	success:function(res){
+		    		console.log('尝试登陆')
 		    		var data = {'code':res.code}
 		    		req.getWxId(data).then((res)=>{
 		    			wx.setStorageSync('session', res.data)

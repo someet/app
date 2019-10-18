@@ -1,5 +1,5 @@
-const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
-// const basApiUrl = 'https://someetapi.someet.cc/v1';
+// const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
+const basApiUrl = 'https://someetapi.someet.cc/v1';
 const request = {
 	header : {
 		'Authorization':'',

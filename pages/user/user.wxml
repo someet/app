@@ -9,14 +9,14 @@
 		</view>
 		<!-- 右箭头 -->
 		<view class="iconfont icon-jiantou white block-icon member-top-box-right" bindtap="goInfo"></view>
-		<!-- 用户姓名 -->
-		<view class="member-top-box-username" wx:if="{{userInfo.id}}">
-			<text>{{userInfo.username}}</text>
-		</view>
-		<view class="member-top-box-username" wx:if="{{!userInfo.id}}">
-			<button type="primary" class="getUserInfoButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"> 快速登录 </button>
-		</view>	
 	</view>
+	<!-- 用户姓名 -->
+	<view class="member-top-box-username" wx:if="{{userInfo.id}}">
+		<text>{{userInfo.username}}</text>
+	</view>
+	<view class="member-top-box-username" wx:if="{{!userInfo.id}}">
+		<button type="primary" class="getUserInfoButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"> 快速登录 </button>
+	</view>	
 	<view class="member-top-box-grayBack" wx:if="{{userInfo.id}}">
 		<!-- 我报名的活动 -->
 		<navigator
