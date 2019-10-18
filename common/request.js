@@ -430,7 +430,19 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	filterAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:basApiUrl+'/answer/filter-answers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
-	
 }
 module.exports = request;

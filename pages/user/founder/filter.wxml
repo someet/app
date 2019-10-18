@@ -1,4 +1,30 @@
 <view class="filter-box">
+	<view class="filter-reject-view" hidden="{{hiddenView}}">
+		<view class="filter-reject-view-form">
+			<view class="reject-content">
+				<!-- <view class="reject-title">点击选择下列一个理由</view>
+				<view class="reject-text">这次的活动太抢手啦，我们哭着喊着忍痛拒绝了你的申请。</view>
+				<view class="reject-text">本次活动报名人数较多，发起人忍痛拒绝了你的申请。</view>
+				<view class="reject-text">你填写的回答没有get到发起人和活动的重点哦，再接再厉呀！</view> -->
+				<form bindsubmit="rejectSubmit">
+					<view style="opacity: 0;width: 100%;height: 2rem;">
+						
+					</view>
+					<textarea class="reject-textarea" type="text" name='reject_reason' value="" placeholder="可以自定义问题哦">
+						
+					</textarea>
+					<view class="filter-answer-box">
+						<button formType="submit">
+							确定
+						</button>
+						<button bindtap="hiddenView">
+							取消
+						</button>
+					</view>
+				</form>
+			</view>
+		</view>
+	</view>
 	<view>
 		<view>
 			温馨提示：
@@ -15,48 +41,48 @@
 			</view>
 		</view>
 	</view>
-	
-	<view class="filter-tips-fontsize filter-tips-l">
+
+	<view class="filter-tips-fontsize filter-tips-l" bindtap="goDetail">
 		查看活动详情 -> -> ->
 	</view>
 	<view class="filter-tips-fontsize">
-		活动理想人数
+		活动理想人数：{{list.ideal_number}}
 	</view>
 	<view class="filter-tips-flex">
 		<view>
-			报名上限：40
+			报名上限：{{list.peoples}}
 		</view>
 		<view>
-			已报名：2
+			已报名：{{list.answer_count}}
 		</view>
 	</view>
 	<!-- //切换栏 -->
 	<view class="filter-tab">
 		<view class="filter-tab-item {{selectedItem == 'wait'?'filter-tab-item-selected':''}}" data-item='wait' bindtap="changeItem">
-			待定{{list.waitList.length}}
+			待定{{waitList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'pass'?'filter-tab-item-selected':''}}" data-item='pass' bindtap="changeItem">
-			通过{{list.passList.length}}
+			通过{{passList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'reject'?'filter-tab-item-selected':''}}" data-item='reject' bindtap="changeItem">
-			拒绝{{list.rejectList.length}}
+			拒绝{{rejectList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'cancel'?'filter-tab-item-selected':''}}" data-item='cancel' bindtap="changeItem">
-			不能到场{{list.leaveList.length}}
+			不能到场{{leaveList.length}}
 		</view>
 	</view>
 	<!-- //切换兰的内容 -->
 	<view>
 		<!-- 待定人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'wait'}}">
-			<view class="credit-list" wx:for="{{list.waitList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+			<view class="credit-list" wx:for="{{waitList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
 				<view class="row">
 					<view class="credit-img col-20">
 						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
 					</view>
 					<view class="credit-text col-60">
 						<view class="credit-act-title">
-							{{item.user.username}} 
+							{{item.user.username}}
 							<text class="sexAndage" wx:if="{{item.profile.sex == 1}}">男</text>
 							<text class="sexAndage" wx:if="{{item.profile.sex == 2}}">女</text>
 							<text class="sexAndage" wx:if="{{item.profile.sex == 3}}">性别不明</text>
@@ -77,10 +103,10 @@
 						<text>A:{{question.question_value}}</text>
 					</view>
 					<view class="filter-answer-box">
-						<view data-type="pass" data-id="{{item.user_id}}" bindtap="filterUser">
+						<view data-type="pass" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}" bindtap="filterUser">
 							通过
 						</view>
-						<view data-type="reject" data-id="{{item.user_id}}" bindtap="filterUser">
+						<view data-type="reject" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}" bindtap="filterUser">
 							不通过
 						</view>
 					</view>
@@ -89,7 +115,7 @@
 		</view>
 		<!-- 通过人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'pass'}}">
-			<view class="credit-list" wx:for="{{list.passList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+			<view class="credit-list" wx:for="{{passList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
 				<view class="row">
 					<view class="credit-img col-20">
 						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
@@ -107,7 +133,7 @@
 						</view>
 					</view>
 					<view class="credit-appeal col-20">
-						<view class='credit-appeal-btn'>展开筛选</view>
+						<view class='credit-appeal-btn'>展开列表</view>
 					</view>
 				</view>
 				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
@@ -117,10 +143,10 @@
 						<text>A:{{question.question_value}}</text>
 					</view>
 					<view class="filter-answer-box">
-						<view data-type="pass" data-id="{{item.user_id}}">
+						<view data-type="pass" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							已通过
 						</view>
-						<view style="background-color: gray;" data-type="reject" data-id="{{item.user_id}}">
+						<view style="background-color: gray;" data-type="reject" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							不通过
 						</view>
 					</view>
@@ -129,7 +155,8 @@
 		</view>
 		<!-- 拒绝人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'reject'}}">
-			<view class="credit-list" wx:for="{{list.rejectList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+			<view class="credit-list" wx:for="{{rejectList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer"
+			 data-id="{{item.id}}">
 				<view class="row">
 					<view class="credit-img col-20">
 						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
@@ -147,7 +174,7 @@
 						</view>
 					</view>
 					<view class="credit-appeal col-20">
-						<view class='credit-appeal-btn'>展开筛选</view>
+						<view class='credit-appeal-btn'>展开列表</view>
 					</view>
 				</view>
 				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
@@ -157,10 +184,10 @@
 						<text>A:{{question.question_value}}</text>
 					</view>
 					<view class="filter-answer-box">
-						<view style="background-color: gray;" data-type="pass" data-id="{{item.user_id}}">
+						<view style="background-color: gray;" data-type="pass" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							通过
 						</view>
-						<view data-type="reject" data-id="{{item.user_id}}">
+						<view data-type="reject" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							不通过
 						</view>
 					</view>
@@ -169,7 +196,7 @@
 		</view>
 		<!-- 不能到场人员 -->
 		<view class="filter-answers" wx:if="{{selectedItem == 'cancel'}}">
-			<view class="credit-list" wx:for="{{list.leaveList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
+			<view class="credit-list" wx:for="{{leaveList}}" wx:for-item="item" wx:key="index" bindtap="showAnswer" data-id="{{item.id}}">
 				<view class="row">
 					<view class="credit-img col-20">
 						<image src="{{item.profile.headimgurl}}" mode="widthFix"></image>
@@ -187,7 +214,7 @@
 						</view>
 					</view>
 					<view class="credit-appeal col-20">
-						<view class='credit-appeal-btn'>展开筛选</view>
+						<view class='credit-appeal-btn'>展开列表</view>
 					</view>
 				</view>
 				<view class="filter-answer-height" hidden="{{selectItemId != item.id}}">
@@ -197,10 +224,10 @@
 						<text>A:{{question.question_value}}</text>
 					</view>
 					<view class="filter-answer-box">
-						<view style="background-color: gray;" data-type="pass" data-id="{{item.user_id}}">
+						<view style="background-color: gray;" data-type="pass" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							通过
 						</view>
-						<view style="background-color: gray;" data-type="reject" data-id="{{item.user_id}}">
+						<view style="background-color: gray;" data-type="reject" data-answer_id="{{item.id}}" data-user_id="{{item.user_id}}">
 							不通过
 						</view>
 					</view>
@@ -208,4 +235,5 @@
 			</view>
 		</view>
 	</view>
+	<!-- //选择拒绝的理由 -->
 </view>
