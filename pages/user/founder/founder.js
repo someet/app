@@ -138,5 +138,22 @@ Page({
 				isHistoryScroll:false
 			})
 		}
+	},
+	//跳转反馈页面
+	goFeedback(e){
+		console.log(1111111)
+		//把点击的活动传递到新页面
+		var id = e.currentTarget.dataset.id
+		var index = e.currentTarget.dataset.index
+		var clickData = this.data.weekList[index]
+		wx.navigateTo({
+			url:'/pages/user/founder/feedback/feedback',
+			events:{
+				
+			},
+			success:function(res){
+				res.eventChannel.emit('actInfo',{data:clickData,id:id})
+			}
+		})
 	}
 })

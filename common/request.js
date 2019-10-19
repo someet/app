@@ -1,5 +1,6 @@
-// const basApiUrl = 'http://mac.ngrok.wdevelop.cn/v1';
-const basApiUrl = 'https://someetapi.someet.cc/v1';
+// const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
+// const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
+const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
 const request = {
 	header : {
 		'Authorization':'',
@@ -11,7 +12,7 @@ const request = {
 		return new Promise((resolve,reject)=>{
 			wx.request({
 				data:data,
-			  	url:basApiUrl+'/wechat/login',
+			  	url:baseApiUrl+'/wechat/login',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -24,7 +25,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-			  	url:basApiUrl+'/user/create-user',
+			  	url:baseApiUrl+'/user/create-user',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -37,7 +38,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/user/get-info',
+			  	url:baseApiUrl+'/user/get-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -79,7 +80,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/activity/view',
+			  	url:baseApiUrl+'/activity/view',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -92,7 +93,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-			  	url:basApiUrl+'/answer/check-answer',
+			  	url:baseApiUrl+'/answer/check-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -106,7 +107,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-			  	url:basApiUrl+'/answer/create',
+			  	url:baseApiUrl+'/answer/create',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -120,7 +121,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:{'id':id},
-			  	url:basApiUrl+'/activity/get-question',
+			  	url:baseApiUrl+'/activity/get-question',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -134,7 +135,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-			  	url:basApiUrl+'/answer/create-answer',
+			  	url:baseApiUrl+'/answer/create-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -148,7 +149,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:data,
-			  	url:basApiUrl+'/user/get-answers',
+			  	url:baseApiUrl+'/user/get-answers',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -161,7 +162,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				url:basApiUrl+'/user/get-week-act',
+				url:baseApiUrl+'/user/get-week-act',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -175,7 +176,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-				url:basApiUrl+'/user/get-history-act',
+				url:baseApiUrl+'/user/get-history-act',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -188,7 +189,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				url:basApiUrl+'/user/get-week-act-for-answer',
+				url:baseApiUrl+'/user/get-week-act-for-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -201,7 +202,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				url:basApiUrl+'/user/get-history-act-for-answer',
+				url:baseApiUrl+'/user/get-history-act-for-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -215,7 +216,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-				url:basApiUrl+'/user/cancel-answer',
+				url:baseApiUrl+'/user/cancel-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -229,7 +230,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-				url:basApiUrl+'/user/leave-answer',
+				url:baseApiUrl+'/user/leave-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -243,7 +244,7 @@ const request = {
 				header:that.getHeader(),
 				data:{'id':id},
 				method:'get',
-				url:basApiUrl+'/user/get-info',
+				url:baseApiUrl+'/user/get-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -257,7 +258,7 @@ const request = {
 				header:that.getHeader(),
 				data:{'id':id},
 				method:'get',
-				url:basApiUrl+'/user/get-base-info',
+				url:baseApiUrl+'/user/get-base-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -271,7 +272,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:{'type':type},
-				url:basApiUrl+'/user/get-mytags',
+				url:baseApiUrl+'/user/get-mytags',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -285,7 +286,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/add-user-tags',
+				url:baseApiUrl+'/user/add-user-tags',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -299,7 +300,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/save-tags?id='+type,
+				url:baseApiUrl+'/user/save-tags?id='+type,
 				
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
@@ -314,7 +315,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/delete-uga-answer',
+				url:baseApiUrl+'/user/delete-uga-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -328,7 +329,7 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				data:{'uga_id':id},
-				url:basApiUrl+'/user/get-uga-page',
+				url:baseApiUrl+'/user/get-uga-page',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -342,7 +343,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/change-uga-question',
+				url:baseApiUrl+'/user/change-uga-question',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -356,7 +357,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/add-uga-answer',
+				url:baseApiUrl+'/user/add-uga-answer',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -370,7 +371,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/wechat/get-phone-number',
+				url:baseApiUrl+'/wechat/get-phone-number',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -384,7 +385,7 @@ const request = {
 				header:that.getHeader(),
 				method:'post',
 				data:data,
-				url:basApiUrl+'/user/save-user-info',
+				url:baseApiUrl+'/user/save-user-info',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -397,7 +398,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:{},
-				url:basApiUrl+'/yellowcard/get-yellow-card',
+				url:baseApiUrl+'/yellowcard/get-yellow-card',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -411,7 +412,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-				url:basApiUrl+'/yellowcard/yellow-appeal-reason',
+				url:baseApiUrl+'/yellowcard/yellow-appeal-reason',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -425,7 +426,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'get',
-				url:basApiUrl+'/answer/get-filter-answers',
+				url:baseApiUrl+'/answer/get-filter-answers',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
@@ -438,7 +439,7 @@ const request = {
 				header:that.getHeader(),
 				data:data,
 				method:'post',
-				url:basApiUrl+'/answer/filter-answers',
+				url:baseApiUrl+'/answer/filter-answers',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

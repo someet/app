@@ -1,0 +1,14 @@
+<view>
+	<!-- 最上层展示 -->
+	<view class="feedback-top">
+		<!-- //活动封面 -->
+		<view>
+			<image src="http://img.someet.cc/Fh8n2ij-_xq4D7HUPyHIFfy629F7" mode="widthFix" />
+		</view>
+		<view>
+			<!-- //标题和时间 -->
+			<view>12adkjasdkjashd</view>
+			<view>07月19日-07月22日</view>
+		</view>
+	</view>
+</view>
