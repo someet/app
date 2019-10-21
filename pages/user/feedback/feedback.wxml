@@ -15,15 +15,40 @@
 		<view class="feedback-main">
 			<!-- //提示文字 -->
 			<view class="feedback-tips">
-				活动结束啦，请针对本场活动，对Someet提供的服务进行一下评价吧，你的评价有助于使Someet未来更好的为您及所有发起人提供更优质的服务哦
+				来说说你的活动感受吧？（匿名提交）
 			</view>
 			<view class="feedback-h1">
 				---平台服务意见反馈---
 			</view>
 			<view class="feedback-bottom">
 				<!-- 反馈内容 -->
-				<textarea class="feedback-textarea" name="feedback" id="" placeholder="对本次平台服务是否满意呢,你还有什么需要改进呢？希望平台还能为你做些什么呢？"
+				<textarea class="feedback-textarea" name="feedback" id="" placeholder="发起人就等着你的鼓励/建议呢,要吐槽也没有关系~"
 				 placeholder-style="color:gray;"></textarea>
+			</view>
+			<view class="feedback-upload feedback-bottom">
+				<view class="feedback-upload-box">
+					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" />
+				</view>
+				<view class="feedback-upload-view">
+					<view>上传活动图片</view>
+					<view>图片使用权将会授权给平台</view>
+				</view>
+			</view>
+			<view class="feedback-bottom">
+				<view style="margin-bottom: 1rem;">你愿意将这个活动推荐给别人吗?</view>
+				<view class="feedback-records">
+					<view class="feedback-records-number feedback-records-number-select">1</view>
+					<view class="feedback-records-number feedback-records-number-select">2</view>
+					<view class="feedback-records-number">3</view>
+					<view class="feedback-records-number">4</view>
+					<view class="feedback-records-number">5</view>
+					<view class="feedback-records-number">6</view>
+					<view class="feedback-records-number">7</view>
+					<view class="feedback-records-number">8</view>
+					<view class="feedback-records-number">9</view>
+					<view class="feedback-records-number">10</view>
+					
+				</view>
 			</view>
 			<view class="feedback-h1">
 				---用户评价---

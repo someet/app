@@ -1,5 +1,5 @@
-var req = require('../../../../common/request.js');
-var util = require('../../../../utils/util.js'); 
+var req = require('../../../common/request.js');
+var util = require('../../../utils/util.js'); 
 var app = getApp()
 Page({
 	data: {
@@ -15,6 +15,7 @@ Page({
 		// actInfo
 		const eventChannel = that.getOpenerEventChannel()
 		eventChannel.on('actInfo', function(data) {
+			console.log(data)
 			that.setData({
 				id: data.id,
 			})

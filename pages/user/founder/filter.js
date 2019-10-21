@@ -179,6 +179,8 @@ Page({
 					rejectList:rejectList,
 					waitList:waitList
 				})
+			}else{
+				app.showMsg();
 			}
 		})
 	}

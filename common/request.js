@@ -1,6 +1,6 @@
-// const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
+const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
 // const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
-const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
+// const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
 const request = {
 	header : {
 		'Authorization':'',
@@ -440,6 +440,33 @@ const request = {
 				data:data,
 				method:'post',
 				url:baseApiUrl+'/answer/filter-answers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	getFeedBackAnswer(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'get',
+				url:baseApiUrl+'/answer/get-feedback-answers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//添加发起人反馈
+	addFounderFeedback(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:baseApiUrl+'/answer/add-founder-feedback',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

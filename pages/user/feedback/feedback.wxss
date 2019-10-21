@@ -87,3 +87,39 @@
 	color:white;
 	background-color: red;
 }
+.feedback-upload{
+	display: flex;
+}
+.feedback-upload-view{
+	line-height: 3rem;
+	color:gray;
+	font-size: 0.8rem;
+}
+.feedback-upload-box{
+	width: 6rem;
+	height: 6rem;
+}
+.feedback-upload-box image{
+	width: 100%;
+	height: 100%;
+	max-width: 6rem;
+}
+.feedback-records{
+	display: flex;
+	width: 98%;
+	margin: 0 auto;
+}
+.feedback-records-number{
+	width: calc(100% / 10);
+	margin: 0 auto;
+	height: 1.5rem;
+	color:black;
+	text-align: center;
+	line-height: 1.5rem;
+	border:1px solid gray;
+}
+.feedback-records-number-select{
+	background-color: red;
+	color:white;
+	border:1px solid white;
+}

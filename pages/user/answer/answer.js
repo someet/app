@@ -138,5 +138,18 @@ Page({
 				isHistoryScroll:false
 			})
 		}
+	},
+	//反馈
+	goFeedback(e){
+		var id = e.currentTarget.dataset.id
+		wx.navigateTo({
+			url:'/pages/user/feedback/feedback',
+			events:{
+				
+			},
+			success:function(res){
+				res.eventChannel.emit('actInfo',{id:id})
+			}
+		})
 	}
 })
