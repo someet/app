@@ -11,91 +11,128 @@
 			<view class="feedback-title-title">{{act.time}}</view>
 		</view>
 	</view>
-	<form bindsubmit="feedbackSubmit">
-		<view class="feedback-main">
-			<!-- //提示文字 -->
-			<view class="feedback-tips">
-				来说说你的活动感受吧？（匿名提交）
+	<view class="feedback-main">
+		<!-- //提示文字 -->
+		<view class="feedback-tips">
+			来说说你的活动感受吧？（匿名提交）
+		</view>
+		<view class="feedback-h1">
+			---平台服务意见反馈---
+		</view>
+		<view class="feedback-bottom">
+			<!-- 反馈内容 -->
+			<textarea class="feedback-textarea" name="feedback" id="" placeholder="发起人就等着你的鼓励/建议呢,要吐槽也没有关系~" placeholder-style="color:gray;"></textarea>
+		</view>
+		<view class="feedback-upload feedback-bottom">
+			<view class="feedback-upload-box">
+				<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" />
 			</view>
-			<view class="feedback-h1">
-				---平台服务意见反馈---
-			</view>
-			<view class="feedback-bottom">
-				<!-- 反馈内容 -->
-				<textarea class="feedback-textarea" name="feedback" id="" placeholder="发起人就等着你的鼓励/建议呢,要吐槽也没有关系~"
-				 placeholder-style="color:gray;"></textarea>
-			</view>
-			<view class="feedback-upload feedback-bottom">
-				<view class="feedback-upload-box">
-					<image src="http://img.someet.cc/FkhbEmeI-orqT1hDiGzvUl9oJ9iz" />
-				</view>
-				<view class="feedback-upload-view">
-					<view>上传活动图片</view>
-					<view>图片使用权将会授权给平台</view>
-				</view>
-			</view>
-			<view class="feedback-bottom">
-				<view style="margin-bottom: 1rem;">你愿意将这个活动推荐给别人吗?</view>
-				<view class="feedback-records">
-					<view class="feedback-records-number feedback-records-number-select">1</view>
-					<view class="feedback-records-number feedback-records-number-select">2</view>
-					<view class="feedback-records-number">3</view>
-					<view class="feedback-records-number">4</view>
-					<view class="feedback-records-number">5</view>
-					<view class="feedback-records-number">6</view>
-					<view class="feedback-records-number">7</view>
-					<view class="feedback-records-number">8</view>
-					<view class="feedback-records-number">9</view>
-					<view class="feedback-records-number">10</view>
-					
-				</view>
-			</view>
-			<view class="feedback-h1">
-				---用户评价---
-			</view>
-			<view class="feedback-bottom">
-				<text>本场活动有没有让你觉得特别赞的用户呢，来给他个赞吧</text>
-				<view>
-					<scroll-view class="feedbakc-good-user" scroll-x style="width: 100%;">
-						<block wx:for="{{goodUnselect}}" wx:for-item="item" wx:key="index">
-							<view class="feedback-user-box" data-id="{{item.id}}" data-index="{{index}}" bindtap="selectGoodUser">
-								<view class="feedback-user-item">
-									<!-- 头像 -->
-									<view class="feedback-user-item-headimg">
-										<image src="{{goodUser == item.id?'http://img.someet.cc/phpkOBeLp':item.profile.headimgurl}}" mode="widthFix" style="width: 3rem;" />
-									</view>
-									<view class="feedback-user-item-username">
-										{{item.username}}
-									</view>
-								</view>
-							</view>
-						</block>
-					</scroll-view>
-				</view>
-			</view>
-			<view class="feedback-bottom">
-				<text>本场活动有没有让你觉得特别赞的用户呢，来给他个赞吧</text>
-				<view>
-					<scroll-view class="feedbakc-good-user" scroll-x style="width: 100%;">
-						<block wx:for="{{badUnselect}}" wx:for-item="item" wx:key="index">
-							<view class="feedback-user-box" data-id="{{item.id}}" data-index="{{index}}" bindtap="selectBadUser">
-								<view class="feedback-user-item">
-									<!-- 头像 -->
-									<view class="feedback-user-item-headimg">
-										<image src="{{badUser == item.id?'http://img.someet.cc/phpLBVSt3':item.profile.headimgurl}}" mode="widthFix" style="width: 3rem;" />
-									</view>
-									<view class="feedback-user-item-username">
-										{{item.username}}
-									</view>
-								</view>
-							</view>
-						</block>
-					</scroll-view>
-				</view>
+			<view class="feedback-upload-view">
+				<view>上传活动图片</view>
+				<view>图片使用权将会授权给平台</view>
 			</view>
 		</view>
-		<view class="feedback-button">
-			<button class="feedback-button-btn" form-type="submit">提交反馈</button>
+		<view class="feedback-bottom">
+			<view style="margin-bottom: 1rem;">你愿意将这个活动推荐给别人吗?</view>
+			<view class="feedback-records">
+				<view class="feedback-records-number feedback-records-number-select">1</view>
+				<view class="feedback-records-number feedback-records-number-select">2</view>
+				<view class="feedback-records-number">3</view>
+				<view class="feedback-records-number">4</view>
+				<view class="feedback-records-number">5</view>
+				<view class="feedback-records-number">6</view>
+				<view class="feedback-records-number">7</view>
+				<view class="feedback-records-number">8</view>
+				<view class="feedback-records-number">9</view>
+				<view class="feedback-records-number">10</view>
+
+			</view>
 		</view>
-	</form>
+		<view class="feedback-bottom feedback-reason-box">
+			<view class="feedback-reason-box-tips">
+				指出不足(选填，可多选)
+			</view>
+			<form bindsubmit="reasonChildSubmit">
+				<view class="feedback-reason-list">
+					<view class="feedback-reason-list-item">
+						<view wx:for="{{badReason}}" wx:for-item="item" wx:key="index" class="feedback-reason-list-item-title {{item.checked?'feedback-reason-list-item-title-red':''}}"
+						 data-id="{{item.id}}" data-index="{{index}}" bindtap="selectReason">{{item.title}}</view>
+					</view>
+					<view class="feedback-reason-list-reason-detail" wx:if="{{showDetail != false}}">
+						<input type="hidden" name="" />
+						<view class="reason-detail-title">{{selectReason.title}}</view>
+						<view class="reason-detail-list">
+
+							<view class="reason-detail-list-view" wx:for="{{selectReason.reason}}" wx:for-item="item" wx:key="index" bindtap="checkboxChange"
+							 data-index="{{index}}">
+								<checkbox-group bindchange="badReasonChildChange">
+									<label>
+										<checkbox hidden value="{{item.id+'-'+item.pid}}" checked="{{item.checked}}"></checkbox>
+										<view class="label-1__icon">
+											<view class="label-1__icon-checked" style="opacity:{{item.checked ? 1: 0}};"></view>
+										</view>
+										<text class="label-1__text">{{item.title}}</text>
+									</label>
+								</checkbox-group>
+							</view>
+							<view>
+								<textarea name="content" id="ub_bad_reason_textarea" class="other_reason" placeholder="" style="display: block;"></textarea>
+							</view>
+							<view class="reason-button">
+								<button form-type="submit">保存收起</button>
+							</view>
+						</view>
+					</view>
+				</view>
+			</form>
+		</view>
+		<view class="feedback-h1">
+			---用户评价---
+		</view>
+		<view class="feedback-bottom">
+			<text>本场活动有没有让你觉得特别赞的用户呢，来给他个赞吧</text>
+			<view>
+				<scroll-view class="feedbakc-good-user" scroll-x style="width: 100%;">
+					<block wx:for="{{goodUnselect}}" wx:for-item="item" wx:key="index">
+						<view class="feedback-user-box" data-id="{{item.id}}" data-index="{{index}}" bindtap="selectGoodUser">
+							<view class="feedback-user-item">
+								<!-- 头像 -->
+								<view class="feedback-user-item-headimg">
+									<image src="{{goodUser == item.id?'http://img.someet.cc/phpkOBeLp':item.profile.headimgurl}}" mode="widthFix"
+									 style="width: 3rem;" />
+								</view>
+								<view class="feedback-user-item-username">
+									{{item.username}}
+								</view>
+							</view>
+						</view>
+					</block>
+				</scroll-view>
+			</view>
+		</view>
+		<view class="feedback-bottom">
+			<text>本场活动有没有让你觉得特别赞的用户呢，来给他个赞吧</text>
+			<view>
+				<scroll-view class="feedbakc-good-user" scroll-x style="width: 100%;">
+					<block wx:for="{{badUnselect}}" wx:for-item="item" wx:key="index">
+						<view class="feedback-user-box" data-id="{{item.id}}" data-index="{{index}}" bindtap="selectBadUser">
+							<view class="feedback-user-item">
+								<!-- 头像 -->
+								<view class="feedback-user-item-headimg">
+									<image src="{{badUser == item.id?'http://img.someet.cc/phpLBVSt3':item.profile.headimgurl}}" mode="widthFix"
+									 style="width: 3rem;" />
+								</view>
+								<view class="feedback-user-item-username">
+									{{item.username}}
+								</view>
+							</view>
+						</view>
+					</block>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+	<view class="feedback-button">
+		<view class="feedback-button-btn" form-type="submit">提交反馈</view>
+	</view>
 </view>

@@ -471,6 +471,20 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//获取坏理由
+	getBadReason(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:baseApiUrl+'/activity/get-bad-reason',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;
