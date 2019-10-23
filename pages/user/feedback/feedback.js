@@ -37,7 +37,16 @@ Page({
 		selectReason: false,
 		showDetail: false,
 		selectedBadId: [], //已经选择的不好的理由,
-		currentBadId:[]
+		currentBadId:[],
+		currentBadIndex:[],//当前选择的不满意的理由索引
+		allbadReason:[],
+		actRecordsTotal:10,
+		founderRecordsTotal:10,
+		actRecords:'',
+		founderRecords:'',
+		isClick:false,
+		feedback:'',
+		feedbackSrc:''
 	},
 	onLoad() {
 		var that = this
@@ -52,6 +61,20 @@ Page({
 		console.log(this.data.badReason)
 		this.getAnswers()
 		this.getBadReason()
+	},
+	changeFounderRecords(e){
+		var val = e.currentTarget.dataset.val
+		this.setData({
+			founderRecords:val,
+			isClick:true
+		})
+	},
+	changeActRecords(e){
+		var val = e.currentTarget.dataset.val
+		this.setData({
+			actRecords:val,
+			isClick:true
+		})
 	},
 	//获取所有坏理由
 	getBadReason() {
@@ -99,6 +122,7 @@ Page({
 			badReason: allReason,
 			selectReason: badReason,
 			showDetail: true,
+			currentBadIndex:index,
 		})
 	},
 	//获取所有的正常参与的用户
@@ -125,7 +149,7 @@ Page({
 	selectGoodUser(e) {
 		var selectedId = e.currentTarget.dataset.id
 		console.log(selectedId)
-		if (this.data.goodUser != 0) selectedId = 0
+		// if (this.data.goodUser != 0) selectedId = 0
 		this.setData({
 			goodUser: selectedId
 		})
@@ -133,48 +157,29 @@ Page({
 	selectBadUser(e) {
 		var selectedId = e.currentTarget.dataset.id
 		console.log(selectedId)
-		if (this.data.badUser != 0) selectedId = 0
 		this.setData({
 			badUser: selectedId,
-		})
-	},
-	feedbackSubmit(e) {
-		console.log(e)
-		if (this.data.isClick) {
-			app.showMsg('请稍后')
-			return false;
-		}
-		this.setData({
-			isClick: true
-		})
-		var data = {
-			'feedback': e.detail.value.feedback,
-			'good_user': this.data.goodUser,
-			'bad_user': this.data.badUser,
-			'activity_id': this.data.id,
-		}
-		var that = this
-		console.log(data)
-		app.loadTitle('请稍后')
-		req.addFounderFeedback(data).then((res) => {
-			if (res.status == 1) {
-				app.hideLoad()
-				wx.navigateBack({
-					delta: 1
-				})
-			} else {
-				app.showMsg(res.data.data)
-				that.setData({
-					isClick: false
-				})
-			}
 		})
 	},
 	//提交理由反馈
 	reasonChildSubmit(e) {
 		var other_reason = e.detail.value.content
-		console.log(e)
-		console.log(other_reason)
+		var res = e.detail.value.badReason
+		var currentBadIndex = this.data.currentBadIndex
+		var allbadReason = this.data.allbadReason
+		allbadReason[currentBadIndex] = new Array();
+		for (let [key,row] of res.entries()) {
+			var single = row.split('-');
+			allbadReason[currentBadIndex].push({
+				'id':single[1],
+				'pid':single[2],
+				'other_reason':other_reason
+			})
+		}
+		this.setData({
+			allbadReason:allbadReason
+		})
+		this.hideDetail()
 	},
 	hideDetail() {
 		this.setData({
@@ -182,18 +187,87 @@ Page({
 		})
 		// if()
 	},
-	badReasonChildChange:function(e) {
-		//需要检验取消选定的删除情况
-		var data = e.detail.value[0]
-		var res = data.split('-')
-		console.log(res)
-		//pid是1，ID是 0
-		var currentBadId = this.data.currentBadId
-		//push 入currentBadId
-		currentBadId.push({
-			pid:res[1],
-			id:res[0]
+	submitFeedback(){
+		var data = {
+			good_user:this.data.goodUser,
+			bad_user:this.data.badUser,
+			badReason:JSON.stringify(this.data.allbadReason),
+			actRecords:this.data.actRecords,
+			founderRecords:this.data.founderRecords,
+			feedback:this.data.feedback,
+			activity_id:this.data.id,
+			image:this.data.feedbackSrc
+		}
+		console.log(data)
+		var that = this
+		console.log(data)
+		app.loadTitle('请稍后')
+		req.addUserFeedback(data).then((res) => {
+			if(res.data.status == 1){
+				app.hideLoad()
+				app.showMsg(res.data.data)
+				wx.redirectTo({
+					url:'/pages/user/answer/answer'
+				})
+			}else{
+				app.showMsg(res.data.data)
+				that.setData({
+					isClick: false
+				})
+			}
+			console.log(res)
 		})
-		console.log(currentBadId)
+	},
+	bindinput(e){
+		this.setData({
+			feedback:e.detail.value
+		})
+	},
+	//监听文本输入
+	bindTextAreaBlur(e){
+		this.setData({
+			feedback:e.detail.value
+		})
+	},
+	uploadImg(){
+		var that =this;
+		var header = req.getHeaderForUpload();
+		wx.chooseImage({
+			count: 1,
+			sizeType: ['compressed'],
+			sourceType: ['album', 'camera'],
+			success (res) {
+				console.log(res)
+				// tempFilePath可以作为img标签的src属性显示图片
+				const tempFilePaths = res.tempFilePaths
+				const size = res.tempFiles[0].size
+				if(size > 3000*1000){
+					app.showMsg('图片不能超过3M');
+					return false;
+				}
+				app.loadTitle('正在上传...')
+				wx.uploadFile({
+					url: app.globalData.apiUrl+'/back/upload/upload-file', 
+					filePath: tempFilePaths[0],
+					formData:{'uploadType':'feedback','imgIndex':'0'},
+					name: 'file', 
+					header:header,
+					success (res){
+						const data = JSON.parse(res.data).data
+						if(data.status == 200){
+							app.hideLoad()
+							app.showMsg('上传成功');
+							//返回上层并传值
+							that.setData({
+								feedbackSrc:data.url
+							})
+							
+						}
+					}
+				})
+			},
+			fail(res){
+			}
+		})
 	}
 })

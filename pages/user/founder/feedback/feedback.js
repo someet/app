@@ -45,7 +45,7 @@ Page({
 	selectGoodUser(e) {
 		var selectedId = e.currentTarget.dataset.id
 		console.log(selectedId)
-		if (this.data.goodUser != 0) selectedId = 0
+		// if (this.data.goodUser != 0) selectedId = 0
 		this.setData({
 			goodUser: selectedId
 		})
@@ -53,7 +53,7 @@ Page({
 	selectBadUser(e) {
 		var selectedId = e.currentTarget.dataset.id
 		console.log(selectedId)
-		if (this.data.badUser != 0) selectedId = 0
+		// if (this.data.badUser != 0) selectedId = 0
 		this.setData({
 			badUser: selectedId,
 		})

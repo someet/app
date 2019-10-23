@@ -89,6 +89,8 @@
 }
 .feedback-upload{
 	display: flex;
+	padding-left: 1rem;
+
 }
 .feedback-upload-view{
 	line-height: 3rem;

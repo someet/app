@@ -485,6 +485,19 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	addUserFeedback(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:baseApiUrl+'/answer/add-user-feedback',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;
