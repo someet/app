@@ -34,3 +34,13 @@
 .founder-bottom-box{
 	margin-bottom: 0.5rem;
 }
+.member-top-box-opration-status-flex{
+	width: 100%;
+	display: flex;
+}
+.member-top-box-opration-status-flex .answer-btn{
+	width: 50%;
+}
+.member-top-box-opration-status-flex .answer-btn:nth-child(2){
+	text-align: right;
+}

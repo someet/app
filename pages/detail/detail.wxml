@@ -8,13 +8,13 @@
 			<image mode='widthFix' src="{{model.type.icon_img}}" class="detail-slide-image-icon"/>
 			<text class='detail-slide-image-text'>观影</text>
 			<view class='detail-poster-box-button'>
-				<view class="detail-poster-box-button-right">
-					<image style="height: 50%;" mode='widthFix' src="../image/collect.png" class="detail-slide-image-collect"/>
+				<view class="detail-poster-box-button-right" bindtap="blackAct" data-id="{{model.id}}">
+					<image style="height: 50%;" mode='widthFix' src="{{isBlack?'http://img.someet.cc/FtJ4NA8wkPq5Duakif6weDqrojFx':'http://img.someet.cc/FjS9oSxzzt2XYPTPu8ft4Al6nukY'}}" class="detail-slide-image-collect"/>
 					<text style="height: 50%;" class='detail-slide-icon-text'>黑名单</text>
 				</view>
-				<view class="detail-poster-box-button-right">
-					<image style="height: 50%;" mode='widthFix' src="../image/collect.png" class="detail-slide-image-collect"/>
-					<text style="height: 50%;" class='detail-slide-icon-text'>黑名单</text>
+				<view class="detail-poster-box-button-right" bindtap="collectAct" data-id="{{model.id}}">
+					<image style="height: 50%;" mode='widthFix' src="{{isCollect == 1?'http://img.someet.cc/phpl9JETg':'http://img.someet.cc/phpMj14v2'}}" class="detail-slide-image-collect"/>
+					<text style="height: 50%;" class='detail-slide-icon-text'>收藏</text>
 				</view>
 			</view>
 		</view>
@@ -58,7 +58,7 @@
 			</view>
 			<!-- 发起人标签 -->
 			<view class="founder-tags">
-				<block wx:for="{{model.tags}}">
+				<block wx:for="{{model.tags}}" wx:key="index">
 					<view>
 						{{item.tag_title}}
 					</view>
@@ -159,46 +159,18 @@
 			此时间段还有这些活动
 		</view>
 		<scroll-view scroll-x class="other-activity">
-			<view class="other-activity-one">
+			<view class="other-activity-one" wx:for="{{randAct}}" wx:for-item="item" wx:key="index" data-id="{{item.id}}" bindtap="goDetail"> 
 				<!-- 图片 -->
 				<view>
-					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
+					<image class="other-activity-poster" mode='widthFix' src="{{item.poster}}" />
 				</view>
 				<!-- 发起人头像 -->
 				<view class="circle-headimgurl-box">
-					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
+					<image class="circle-headimgurl" mode='widthFix' src="{{item.headimgurl}}" />
 				</view>
 				<!-- 活动标题 -->
 				<view class="other-activity-title">
-					一杯一比好了一卡卡卡
-				</view>
-			</view>
-			<view class="other-activity-one">
-				<!-- 图片 -->
-				<view>
-					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
-				</view>
-				<!-- 发起人头像 -->
-				<view class="circle-headimgurl-box">
-					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
-				</view>
-				<!-- 活动标题 -->
-				<view class="other-activity-title">
-					一杯一比好了一卡卡卡
-				</view>
-			</view>
-			<view class="other-activity-one">
-				<!-- 图片 -->
-				<view>
-					<image class="other-activity-poster" mode='widthFix' src="{{model.poster}}" />
-				</view>
-				<!-- 发起人头像 -->
-				<view class="circle-headimgurl-box">
-					<image class="circle-headimgurl" mode='widthFix' src="{{model.profile.headimgurl}}" />
-				</view>
-				<!-- 活动标题 -->
-				<view class="other-activity-title">
-					一杯一比好了一卡卡卡
+					{{item.title}}
 				</view>
 			</view>
 		</scroll-view>
@@ -228,7 +200,7 @@
 		<button wx:if='{{model.is_answer == 1 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}">已报名</button>
 		<button wx:if='{{model.status == 30}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已关闭 </button>
 		<button wx:if='{{model.status == 40}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已取消 </button>
-		<button wx:if='{{model.is_end == 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>
-		<button wx:if='{{model.status < 20}}' class="answer-goanswer"> 活动异常 </button>
+		<button wx:if='{{model.is_end == 1 && model.status >=20}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>
+		<button wx:if='{{model.status == 15}}' class="answer-goanswer" bindtap="releaseAct"> 发布活动 </button>
 	</view>
 </view>

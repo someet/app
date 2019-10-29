@@ -2,7 +2,8 @@
 	"disableScroll": false,
 	"enablePullDownRefresh":false,
 	"backgroundTextStyle": "light",
-	"navigationBarBackgroundColor": "white",
+	"navigationBarBackgroundColor": "#fff",
 	"navigationBarTitleText": "发起人反馈",
-	"navigationBarTextStyle": "black"
+	"navigationBarTextStyle": "black",
+	"usingComponents": {}
 }

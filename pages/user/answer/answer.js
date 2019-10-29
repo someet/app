@@ -142,6 +142,7 @@ Page({
 	//反馈
 	goFeedback(e){
 		var id = e.currentTarget.dataset.id
+		console.log(id)
 		wx.navigateTo({
 			url:'/pages/user/feedback/feedback',
 			events:{
@@ -151,5 +152,91 @@ Page({
 				res.eventChannel.emit('actInfo',{id:id})
 			}
 		})
-	}
+	},
+	//请假
+	leaveAnswer(e){
+			var that = this;
+			// if(this.data.isClick){
+			// 	app.showMsg('太快了，别急')
+			// 	return false
+			// }
+			this.setData({
+				isClick:true
+			})
+			wx.showModal({
+				title: '提示',
+				content: '请假会获得黄牌',
+				success (res) {
+					if (res.confirm) {
+						var data = e.currentTarget;
+						var leaveData = {
+							'aid':data.dataset.aid
+						}
+						req.leaveAnswer(leaveData).then((res)=>{
+							console.log(res)
+							if(res.data.status == 1){
+								that.setData({
+									isClick:false
+								})
+								//循环查找更改的活动
+								var myAnswer = that.data.myAnswer
+								for (let row of myAnswer) {
+									row.leave_status = 1;
+								}
+								that.setData({
+									myAnswer:myAnswer
+								})
+								console.log(that.data.myAnswer)
+							}
+							
+						}).catch(app.showErr)
+					} else if (res.cancel) {
+						console.log('用户点击取消')
+					}
+				}
+			})
+	},
+	// 取消报名
+	cancelAnswer(e){
+			var that = this;
+			if(this.data.isClick){
+				app.showMsg('太快了，别急')
+				return false
+			}
+			this.setData({
+				isClick:true
+			})
+			wx.showModal({
+				title: '提示',
+				content: '取消后无法再报名',
+				success (res) {
+					if (res.confirm) {
+						var data = e.currentTarget;
+						var leaveData = {
+							'aid':data.dataset.aid
+						}
+						req.cancelAnswer(leaveData).then((res)=>{
+							console.log(res)
+							if(res.data.status == 1){
+								that.setData({
+									isClick:false
+								})
+								//循环查找更改的活动
+								var myAnswer = that.data.myAnswer
+								for (let row of myAnswer) {
+									row.apply_status = 1;
+								}
+								that.setData({
+									myAnswer:myAnswer
+								})
+								console.log(that.data.myAnswer)
+							}
+							
+						}).catch(app.showErr)
+					} else if (res.cancel) {
+						console.log('用户点击取消')
+					}
+				}
+			})
+	},
 })

@@ -54,6 +54,13 @@ Page({
 		this.getWeekAct()
 		this.getHistoryAct()
 	},
+	//预览活动
+	goPreview(e){
+		var id = e.currentTarget.dataset.id
+		wx.redirectTo({
+			url:'/pages/detail/detail?id='+id
+		})
+	},
 	// 获取本周我发起的活动
 	getWeekAct(){
 		if(!this.data.isWeekScroll){

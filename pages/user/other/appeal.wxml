@@ -6,7 +6,7 @@
 
 			</view>
 			<view class="yc-appeal-content">
-				<text wx:if="{{detail.card_category == 1}}">因为吃到</text>
+				<text wx:if="{{detail.card_category == 1}}">因为迟到</text>
 				<text wx:if="{{detail.card_category == 2}}">报名通过后请假</text>
 				<text wx:if="{{detail.card_category == 3}}">报名通过后距离活动开始时间小于24小时请假</text>
 				<text wx:if="{{detail.card_category == 4}}">报名通过后未参加活动</text>

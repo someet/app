@@ -2,7 +2,7 @@
 	"disableScroll": false,
 	"enablePullDownRefresh":false,
 	"backgroundTextStyle": "light",
-	"navigationBarBackgroundColor": "white",
+	"navigationBarBackgroundColor": "#fff",
 	"navigationBarTitleText": "个人信息",
 	"navigationBarTextStyle": "black"
 }

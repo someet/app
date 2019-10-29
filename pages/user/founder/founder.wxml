@@ -45,7 +45,13 @@
 						<!-- 操作按钮 -->
 						<view class="member-top-box-opration-box">
 							<!-- 状态栏 -->
-							<view class="member-top-box-opration-status" data-id="{{item}}" data-index="{{index}}" bindtap="goFeedback">
+							<view wx:if="{{item.status == 15 && item.is_end != 1}}" class="member-top-box-opration-status" data-id="{{item.id}}" bindtap="goPreview">
+								活动预览
+							</view>
+							<view wx:if="{{item.status == 20 || item.status == 30 && item.is_end != 1}}" class="member-top-box-opration-status" style="width: auto;" data-id="{{item.id}}">
+								报名：{{item.answer_count}}/{{item.peoples}}
+							</view>
+							<view wx:if="{{item.status != 40 && item.is_end == 1}}" class="member-top-box-opration-status" data-id="{{item}}" data-index="{{index}}" bindtap="goFeedback">
 								反馈
 							</view>
 							<!-- 操作按钮 -->
@@ -87,12 +93,21 @@
 						<!-- 操作按钮 -->
 						<view class="member-top-box-opration-box">
 							<!-- 状态栏 -->
-							<view class="member-top-box-opration-status" data-id="{{item}}" data-index="{{index}}" bindtap="goFeedback">
-								反馈
+							<view wx:if="{{item.status == 20 || item.status == 30}}" class="member-top-box-opration-status-flex" data-id="{{item.id}}">
+								<view class="answer-btn">
+									<view class="member-top-box-opration-status-flex" data-id="{{item.id}}">
+										待评价
+									</view>
+								</view>
+								<view class="answer-btn">
+									<view bindtap="goFeedback" class="member-top-box-opration-btn" style="background-color: red;" data-id="{{item.id}}">
+										我要评价
+									</view>
+								</view>
 							</view>
-							<!-- 操作按钮 -->
-							<!-- <view class="member-top-box-opration-btn">
-							</view> -->
+							<view wx:if="{{item.status ==40}}" class="member-top-box-opration-status" data-id="{{item.id}}">
+								活动取消
+							</view>
 						</view>
 					</view>
 				</block>

@@ -5,7 +5,8 @@ var app = getApp()
 Page({
 	data: {
 		loading: 0,
-		list:[]
+		list:[],
+		unlock:0
 	},
 	onLoad() {
 		// yellowcard

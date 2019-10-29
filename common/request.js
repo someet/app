@@ -18,6 +18,19 @@ const request = {
 			})
 		})
 	},
+	//获取首页列表
+	getIndexList(data){
+		var that = this;
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+			  	url:baseApiUrl+'/activity/index',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
 	createUser(data){
 		var that = this;
 		return new Promise((resolve,reject)=>{
@@ -492,8 +505,34 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				method:'post',
 				url:baseApiUrl+'/answer/add-user-feedback',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//随机获取三个活动
+	getRandAct(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				url:baseApiUrl+'/activity/rand-act',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//发布活动
+	releaseAct(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:baseApiUrl+'/activity/release-act',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

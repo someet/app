@@ -198,7 +198,7 @@ form {
 	height: 3rem;
 }
 
-.member-top-box-opration-box view {
+.member-top-box-opration-box .member-top-box-opration-status,.member-top-box-opration-btn {
 	width: 5rem;
 	height: 2rem;
 	line-height: 2rem;

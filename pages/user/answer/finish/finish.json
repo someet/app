@@ -2,7 +2,7 @@
 	"disableScroll": true,
 	"enablePullDownRefresh":false,
 	"backgroundTextStyle": "light",
-	"navigationBarBackgroundColor": "white",
+	"navigationBarBackgroundColor": "#fff",
 	"navigationBarTitleText": "报名成功",
 	"navigationBarTextStyle": "black"
 }

@@ -9,8 +9,8 @@
 	</view>
 	<!-- //黄牌记录 -->
 	<view>
-		<view class="credit-tips">
-		    30内天累计获得三张以上黄牌，处于黑牌状态，不能报名，距离解禁还有
+		<view class="credit-tips" wx:if="{{unlock > 0}}">
+		    30内天累计获得三张以上黄牌，处于黑牌状态，不能报名，距离解禁还有{{unlock}}天
 		</view>
 	</view>
 	
