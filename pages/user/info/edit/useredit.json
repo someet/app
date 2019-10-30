@@ -1,4 +1,6 @@
 {
 	"disableScroll": false,
-    "navigationBarTitleText": "编辑个人信息"
+    "navigationBarTitleText": "编辑个人信息",
+	"usingComponents": {
+	}
 }

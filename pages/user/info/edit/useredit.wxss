@@ -142,6 +142,8 @@
 	line-height: 2rem;
 	margin-top: 0.5rem;
 	width: auto;
+	text-align: center;
+	min-width: 4.5rem;
 }
 .question-item-list-text{
 	border:1px solid gray;

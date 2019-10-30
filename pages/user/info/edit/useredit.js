@@ -16,7 +16,12 @@ Page({
 		birthDay:'',
 		bio:'',
 		diyPhone:0,
-		isSave:0
+		isSave:0,
+		timeLeft:60,
+		isSendCode:false,
+		sendCodeText:'获取验证码',
+		verifyCode:0,
+		sendToken:false
 	},
 	onLoad(options){
 		const that = this
@@ -36,9 +41,67 @@ Page({
 		});
 		this.getUserInfo()
 	},
-	isSendCode(){
+	inputVerifyCode(e){
 		this.setData({
-			diyPhone:1
+			inputVerifyCode:e.detail.value
+		})
+	},
+	isSendCode(e){
+		this.setData({
+			diyPhone:1,
+			mobile:e.detail.value
+		})
+	},
+	//获取验证码
+	getVerifyCode(e){
+		var data = e.detail.mcode;
+		var that = this
+		if(this.data.isSendCode){
+			return false;
+		}else{
+			this.setData({
+				isSendCode:true,
+				sendToken:true
+			})
+			//发送验证码
+			req.getVerifyCode({'mobile':this.data.mobile}).then((res)=>{
+				console.log(res)
+				if(res.data.status == 1){
+					app.showMsg('发送成功')
+					// that.setData({
+					// 	sendCode:res.data.code
+					// })
+					var data = {
+						time:new Date()/1000,
+						verifyCode:res.data.code
+					}
+					wx.setStorageSync('verifyData', data)
+				}else{
+					app.showMsg(res.data.data);
+				}
+			})
+		}
+		var pro = new Promise((resolve,reject)=>{
+			let timer = setInterval(function(){
+				var timeLeft = that.data.timeLeft
+				if(timeLeft <= 1){
+					resolve(timer)
+				}
+				timeLeft--
+				that.setData({
+					timeLeft:timeLeft,
+					isSendCode:true,
+					sendCodeText:timeLeft+'s'
+				})
+			},1000);
+		})
+		pro.then((timer)=>{
+			clearInterval(timer);
+			that.setData({
+				isSendCode:false,
+				timeLeft:60,
+				sendCodeText:'重新获取'
+			})
 		})
 	},
 	// 获取个人信息
@@ -63,7 +126,8 @@ Page({
 				wechat_id:data.wechat_id,
 				mobile:data.mobile,
 				birthDay:birth,
-				bio:data.profile.bio
+				bio:data.profile.bio,
+				sex:data.profile.sex
 			})
 			console.log(this.data.wechat_id)
 		})
@@ -123,53 +187,106 @@ Page({
 	},
 	//提价用户信息
 	userInfoSubmit(e){
-		app.loadTitle('正在保存...')
 		this.setData({
 			isSave:1
 		})
 		var that = this
-		req.saveUserInfo(e.detail.value).then((res)=>{
-			console.log(res)
-			app.hideLoad()
-			app.showMsg('保存成功')
+		if(!this.data.mobile || !(/^1[2|3|4|5|6|7|8|9][0-9]\d{8}$$/.test(this.data.mobile))){
+			app.showMsg('请检查手机号')
 			that.setData({
-				isSave:1
+				isSave:0
 			})
-			//设置完成用户是否完善信息
-			var userInfo = userFunc.getUserInfo();
-			userInfo.wechat_id = e.detail.value.wechat_id;
-			userInfo.mobile = e.detail.value.mobile
-			userFunc.setUserInfo(userInfo);
-			//检查是否是报名活动完善信息
-			var userInfoComplete = userFunc.checkUserInfoComplete();
-			console.log(userInfoComplete)
-			if(userInfoComplete == 'complete'){
-				// 检查是否是从活动报名过lai/
-				var userFrom = wx.getStorageSync('editUserFrom')
-				if(userFrom.fromPage == 'act'){
-					//跳转到活动页面之前删除保存的from 信息
-					wx.removeStorageSync('editFrom')
-					wx.redirectTo({
-						url:'/pages/details/detail?id='+userFrom.id
+			return false;
+		}
+		if((!this.data.inputVerifyCode || this.data.inputVerifyCode.length !=6) && this.data.diyPhone != 0){
+			app.showMsg('请检查验证码')
+			that.setData({
+				isSave:0
+			})
+			return false;
+		}
+		var verifyData= wx.getStorageSync('verifyData')
+		if(verifyData.verifyCode && verifyData.verifyCode != this.data.inputVerifyCode){
+			app.showMsg('验证码不正确')
+			that.setData({
+				isSave:0
+			})
+			return false;
+		}
+		//判断验证码是否正确
+		if(this.data.sendToken){
+			req.verifyCode({'mobile':this.data.mobile,'verify_m_code':this.data.inputVerifyCode}).then((res)=>{
+				if(res.data.status == 1){
+					console.log(11111111)
+					app.loadTitle('正在保存...')
+					wx.removeStorageSync('verifyData')
+					
+					return req.saveUserInfo(e.detail.value);
+				}else if(res.data.status == -1){
+					app.showMsg(res.data.data)
+					that.setData({
+						isSave:0
 					})
+					return false;
+				}else{
+					app.showMsg('验证码验证失败')
+					that.setData({
+						isSave:0
+					})
+					return false;
 				}
-			}else if(userInfoComplete == 'tags'){
-				// 跳转到填写标签页面,从第一页开始
-				wx.navigateTo({
-					url:'/pages/user/info/edit/tags',
-					events:{
-					},
-					success(res){
-						res.eventChannel.emit('tagType',{data:1,'method':1})
-					}
+			}).then((res)=>{
+				app.hideLoad()
+				that.setData({
+					isSave:0
 				})
-			}else if(userInfoComplete == 'uga'){
-				// 跳转到填写uga 的页面从第一条开始
-				
+				if(res == false) return false;
+				app.showMsg('保存成功')
+				that.reqComplete(res,e)
+			})
+		}else{
+			req.saveUserInfo(e.detail.value).then((res)=>{
+				app.hideLoad()
+				that.setData({
+					isSave:0
+				})
+				if(res == false) return false;
+				app.showMsg('保存成功')
+				that.reqComplete(res,e)
+			})
+		}
+	},
+	reqComplete(res,e){
+		//设置完成用户是否完善信息
+		// userInfo.profile.birth_year = 
+		userFunc.setUserInfoByUnionId();
+		//检查是否是报名活动完善信息
+		var userInfoComplete = userFunc.checkUserInfoComplete();
+		if(userInfoComplete == 'complete'){
+			// 检查是否是从活动报名过lai/
+			var userFrom = wx.getStorageSync('editUserFrom')
+			if(userFrom.fromPage == 'act'){
+				//跳转到活动页面之前删除保存的from 信息
+				wx.removeStorageSync('editFrom')
+				wx.redirectTo({
+					url:'/pages/details/detail?id='+userFrom.id
+				})
 			}
-			userFunc.checkUserInfoComplete()
-			// wx.redirectTo({'url':'/pages/user/info/info'})
-		})
+		}else if(userInfoComplete == 'tags'){
+			// 跳转到填写标签页面,从第一页开始
+			wx.navigateTo({
+				url:'/pages/user/info/edit/tags',
+				events:{
+				},
+				success(res){
+					res.eventChannel.emit('tagType',{data:1,'method':1})
+				}
+			})
+		}else if(userInfoComplete == 'uga'){
+			// 跳转到填写uga 的页面从第一条开始
+			
+		}
+		userFunc.checkUserInfoComplete()
 	},
 	//日期选择
 	bindDateChange(e){

@@ -537,6 +537,35 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//获取验证码
+	getVerifyCode(data){
+		// get-verify-code
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'get',
+				url:baseApiUrl+'/user/get-verify-code',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//验证验证码
+	verifyCode(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				data:data,
+				method:'post',
+				url:baseApiUrl+'/user/verify-code',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;

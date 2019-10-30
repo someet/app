@@ -9,9 +9,6 @@ Page({
 		'interval': 3000,
 		'duration': 500,
 		'imgUrls': [
-			'http://img.someet.cc/Fu1BA7sYzNOBthutKHLoy_6CONJn?imageView2/2/w/800',
-			'http://img.someet.cc/Fsf90kgFc9LRudmZWLnEWgaf33eF?imageView2/2/w/800',
-			'http://img.someet.cc/Fifvzz8TD4kIxd9Ycv9_7gsC6IOt?imageView2/2/w/800'
 		],
 		'currentData': 'activity',
 		'toView': 'bottomView',
@@ -27,12 +24,12 @@ Page({
 		pageTotal: 2
 	},
 	onLoad: function(options) {
-		var city = typeof(options.city_id) == undefined ? 2 : options.city_id
+		var city = typeof(options.city_id) == 'undefined' ? 2 : options.city_id
+		console.log(options)
 		this.setData({
 			city: city
 		})
 		var client = wx.getSystemInfoSync();
-		console.log(client)
 		var clientWidth = client.windowWidth;
 		var clientHeight = client.windowHeight;
 		var radio = 355 / 800;
@@ -60,6 +57,13 @@ Page({
 			currentData: e.target.dataset.current
 		})
 	},
+	relunchByCity(e){
+		var city_id = e.currentTarget.dataset.city_id;
+		wx.reLaunch({
+			url:"/pages/index/index?city_id="+city_id
+		})
+
+	},
 	//获取活动数据
 	getActList() {
 		console.log('获取列表')
@@ -80,7 +84,7 @@ Page({
 		var data = {
 			'page': that.data.page,
 			'search': that.data.search,
-			'city': that.data.city,
+			'city_id': that.data.city,
 			'limit': that.data.limit
 		}
 		if (this.data.pageTotal == this.data.page) {
@@ -96,7 +100,8 @@ Page({
 					'actList': data,
 					isActStart: 1,
 					page: ++that.data.page,
-					pageTotal: res.data.pageTotal
+					pageTotal: res.data.pageTotal,
+					imgUrls:res.data.banner
 				})
 			} else {
 				app.showMsg('周二开启活动报名哦')

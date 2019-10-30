@@ -18,11 +18,13 @@
 			<view class="user_edit_input">
 				<form class="user_edit_form" id='formUser' bindsubmit="userInfoSubmit">
 					<view class="edit_input_div">
-						<view class="edit_item">昵称 </view><view class='width1rem'>|</view>
+						<view class="edit_item">昵称 </view>
+						<view class='width1rem'>|</view>
 						<view><input type="text" name="username" id="username" value="{{username}}" /></view>
 					</view>
 					<view class="edit_input_div">
-						<view class="edit_item">微信ID</view><view>|</view>
+						<view class="edit_item">微信ID</view>
+						<view>|</view>
 						<view><input type="text" id="wechat_id" placeholder="不是微信昵称哦" name="wechat_id" value="{{wechat_id}}" /></view>
 					</view>
 					<!-- <view class="edit_input_div">
@@ -30,21 +32,26 @@
 						<view><input type="text" id="phone" name="phone" value=""  /></view>
 					</view> -->
 					<view class="code_display edit_input_div">
-						<view class="edit_item">手机号</view><view class='width1rem'>|</view>
+						<view class="edit_item">手机号</view>
+						<view class='width1rem'>|</view>
 						<view style="display: flex;">
-							<input bindconfirm="isSendCode" bindinput="isSendCode" style="padding-left: 0;" type="number" id="code" name="mobile" value="{{mobile}}" />
-							<button id="send-code" style="line-height: 2rem;" type="warn" open-type="getPhoneNumber" class="answer-send-code" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+							<input bindconfirm="isSendCode" bindinput="isSendCode" style="padding-left: 0;" type="number" id="code" name="mobile"
+							 value="{{mobile}}" />
+							<button id="send-code" style="line-height: 2rem;" type="warn" open-type="getPhoneNumber" class="answer-send-code"
+							 bindgetphonenumber="getPhoneNumber">获取手机号</button>
 						</view>
 					</view>
 					<view class="code_display edit_input_div" wx:if="{{diyPhone}}">
-						<view class="edit_item" >验证码</view><view class='width1rem'>|</view>
+						<view class="edit_item">验证码</view>
+						<view class='width1rem'>|</view>
 						<view style="display: flex;">
-							<input style="padding-left: 0;" type="text" id="code" name="mcode"  placeholder="手机验证码" pattern="[0-9]{6}" value="" />
-							<view id="send-code" class="answer-send-code">获取验证码</view>
+							<input style="padding-left: 0;" bindconfirm="inputVerifyCode" bindinput="inputVerifyCode" type="number" id="code" name="mcode" placeholder="手机验证码" pattern="[0-9]{6}" value="" />
+							<view id="send-code" class="answer-send-code" bindtap="getVerifyCode">{{sendCodeText}}</view>
 						</view>
 					</view>
 					<view class="edit_input_div">
-						<view class="edit_item">性别 </view><view class='width1rem'>|</view>
+						<view class="edit_item">性别 </view>
+						<view class='width1rem'>|</view>
 						<view class="edit_sex_list" style='display: flex;'>
 							<view data-sex='1' class="edit_sex_box {{sex == 1?'edit_sex_box_select':''}}" bindtap='changeSex'>
 								男
@@ -59,23 +66,26 @@
 						<input type="number" style="display: none;" name='sex' value="{{sex}}" />
 					</view>
 					<view class="edit_input_div">
-						<view class="edit_item">生日 </view><view class='width1rem'>|</view>
-						<input style="display: none;" type="text"  id="birthday" name="birthday" value="{{birthDay?birthDay:''}}"  />
+						<view class="edit_item">生日 </view>
+						<view class='width1rem'>|</view>
+						<input style="display: none;" type="text" id="birthday" name="birthday" value="{{birthDay?birthDay:''}}" />
 						<view style="width: 60%;">
 							<picker mode="date" value="{{birthDay}}" class="datePicker" start="1960-09-01" bindchange="bindDateChange">
-							    <view class="datePicker">
+								<view class="datePicker">
 									{{birthDay}}
-							    </view>
-							  </picker>
+								</view>
+							</picker>
 						</view>
 					</view>
-					<view  style="margin-bottom: 7rem">
+					<view style="margin-bottom: 7rem">
 						<text class="grayTitle">个人简介</text>
 						<view>
-							<textarea class="question-item-list-text" placeholder="请填写个人简介" name="bio" value='{{bio}}'/>
-						</view>
+							<textarea class="question-item-list-text" placeholder="请填写个人简介" name="bio" value='{{bio}}' />
+							</view>
 					</view>
-					<button  disabled="{{isSave}}" class="edit_btn_box" form-type='submit'>保存</button>
+					<cover-view class="edit_btn_box">
+						<button  disabled="{{isSave}}" class="edit_btn_box" form-type='submit'>保存</button>
+					</cover-view>
 				</form>
 
 			</view>

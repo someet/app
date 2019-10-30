@@ -27,7 +27,7 @@ App({
 		})
 	},
 	loadTitle(title){
-		var t = typeof(title) == undefined?'正在努力加载...':title;
+		var t = typeof(title) == 'undefined'?'正在努力加载...':title;
 		wx.showLoading({
 			title: t,
 		})

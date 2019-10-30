@@ -31,7 +31,7 @@
 				<view>
 					<text wx:if="{{userInfo.profile.sex == 1}}">男</text>
 					<text wx:if="{{userInfo.profile.sex == 2}}">女</text>
-					<text wx:if="{{userInfo.profile.sex != 1 && userInfo.profile.sex != 2}}">外星人</text>
+					<text wx:if="{{userInfo.profile.sex != 1 && userInfo.profile.sex != 2}}">未知</text>
 				</view>
 				<view class="info-index-sexIcon">
 					<text wx:if="{{userInfo.profile.sex == 1}}" class="iconfont icon-nansheng"></text>
