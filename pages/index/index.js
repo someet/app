@@ -53,8 +53,13 @@ Page({
 	//点击切换，滑块index赋值
 	checkCurrent: function(e) {
 		const that = this;
+		var val = e.target.dataset.current
+		if(val =='category' || val == 'subscrib'){
+			app.showMsg('敬请期待')
+			return false
+		}
 		this.setData({
-			currentData: e.target.dataset.current
+			currentData:val
 		})
 	},
 	relunchByCity(e){
