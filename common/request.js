@@ -1,5 +1,5 @@
-const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
-// const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
+// const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
+const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
 // const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
 const request = {
 	header : {

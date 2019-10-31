@@ -51,6 +51,7 @@ Page({
 	},
 	onGetUserInfo(e) {
 		var idInfo = wx.getStorageSync('session')
+		var that = this
 		if (idInfo.unionid) {
 			var data = e.detail.userInfo
 			data.openid = idInfo.openid
@@ -58,10 +59,28 @@ Page({
 			data.session_key = idInfo.session_key
 			this.getUserInfo(data)
 		} else {
-			userFunc.checkUserInfo();
+			userFunc.checkUserInfo()
+			app.loadTitle('正在登录');
+			var pro = new Promise((resolve, reject) => {
+				console.log('正在登录')
+				let timer = setInterval(function() {
+					var user = userFunc.getUserInfo()
+					if (typeof(user.id) != 'undefined') {
+						resolve(user)
+					}
+
+				}, 500);
+			})
+			pro.then((res) => {
+				clearInterval(res);
+				app.hideLoad()
+				that.setData({
+					userInfo: res
+				})
+				that.getMyanswers();
+				that.getMyWeekAct();
+			})
 		}
-		this.getMyanswers();
-		this.getMyWeekAct();
 		//先获取openid 再查询是否存在 不存在则创建
 	},
 	getUserInfo(data) {
@@ -264,7 +283,7 @@ Page({
 	goInfo() {
 		var userInfo = userFunc.getUserInfo()
 		console.log(typeof(userInfo.id))
-		if(!this.data.userInfo || typeof(userInfo.id) == 'undefined' || userInfo.length == 0) {
+		if (!this.data.userInfo || typeof(userInfo.id) == 'undefined' || userInfo.length == 0) {
 			app.showMsg('登录过期')
 			this.setData({
 				userInfo: {
@@ -280,7 +299,7 @@ Page({
 	checkUserInfo() {
 		var userInfo = userFunc.getUserInfo()
 		console.log(userInfo)
-		if (!this.data.userInfo || typeof(userInfo.id) == 'undefined'|| userInfo.length == 0) {
+		if (!this.data.userInfo || typeof(userInfo.id) == 'undefined' || userInfo.length == 0) {
 			app.showMsg('登录过期')
 			this.setData({
 				userInfo: {

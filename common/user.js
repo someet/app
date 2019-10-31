@@ -42,7 +42,7 @@ const user = {
 						var unionid = idInfo.unionid;
 						console.log(req)
 						req.getUserInfo({'unionid':unionid}).then((res)=>{
-							if(res.data){
+							if(res.data.status == 1){
 								wx.setStorageSync('userInfo', res.data.data)
 							}else{
 								//不存在的用户，无法自动获取信息，则去个人中心时在绑定新的用户
