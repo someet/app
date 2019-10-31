@@ -234,7 +234,7 @@ Page({
   },
   //去个人编辑页面
   goInfo(){
-	  if(!userinfo){
+	  if(!this.data.userInfo){
 		  app.showMsg('需要先登录')
 		  return false;
 	  }

@@ -3,14 +3,14 @@
 		<view class="map_friend_album_box_div">
             <view class="map_friend_album_box">
                 <view class="map_friend_album_box_left map_upload_img">
-					<cover-image bindtap="uploadImg" data-id='my_head_img_1' src="{{my_head_img_1.headimgurl?my_head_img_1.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+					<cover-image bindtap="uploadImg" data-id='my_head_img_1' src="{{my_head_img_1?my_head_img_1:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                 </view>
                 <view class="map_friend_album_box_right">
                     <view class="map_friend_album_box_right_small map_upload_img">
-						<cover-image bindtap="uploadImg" data-id='my_head_img_2' src="{{my_head_img_2.headimgurl?my_head_img_2.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+						<cover-image bindtap="uploadImg" data-id='my_head_img_2' src="{{my_head_img_2?my_head_img_2:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                     </view>
                     <view class="map_friend_album_box_right_small map_upload_img">
-						<cover-image bindtap="uploadImg" data-id='my_head_img_3' src="{{my_head_img_3.headimgurl?my_head_img_3.headimgurl:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
+						<cover-image bindtap="uploadImg" data-id='my_head_img_3' src="{{my_head_img_3?my_head_img_3:'http://img.someet.cc/Fl5kZBKJtrrJw6hKKVQ24xXxd9YJ'}}" />
                     </view>
                 </view>
             </view>
@@ -54,7 +54,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{zy.length == 0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{zy.length == 0 || typeof(zy) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
@@ -76,7 +76,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{tsjn.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{tsjn.length ==0 || typeof(tsjn) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
@@ -97,7 +97,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{grsx.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{grsx.length ==0 || typeof(frsx) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
@@ -118,7 +118,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{tsjl.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{tsjl.length ==0 || typeof(tsjl) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
@@ -139,7 +139,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{rstd.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{rstd.length ==0 || typeof(rstd) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>
@@ -160,7 +160,7 @@
 			            </view>
 			            <view class="map_friend_profile_icon">
 			                <view class="map_friend_profile_icon_box">
-			                    <image class="{{ph.length ==0?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
+			                    <image class="{{ph.length ==0 ||typeof(ph) == 'undefined'?'edit_opacity':''}}" src="http://img.someet.cc/php37tPRV"></image>
 			                    <text class="iconfont icon-jiantou map_friend_profile_icon_box"></text>
 			                </view>
 			            </view>

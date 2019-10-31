@@ -34,5 +34,9 @@ App({
 	},
 	hideLoad(){
 		wx.hideLoading()
+	},
+	getWindowInfo(){
+		var client = wx.getSystemInfoSync();
+		return client;
 	}
 })

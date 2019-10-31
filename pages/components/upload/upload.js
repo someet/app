@@ -25,6 +25,13 @@ Page({
 				uploadType:data.type
 			})
 		});
+		var client = app.getWindowInfo()
+		if(client.windowWidth <400){
+			this.setData({
+				width:client.windowWidth,
+				height:client.windowWidth
+			})
+		}
 		//获取到image-cropper对象
 		this.cropper = this.selectComponent("#image-cropper");
 		this.uploadApi()

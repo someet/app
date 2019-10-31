@@ -12,13 +12,13 @@ Page({
 		my_head_img_1:'',
 		my_head_img_2:'',
 		my_head_img_3:'',
-		zy:{},
-		grsx:{},
-		rstd:{},
-		tsjl:{},
-		ph:{},
-		tsjn:{},
-		myUga:{},
+		zy:[],
+		grsx:[],
+		rstd:[],
+		tsjl:[],
+		ph:[],
+		tsjn:[],
+		myUga:[],
 		editFrom:'',
 		id:0
 	},
@@ -63,16 +63,16 @@ Page({
 			var album = userData.album
 			that.setData({
 				userInfo:userData,
-				zy:userData.usertags.zy,
-				grsx:userData.usertags.grsx,
-				rstd:userData.usertags.rstd,
-				tsjl:userData.usertags.tsjl,
-				ph:userData.usertags.ph,
-				tsjn:userData.usertags.tsjn,
+				zy:userData.usertags.zy || [],
+				grsx:userData.usertags.grsx || [],
+				rstd:userData.usertags.rstd || [],
+				tsjl:userData.usertags.tsjl || [],
+				ph:userData.usertags.ph ||[],
+				tsjn:userData.usertags.tsjn || [],
 				myUga:userData.uga,
-				my_head_img_1:album[0],
-				my_head_img_2:album[1],
-				my_head_img_3:album[2]
+				my_head_img_1:typeof(album[0]) == 'undefined'?'':album[0].headimgurl,
+				my_head_img_2:typeof(album[1]) == 'undefined'?'':album[1].headimgurl,
+				my_head_img_3:typeof(album[2]) == 'undefined'?'':album[2].headimgurl
 			})
 			app.hideLoad()
 			var userInfoComplete = wx.getStorageSync('userInfoComplete')
@@ -142,6 +142,7 @@ Page({
 				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
 				imgIndex: function(data) {
 				  console.log(data)
+					
 				  if(data.type == 'my_head_img_1'){
 					  that.setData({
 						  my_head_img_1:data.data

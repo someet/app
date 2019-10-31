@@ -1,5 +1,7 @@
 {
 	"disableScroll": false,
 	"enablePullDownRefresh":false,
-	"navigationBarTitleText":"信用记录"
+	"navigationBarTitleText":"信用记录",
+	"usingComponents": {
+	}
 }

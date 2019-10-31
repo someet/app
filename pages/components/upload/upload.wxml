@@ -1,6 +1,6 @@
 <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>
 <view class="uploadBtnBox">
-	<button bindtap="cancelUpload">取消</button>
-	<button bindtap="chooseUpload">选择图片</button>
-	<button catchtap='okUpload' type="primary">确定</button>
+	<view bindtap="cancelUpload">取消</view>
+	<view bindtap="chooseUpload">选择图片</view>
+	<view catchtap='okUpload' type="primary" style="background-color: #3e8f3e;">确定</view>
 </view>

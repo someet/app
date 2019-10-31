@@ -33,7 +33,7 @@ Component({
 			// 	url:'../map/map'
 			// })
 			wx.showToast({
-			  title: '程序猿大哥忙不过来了，敬请期待',
+			  title: '正在开发中，敬请期待',
 			  icon: 'none',
 			  duration: 2000
 			})
