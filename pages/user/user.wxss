@@ -61,9 +61,10 @@
 	margin-left: 0.8rem;
 }
 .getUserInfoButton{
-	width: 25%;
+	width: auto;
 	height: 2rem;
 	line-height: 2rem;
 	color: white;
-
+	font-size: 0.9rem;
+	max-width: 35%;
 }

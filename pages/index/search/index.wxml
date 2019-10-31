@@ -1,0 +1,33 @@
+<view class="page-body">
+	<!-- //轮播图上方遮罩层 -->
+	<view class="tabBack">
+		<view class='search'>
+			<input type='text' focus="true" confirm-type="搜索" bindconfirm="setSearch" placeholder="输入文章标题" />
+			<view type='primary' class='btn' bindtap="goBack">取消</view>
+		</view>
+	</view>
+	<view>
+		<scroll-view wx:if="{{actList.length >0}}" scroll-y scroll-into-view="{{toView}}" enable-back-to-top="true"
+		 bindscrolltolower="getActList" enable-back-to-top="true" style="padding-bottom: 0.8rem;height:{{scrollHeight}}px;">
+			<block wx:for="{{actList}}" wx:for-item="item" wx:key="index">
+				<navigator url="/pages/detail/detail?id={{item.id}}">
+					<!-- bindtap="gotDetail" data-aid="{{item.id}}" -->
+					<view class="activityList" style="background-image:url({{item.poster}});">
+						<view class="activityList-title" data-aid="{{item.id}}">
+							<text class="activityList-title-text" data-aid="{{item.id}}">{{item.title}}</text>
+							<text class="activityList-title-text" data-aid="{{item.id}}">{{item.desc}}</text>
+						</view>
+					</view>
+				</navigator>
+
+			</block>
+		</scroll-view>
+		<view wx:if="{{actList.length == 0}}" style="text-align: center;font-size: 2.5rem;margin-top: 9rem;">
+			<text wx:if="{{search}}">空空如也</text>
+			<text wx:if="{{!search}}">搜索点啥吧</text>
+		</view>
+	</view>
+</view>
+<view>
+	<bottom-nav isActive='act'></bottom-nav>
+</view>

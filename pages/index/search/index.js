@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var req = require('../../common/request.js');
+var req = require('../../../common/request.js');
 const app = getApp()
 Page({
 	data: {
@@ -20,7 +20,7 @@ Page({
 		'city': 2,
 		'page': 1,
 		'search': '',
-		limit: 10,
+		limit: 20,
 		pageTotal: 0
 	},
 	onLoad: function(options) {
@@ -40,17 +40,21 @@ Page({
 		})
 		var that = this
 		//请求数据
-		var list = that.getActList();
+		// var list = that.getActList();
 
 	},
+	setSearch(e){
+		console.log(e.detail)
+		this.setData({
+			search:e.detail.value
+		})
+		this.getActList();
+	},
 	searchAct() {
-		// wx.showToast({
-		// 	title: '还没做，先等着吧',
-		// 	icon: 'none',
-		// 	duration: 2000
-		// })
-		wx.navigateTo({
-			url:'/pages/index/search/index'
+		wx.showToast({
+			title: '还没做，先等着吧',
+			icon: 'none',
+			duration: 2000
 		})
 	},
 	//点击切换，滑块index赋值
@@ -95,6 +99,7 @@ Page({
 			'city_id': that.data.city,
 			'limit': that.data.limit
 		}
+		console.log(data)
 		if (this.data.pageTotal < this.data.page && this.data.pageTotal !=0) {
 			app.showMsg('没有了')
 			return false;
@@ -117,6 +122,11 @@ Page({
 					isActStart: 0
 				})
 			}
+		})
+	},
+	goBack(){
+		wx.navigateBack({
+			delta:1
 		})
 	}
 	//跳转页面

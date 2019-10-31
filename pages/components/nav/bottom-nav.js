@@ -26,7 +26,7 @@ Component({
 		var routers = getCurrentPages().route;
 		if(action == 'act' && routers !== 'pages/index/index'){
 			wx.switchTab({
-				url:'../index/index'
+				url:'/pages/index/index'
 			})
 		}else if(action == 'map' && routers !== 'pages/index/index'){
 			// wx.switchTab({
@@ -39,7 +39,7 @@ Component({
 			})
 		}else if(action == 'user' && routers !== 'pages/user/user'){
 			wx.switchTab({
-				url:'../user/user'
+				url:'/pages/user/user'
 			})
 		}
 	}

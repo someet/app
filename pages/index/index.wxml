@@ -6,21 +6,21 @@
 		<view class='tab  {{currentData == "subscrib" ? "tabBorer" : ""}}' data-current="subscrib" bindtap='checkCurrent'>订阅</view>
 		<view class='tab  {{currentData == "category" ? "tabBorer" : ""}}' data-current="category" bindtap='checkCurrent'>分类4</view>
 	</view>
-	<view class='swiperBanner' style="height: {{bannerHeight}}">
-		<view class='swiper_con' style="height: {{bannerHeight}}">
-			<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
-			 style="height: {{bannerHeight}}">
-				<block wx:for="{{imgUrls}}" wx:for-item="item" wx:key="*this">
-					<swiper-item bindtap="relunchByCity" data-city_id="{{item.city_id}}">
-						<image mode='widthFix' src="{{item.imgurl}}" class="slide-image" />
-					</swiper-item>
-				</block>
-			</swiper>
-		</view>
-	</view>
 	<view>
 		<scroll-view wx:if="{{actList.length >0}}" scroll-y scroll-into-view="{{toView}}" enable-back-to-top="true"
 		 bindscrolltolower="getActList" enable-back-to-top="true" style="padding-bottom: 0.8rem;height:{{scrollHeight}}px;">
+			<view class='swiperBanner' style="height: {{bannerHeight}}">
+				<view class='swiper_con' style="height: {{bannerHeight}}">
+					<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+					 style="height: {{bannerHeight}}">
+						<block wx:for="{{imgUrls}}" wx:for-item="item" wx:key="*this">
+							<swiper-item bindtap="relunchByCity" data-city_id="{{item.city_id}}">
+								<image mode='widthFix' src="{{item.imgurl}}" class="slide-image" />
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+			</view>
 			<block wx:for="{{actList}}" wx:for-item="item" wx:key="index">
 				<navigator url="/pages/detail/detail?id={{item.id}}">
 					<!-- bindtap="gotDetail" data-aid="{{item.id}}" -->

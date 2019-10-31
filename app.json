@@ -19,7 +19,8 @@
 	"pages/user/info/edit/addUga",
 	"pages/user/info/edit/useredit",
 	"pages/components/upload/upload",
-	"pages/user/feedback/feedback"
+	"pages/user/feedback/feedback",
+	"pages/index/search/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

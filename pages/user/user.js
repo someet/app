@@ -50,15 +50,10 @@ Page({
 		data.session_key = idInfo.session_key
 		this.getUserInfo(data)
 	}else{
-		console.log('31231')
 		userFunc.checkUserInfo();
-		console.log(12312312)
 	}
-  	try {
-	  // wx.setStorageSync('userInfoForSave', e.detail.userInfo)
-	} catch (e) {
-		
-	}
+  	this.getMyanswers();
+  	this.getMyWeekAct();
 	//先获取openid 再查询是否存在 不存在则创建
   },
   getUserInfo(data){
@@ -239,6 +234,10 @@ Page({
   },
   //去个人编辑页面
   goInfo(){
+	  if(!userinfo){
+		  app.showMsg('需要先登录')
+		  return false;
+	  }
 	  wx.navigateTo({
 		  url:'./info/info'
 	  })
