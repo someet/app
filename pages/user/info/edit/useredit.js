@@ -257,6 +257,7 @@ Page({
 		}
 	},
 	reqComplete(res,e){
+		userFunc.checkUserInfoComplete()
 		//设置完成用户是否完善信息
 		// userInfo.profile.birth_year = 
 		userFunc.setUserInfoByUnionId();
@@ -285,8 +286,11 @@ Page({
 		}else if(userInfoComplete == 'uga'){
 			// 跳转到填写uga 的页面从第一条开始
 			
+		}else if(userInfoComplete == 'baseInfo'){
+			wx.navigateTo({
+				url:'/pages/user/info/edit/edit'
+			})
 		}
-		userFunc.checkUserInfoComplete()
 	},
 	//日期选择
 	bindDateChange(e){

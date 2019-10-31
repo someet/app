@@ -23,6 +23,7 @@ Page({
 		id:0
 	},
 	onLoad(options){
+		user.checkUserInfoComplete()
 		var client = wx.getSystemInfoSync();
 		var clientHeight = client.windowWidth;
 		var id,that = this;
@@ -77,11 +78,11 @@ Page({
 			app.hideLoad()
 			var userInfoComplete = wx.getStorageSync('userInfoComplete')
 			if(userInfoComplete == 'tags'){
-				app.showMsg('请先完善标签信息')
+				app.showMsg('请完善标签信息')
 			}else if(userInfoComplete == 'uga'){
-				app.showMsg('请先完善uga问题')
+				app.showMsg('请完善uga问题')
 			}else if(userInfoComplete == 'baseInfo'){
-				app.showMsg('请先完善基本信息')
+				app.showMsg('请完善基本信息')
 			}
 		})
 	},

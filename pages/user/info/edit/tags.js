@@ -75,7 +75,7 @@ Page({
 			console.log(res)
 			console.log(res.data);
 			if(res.data.status == 1){
-				if(that.data.tagType != 6 && (tags.zy.length == 0)){
+				if(that.data.tagType != 6 && (tags.length == 0)){
 					var tagType = ++that.data.tagType
 					that.setData({
 						tagType:tagType
@@ -83,6 +83,7 @@ Page({
 					console.log(that.data.tagType,'++++++++',tagType)
 					that.getMyTags()
 				}else{
+					user.checkUserInfoComplete()
 					user.setUserInfoByUnionId()
 					wx.redirectTo({
 						url:'/pages/user/info/edit/edit'
@@ -109,7 +110,7 @@ Page({
 	},
 	// 获取单个分类标签的选取和未选取的标签
 	getMyTags(){
-		app.loadTitle('正在向母星获取数据')
+		app.loadTitle('正在获取数据')
 		const that = this
 		req.getMyTags(this.data.tagType).then((res)=>{
 			const data = res.data.data;

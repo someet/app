@@ -120,14 +120,31 @@ Page({
 				isSave:0
 			})
 			if(res.data.status == 1){
+				user.checkUserInfoComplete()
 				app.hideLoad()
 				var data = res.data.data
-				const eventChannel = this.getOpenerEventChannel()
-				eventChannel.emit('changeUgaById',data);
-				user.setUserInfoByUnionId();
-				wx.navigateBack({
-				  delta: 1
-				})
+				var userInfoComplete = user.checkUserInfoComplete();
+				if(userInfoComplete == 'complete'){
+					var userFrom = wx.getStorageSync('editUserFrom')
+					if(userFrom.fromPage == 'act'){
+						//跳转到活动页面之前删除保存的from 信息
+						wx.removeStorageSync('editFrom')
+						wx.redirectTo({
+							url:'/pages/details/detail?id='+userFrom.id
+						})
+					}else{
+						wx.redirectTo({
+							url:'/pages/user/info/edit/edit'
+						})
+					}
+				}else{
+					const eventChannel = this.getOpenerEventChannel()
+					eventChannel.emit('changeUgaById',data);
+					user.setUserInfoByUnionId();
+					wx.navigateBack({
+					  delta: 1
+					})
+				}
 			}
 		})
 	}

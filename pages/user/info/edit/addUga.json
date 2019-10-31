@@ -1,4 +1,6 @@
 {
 	"disableScroll": false,
-    "navigationBarTitleText": "编辑问题"
+    "navigationBarTitleText": "编辑问题",
+	"usingComponents": {
+	}
 }
