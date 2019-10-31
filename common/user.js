@@ -97,6 +97,7 @@ const user = {
 		} catch (e) {
 		  // Do something when catch error
 		}
+		return []
 	},
 	setUserInfoByUnionId(){
 		var idInfo = wx.getStorageSync('session')
