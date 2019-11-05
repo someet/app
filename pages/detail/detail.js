@@ -135,7 +135,11 @@ Page({
 		var userInfoComplete = user.checkUserInfoComplete()
 		if (this.data.isLogin == 0 || !this.data.isLogin) {
 			app.showMsg('请先登录')
-			wx.navigateTo({
+			wx.setStorageSync('editUserFrom', {
+				'fromPage': 'act',
+				id: that.data.id
+			})
+			wx.switchTab({
 				'url': '/pages/user/user'
 			})
 			return false
@@ -259,7 +263,7 @@ Page({
 			})
 			return false
 		}
-		req.startAnswer(data).then((res) => {
+		req.startAnswer().then((res) => {
 			console.log(res)
 			if (res.success == 0) {
 				wx.showToast({

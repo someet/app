@@ -1,0 +1,62 @@
+<view class="content">
+	<view>
+		<view class="re-title">
+			你遇到了什么问题？
+		</view>
+		<view class="re-type-area" bindtap="showReason">
+			<view id="change-text" style="display: inline-block;">
+				点击选择遇到的问题
+			</view>
+			<view style="float: right;">
+				<view class="iconfont icon-shouzhi white block-icon member-top-box-right" style="font-size: 0.98rem;padding-right: 1rem;"></view>
+			</view>
+		</view>
+		<view wx:if="{{showReason}}" style="width: 80%;margin: auto;">
+			<view class="re-type re-type-select {{type == 1?'selected':''}}" data-type="1" bindtap="selectedType">
+				我要提供产品反馈、报告错误
+			</view>
+			<view class="m-line" style="padding-right: 1rem;" id="founder-line">
+				<view class="m-line-desc"></view>
+			</view>
+			<view class="re-type re-type-select {{type == 2?'selected':''}}" data-type="2" bindtap="selectedType">
+				有人发送骚扰营销广告
+			</view>
+			<view class="m-line" style="padding-right: 1rem;" id="founder-line">
+				<view class="m-line-desc"></view>
+			</view>
+			<view class="re-type re-type-select {{type == 3?'selected':''}}" data-type="3" bindtap="selectedType">
+				有人发送色情低俗内容
+			</view>
+			<view class="m-line" style="padding-right: 1rem;" id="founder-line">
+				<view class="m-line-desc"></view>
+			</view>
+			<view class="re-type re-type-select {{type == 4?'selected':''}}" data-type="4" bindtap="selectedType">
+				有人恶意骚扰发送不文明内容
+			</view>
+			<view class="m-line" style="padding-right: 1rem;" id="founder-line">
+				<view class="m-line-desc"></view>
+			</view>
+			<view class="re-type re-type-select {{type == 5?'selected':''}}" data-type="5" bindtap="selectedType">
+				我发现了疑似传销、违规直销等行为
+			</view>
+		</view>
+		<view class="re-content-title">
+			为了更好的帮你解决问题，请详细说明一下你遇到的问题
+		</view>
+		<form bindsubmit="reportSubmit">
+			<textarea style="-webkit-appearance: none;" name="content" id="content" class="re-content" placeholder=""></textarea>
+			<view class="re-img-title">
+				上传照片（产品截图、聊天记录等）
+			</view>
+			<view style="margin-left: 2rem;margin-bottom: 3rem;" id="imgArea" bindtap="uploadImage">
+				<view class="re-update-fimg" style="margin-left: 0;">
+					<image id="uploadImg" class="ub_upload_img" src="{{reportImg?reportImg:'http://img.someet.cc/FuW797BB5iSrhOFjax53HBvZ-Lbv?imageView2/2/w/800'}}"
+					 style="width: 100%;height: 100%;" />
+				</view>
+			</view>
+			<button class="report-submit" form-type="submit">
+				提交
+			</button>
+		</form>
+	</view>
+</view>

@@ -28,6 +28,7 @@ Page({
 		}
 	},
 	onLoad() {
+		var userInfoComplete = userFunc.checkUserInfoComplete()
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
 		var idInfo = wx.getStorageSync('session')
@@ -84,7 +85,7 @@ Page({
 		//先获取openid 再查询是否存在 不存在则创建
 	},
 	getUserInfo(data) {
-		console.log(data)
+		console.log('cssssssss')
 		var that = this;
 		if (this.data.isGetInfo) {
 			app.showMsg('请稍后')
@@ -97,6 +98,7 @@ Page({
 		req.createUser(data).then((res) => {
 			console.log(res)
 			if (res.data.status == 1) {
+				userFunc.setUserInfo(res.data.data)
 				that.setData({
 					userInfo: res.data.data,
 					isGetInfo: 0
@@ -104,6 +106,22 @@ Page({
 				if (!checkInfo.id) {
 					userFunc.checkUserInfo()
 				}
+				var userInfoComplete = userFunc.checkUserInfoComplete();
+				var editUserFrom = wx.getStorageSync('editUserFrom');
+				console.log(editUserFrom)
+				if(userInfoComplete == 'baseInfo' && (editUserFrom && editUserFrom.fromPage == 'act')){
+					//跳转到编辑信息也
+					wx.navigateTo({
+						url:'/pages/user/info/edit/useredit',
+						events:{
+						},
+						success(res){
+							res.eventChannel.emit('editUserFrom', editUserFrom)
+						}
+					})
+				}
+				that.getMyanswers();
+				that.getMyWeekAct();
 			}
 		})
 	},

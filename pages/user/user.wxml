@@ -5,7 +5,8 @@
 		<image src='https://m.someet.cc/image/common/me.png' mode="widthFix" style="width: 100%;"></image>
 		<!-- 头像 -->
 		<view class="member-top-box-header">
-			<image src='{{userInfo.headimgurl?userInfo.headimgurl:"http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0"}}' mode="widthFix" style="width: 100%;"></image>
+			<image src='{{userInfo.headimgurl?userInfo.headimgurl:"http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0"}}'
+			 mode="widthFix" style="width: 100%;"></image>
 		</view>
 		<!-- 右箭头 -->
 		<view class="iconfont icon-jiantou white block-icon member-top-box-right" bindtap="goInfo"></view>
@@ -15,13 +16,12 @@
 		<text>{{userInfo.username}}</text>
 	</view>
 	<view class="member-top-box-username" wx:if="{{!userInfo.id}}">
-		<button type="primary" class="getUserInfoButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"> 快速登录 </button>
-	</view>	
+		<button type="primary" class="getUserInfoButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo"> 快速登录
+		</button>
+	</view>
 	<view class="member-top-box-grayBack" wx:if="{{userInfo.id}}">
 		<!-- 我报名的活动 -->
-		<navigator
-			url="/pages/user/answer/answer"
-		  >
+		<navigator url="/pages/user/answer/answer">
 			<view class="iconfont icon-rili white block-icon member-top-box-answer">
 				<text>我报名的活动</text>
 			</view>
@@ -31,9 +31,7 @@
 			<scroll-view scroll-y="isScroll" style="height: 9rem;" bindscrolltolower="getMyanswers" lower-threshold="60">
 				<block wx:for="{{myAnswer}}" wx:for-item="item" wx:key="index">
 					<view class="member-top-box-scroll-answers">
-						<navigator
-							url="/pages/detail/detail?id={{item.activity_id}}"
-						  >
+						<navigator url="/pages/detail/detail?id={{item.activity_id}}">
 							<!-- 上面信息 -->
 							<view class="member-top-box-scroll-answers-box">
 								<!-- 活动封面和名称 -->
@@ -65,7 +63,8 @@
 								</view>
 							</view>
 							<!-- 操作按钮 -->
-							<view wx:if="{{item.status == 10 && item.apply_status == 0}}" bindtap="cancelAnswer" data-aid="{{item.id}}" class="member-top-box-opration-btn">
+							<view wx:if="{{item.status == 10 && item.apply_status == 0}}" bindtap="cancelAnswer" data-aid="{{item.id}}"
+							 class="member-top-box-opration-btn">
 								取消报名
 							</view>
 							<view wx:if="{{item.status == 20 && item.leave_status == 0}}" bindtap="leaveAnswer" data-aid="{{item.id}}" class="member-top-box-opration-btn">
@@ -78,9 +77,7 @@
 		</view>
 		<view>
 			<!-- 我发起的活动 -->
-			<navigator
-				url="/pages/user/founder/founder"
-			  >
+			<navigator url="/pages/user/founder/founder">
 				<view class="iconfont icon-rili white block-icon member-top-box-answer">
 					<text>我发起的活动</text>
 				</view>
@@ -126,9 +123,7 @@
 			</view>
 			<view class="member-line"></view>
 			<!-- 信用记录 -->
-			<navigator
-				url="/pages/user/other/yellowcard"
-			  >
+			<navigator url="/pages/user/other/yellowcard">
 				<view class="iconfont icon-cc-card white block-icon member-top-box-answer">
 					<text>信用记录</text>
 				</view>
@@ -140,9 +135,11 @@
 			</view>
 			<view class="member-line"></view>
 			<!-- 举报于反馈 -->
-			<view class="iconfont icon-jubao white block-icon member-top-box-answer">
-				<text>举报与反馈</text>
-			</view>
+			<navigator url="/pages/user/other/report">
+				<view class="iconfont icon-jubao white block-icon member-top-box-answer" style="margin-bottom: 3.5rem;">
+					<text>举报与反馈</text>
+				</view>
+			</navigator>
 			<view class="member-line"></view>
 		</view>
 	</view>

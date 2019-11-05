@@ -16,7 +16,7 @@ const user = {
 								idInfo = res.data
 								//检查是否保存了用户信息
 								var userInfo = wx.getStorageSync('userInfo')
-								if(typeof(userInfo) == undefined || !userInfo.id){
+								if(typeof(userInfo) == undefined || !userInfo.id || typeof(userInfo.profile)=="undefined" || !user.profile){
 									//查询用户信息并保存
 									// 正式服务使用unioid 测试服务无法绑定开放平台
 									var unionid = idInfo.unionid;
@@ -36,7 +36,7 @@ const user = {
 					//检查是否保存了用户信息
 					var userInfo = wx.getStorageSync('userInfo')
 					console.log(userInfo)
-					if(typeof(userInfo) == undefined || !userInfo.id){
+					if(typeof(userInfo) == undefined || !userInfo.id || typeof(userInfo.profile)=="undefined" || !user.profile){
 						//查询用户信息并保存
 						// 正式服务使用unioid 测试服务无法绑定开放平台
 						var unionid = idInfo.unionid;
@@ -65,7 +65,7 @@ const user = {
 		    			wx.setStorageSync('session', res.data)
 						var idInfo = res.data
 						var userInfo = wx.getStorageSync('userInfo')
-						if(typeof(userInfo) == undefined || !userInfo.id){
+						if(typeof(userInfo) == undefined || !userInfo.id|| typeof(userInfo.profile)=="undefined" || !user.profile){
 							//查询用户信息并保存
 							// 正式服务使用unioid 测试服务无法绑定开放平台
 							var unionid = idInfo.unionid;
@@ -127,6 +127,7 @@ const user = {
 		if(!value.wechat_id || !value.mobile){
 			userInfoComplete = 'baseInfo'
 		}
+		console.log(value.wechat_id,value.mobile)
 		wx.setStorageSync('userInfoComplete', userInfoComplete)
 		return userInfoComplete;
 	},

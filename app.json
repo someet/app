@@ -14,6 +14,7 @@
 	"pages/user/answer/finish/finish",
 	"pages/user/info/edit/edit",
 	"pages/user/other/yellowcard",
+	"pages/user/other/report",
 	"pages/user/other/appeal",
 	"pages/user/info/edit/tags",
 	"pages/user/info/edit/addUga",

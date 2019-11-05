@@ -1,0 +1,7 @@
+{
+	"disableScroll": false,
+	"enablePullDownRefresh":false,
+	"navigationBarTitleText":"举报与反馈",
+	"usingComponents": {
+	}
+}

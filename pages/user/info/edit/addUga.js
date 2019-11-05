@@ -124,7 +124,7 @@ Page({
 				app.hideLoad()
 				var data = res.data.data
 				var userInfoComplete = user.checkUserInfoComplete();
-				if(userInfoComplete == 'complete'){
+				if(userInfoComplete == 'complete' || userInfoComplete == 'uga'){
 					var userFrom = wx.getStorageSync('editUserFrom')
 					if(userFrom.fromPage == 'act'){
 						//跳转到活动页面之前删除保存的from 信息

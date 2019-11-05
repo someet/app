@@ -65,6 +65,8 @@ page{
 }
 .question-item-list-answer textarea{
 	color:black;
+	width: 90%;
+	padding: 5px;
 }
 .question-next{
 	background-color: red;

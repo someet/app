@@ -1,0 +1,101 @@
+/*举报开始*/
+.report-submit {
+    position: fixed;
+    bottom: 0;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 100%;
+    background-color: #e7374c;
+    color: white;
+}
+.re-title {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+.re-update-fimg {
+    width: 4rem;
+    margin-top: 1rem;
+    display: inline-block;
+    height: 4rem;
+}
+
+.re-update-img {
+    width: 4rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    display: inline-block;
+    height: 4rem;
+}
+.re-type-li {
+    font-size: 1rem;
+    float: right;
+    margin-right: 1rem;
+    margin-top: 0.7rem;
+}
+#type-hide {
+    display: none;
+}
+.re-content {
+    background-color: #fff;
+    margin: auto;
+    width: 80%;
+    height: 6rem;
+    display: block;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    border-color: #fff;
+    resize: none;
+    font-size: 0.65rem;
+    line-height: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+	border: 1px solid black;
+}
+.m-line{
+    padding-left: 1rem;
+    background: #fff;
+}
+.m-line-desc{
+    border-bottom: 1px solid #F0F0F0;
+    width: 100%;
+    margin-right: auto;
+}
+.re-img-title {
+    width: 80%;
+    margin: auto;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+}
+.re-content-title {
+    margin: auto;
+    margin-top: 1.5rem;
+    width: 80%;
+    line-height: 1.1rem;
+    font-size: 0.8rem;
+}
+.re-type-select {
+    line-height: 2rem;
+    height: 2rem;
+    text-align: left;
+    background-color: #fff;
+    font-size: 0.75rem;
+    padding-left: 1rem;
+}
+.re-type-area {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background-color: #ddd;
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    padding-left: 1rem;
+    font-size: 0.75rem;
+    border-radius: 0.3rem;
+}
+.selected{
+	background-color: red;
+	color: white;
+}
+/*举报结束*/

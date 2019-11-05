@@ -26,6 +26,7 @@ Page({
 	onLoad(options){
 		const that = this
 		var checkInfo = wx.getStorageSync('userInfo')
+		console.log(checkInfo)
 		var id = checkInfo.id
 		const eventChannel = that.getOpenerEventChannel()
 		//保存是否从活动报名提醒完善信息过来，详情页可能是 跳转而不是二级页面，暂时不用 
@@ -107,8 +108,10 @@ Page({
 	// 获取个人信息
 	getUserInfo(){
 		const that = this
-		app.loadTitle('正在保存...')
-		req.getBaseInfo(0).then((res)=>{
+		var userInfo = userFunc.getUserInfo();
+		var uid = userInfo.id || 0
+		app.loadTitle('正在获取...')
+		req.getBaseInfo(uid).then((res)=>{
 			console.log(res)
 			app.hideLoad()
 			var data = res.data.data
@@ -257,40 +260,69 @@ Page({
 		}
 	},
 	reqComplete(res,e){
-		userFunc.checkUserInfoComplete()
-		//设置完成用户是否完善信息
-		// userInfo.profile.birth_year = 
+		var userInfo = userFunc.getUserInfo();
+		userInfo.wechat_id = e.detail.value.wechat_id;
+		userInfo.mobile = e.detail.value.mobile
+		userFunc.setUserInfo(userInfo);
 		userFunc.setUserInfoByUnionId();
-		//检查是否是报名活动完善信息
-		var userInfoComplete = userFunc.checkUserInfoComplete();
-		if(userInfoComplete == 'complete'){
-			// 检查是否是从活动报名过lai/
-			var userFrom = wx.getStorageSync('editUserFrom')
-			if(userFrom.fromPage == 'act'){
-				//跳转到活动页面之前删除保存的from 信息
-				wx.removeStorageSync('editFrom')
-				wx.redirectTo({
-					url:'/pages/details/detail?id='+userFrom.id
-				})
-			}
-		}else if(userInfoComplete == 'tags'){
-			// 跳转到填写标签页面,从第一页开始
-			wx.navigateTo({
-				url:'/pages/user/info/edit/tags',
-				events:{
-				},
-				success(res){
-					res.eventChannel.emit('tagType',{data:1,'method':1})
+		
+		//检查用户完成情况
+		req.checkUserInfoComplete().then((res)=>{
+			var data = res.data;
+			console.log(res.data)
+			if(data.status == 0){
+				var userInfoComplete = data.type
+				if(userInfoComplete == 'complete'){
+					// 检查是否是从活动报名过lai/
+					var userFrom = wx.getStorageSync('editUserFrom')
+					if(userFrom.fromPage == 'act'){
+						//跳转到活动页面之前删除保存的from 信息
+						wx.removeStorageSync('editFrom')
+						wx.redirectTo({
+							url:'/pages/details/detail?id='+userFrom.id
+						})
+					}
+				}else if(userInfoComplete == 'tags'){
+					// 跳转到填写标签页面,从第一页开始
+					wx.navigateTo({
+						url:'/pages/user/info/edit/tags',
+						events:{
+						},
+						success(res){
+							res.eventChannel.emit('tagType',{data:1,'method':1})
+						}
+					})
+				}else if(userInfoComplete == 'uga'){
+					// 跳转到填写uga 的页面从第一条开始
+					var id = 0
+					var type = 'add'
+					var that = this
+					wx.navigateTo({
+						url:'/pages/user/info/edit/addUga',
+						events:{
+						},
+						success(res){
+							res.eventChannel.emit('editUgaIndex', { 'type': type,'id':id })
+						}
+					})
+				}else{
+					wx.navigateTo({
+						url:'/pages/user/info/edit/edit'
+					})
 				}
-			})
-		}else if(userInfoComplete == 'uga'){
-			// 跳转到填写uga 的页面从第一条开始
-			
-		}else if(userInfoComplete == 'baseInfo'){
-			wx.navigateTo({
-				url:'/pages/user/info/edit/edit'
-			})
-		}
+			}
+		})
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	},
 	//日期选择
 	bindDateChange(e){

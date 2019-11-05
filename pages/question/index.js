@@ -54,6 +54,9 @@ Page({
 				isClickUpload:true
 			})
 			wx.chooseImage({
+				count: 1,
+				sizeType: ['compressed'],
+				sourceType: ['album', 'camera'],
 				success (res) {
 					const tempFilePaths = res.tempFilePaths
 					wx.uploadFile({
@@ -76,7 +79,7 @@ Page({
 					})
 				},
 				fail(res){
-					this.data.isClickUpload = false
+					that.data.isClickUpload = false
 				}
 			})
 		}else{

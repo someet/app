@@ -1,5 +1,6 @@
-// const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
-const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
+const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
+// const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
+var userFunc = require('./user.js');
 // const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
 const request = {
 	header : {
@@ -113,13 +114,13 @@ const request = {
 		})
 	},
 	//开始报名流程
-	startAnswer(data){
+	startAnswer(){
 		var that = this;
 		return new Promise((resolve,reject)=>{
 			wx.request({
 				header:that.getHeader(),
 				method:'post',
-				data:data,
+				data:{},
 			  	url:baseApiUrl+'/answer/create',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
@@ -562,6 +563,19 @@ const request = {
 				data:data,
 				method:'post',
 				url:baseApiUrl+'/user/verify-code',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//check userinfo complete
+	checkUserInfoComplete(){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				url:baseApiUrl+'/user/check-userinfo-complete',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})
