@@ -5,7 +5,7 @@
 		</view>
 		<view class="re-type-area" bindtap="showReason">
 			<view id="change-text" style="display: inline-block;">
-				点击选择遇到的问题
+				{{selectText?selectText:'点击选择遇到的问题'}}
 			</view>
 			<view style="float: right;">
 				<view class="iconfont icon-shouzhi white block-icon member-top-box-right" style="font-size: 0.98rem;padding-right: 1rem;"></view>
@@ -44,7 +44,7 @@
 			为了更好的帮你解决问题，请详细说明一下你遇到的问题
 		</view>
 		<form bindsubmit="reportSubmit">
-			<textarea style="-webkit-appearance: none;" name="content" id="content" class="re-content" placeholder=""></textarea>
+			<textarea style="-webkit-appearance: none;" name="content" id="content" class="re-content" placeholder="请尽可能详细的描述您的举报，如果只是情绪化发泄并不会让我们帮您尽快的解决问题"></textarea>
 			<view class="re-img-title">
 				上传照片（产品截图、聊天记录等）
 			</view>

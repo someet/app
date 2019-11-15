@@ -1,5 +1,5 @@
-const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
-// const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
+// const baseApiUrl = 'http://mac.ngrok.wdevelop.cn/v1'; //imac 测试连接
+const baseApiUrl = 'https://someetapi.someet.cc/v1'; //测试服 测试连接
 var userFunc = require('./user.js');
 // const baseApiUrl = 'http://dubin.ngrok.wdevelop.cn/v1'  //mac air 测试连接
 const request = {
@@ -506,6 +506,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
+				method:'post',
 				url:baseApiUrl+'/answer/add-user-feedback',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
@@ -576,6 +577,33 @@ const request = {
 				header:that.getHeader(),
 				method:'get',
 				url:baseApiUrl+'/user/check-userinfo-complete',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//提交APP反馈
+	subReport(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				url:baseApiUrl+'/user/sub-report',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取反馈用户
+	getFeedBackAnswers(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:data,
+				url:baseApiUrl+'/answer/get-fusers',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

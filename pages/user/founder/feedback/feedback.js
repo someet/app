@@ -30,7 +30,7 @@ Page({
 		var that = this
 		req.getFeedBackAnswer(data).then((res) => {
 			console.log(res)
-			if (res.data.status == 1) {
+			if (res.data.status == 1 && res.data.length >0) {
 				var act = res.data.act
 				act.time = util.formatTimeSingle(act.start_time) + '-' + util.formatTimeSingle(act.end_time)
 				that.setData({
@@ -38,6 +38,8 @@ Page({
 					badUnselect: res.data.data,
 					act:act
 				})
+			}else{
+				// app.showMsg('没有报名用户')
 			}
 			app.hideLoad()
 		})

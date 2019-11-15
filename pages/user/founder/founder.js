@@ -4,6 +4,7 @@ Page({
 	data: {
 		activeTab:'all',
 		screenHeight:0,
+		screenHeightForH:0,
 		weekList:[],
 		historyList:[],
 		weekPage:1,
@@ -46,13 +47,22 @@ Page({
 		wx.getSystemInfo({
 			success (res) {
 				that.setData({
-					screenHeight:(res.windowHeight - res.statusBarHeight - 48 - 32 - 48)/2
+					screenHeight:(res.windowHeight - res.statusBarHeight - 48 - 32 - 48)/3,
+					screenHeightForH:(res.windowHeight - res.statusBarHeight - 48 - 32 - 48)/1.5
+					
 				})
 				console.log(that.data.screenHeight)
 			}
 		})
 		this.getWeekAct()
 		this.getHistoryAct()
+	},
+	//查看该活动的反馈列表
+	feedbackList(e){
+		var id = e.currentTarget.dataset.id;
+		wx.navigateTo({
+			url:'/pages/user/founder/feedback/flist?id='+id,
+		})
 	},
 	//预览活动
 	goPreview(e){

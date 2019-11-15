@@ -7,6 +7,7 @@
     "pages/user/founder/founder",
 	"pages/user/founder/filter",
 	"pages/user/founder/feedback/feedback",
+	"pages/user/founder/feedback/flist",
 	"pages/user/answer/answer",
     "pages/map/map",
     "pages/test/test",

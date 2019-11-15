@@ -1,0 +1,9 @@
+{
+	"disableScroll": false,
+	"enablePullDownRefresh":false,
+	"backgroundTextStyle": "light",
+	"navigationBarBackgroundColor": "#fff",
+	"navigationBarTitleText": "反馈列表",
+	"navigationBarTextStyle": "black",
+	"usingComponents": {}
+}

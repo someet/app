@@ -68,7 +68,7 @@
 			拒绝{{rejectList.length}}
 		</view>
 		<view class="filter-tab-item {{selectedItem == 'cancel'?'filter-tab-item-selected':''}}" data-item='cancel' bindtap="changeItem">
-			不能到场{{leaveList.length}}
+			异常{{leaveList.length}}
 		</view>
 	</view>
 	<!-- //切换兰的内容 -->

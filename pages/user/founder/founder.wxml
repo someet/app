@@ -23,7 +23,7 @@
 				<block wx:for="{{weekList}}" wx:for-item="item" wx:key="index">
 					<view class="member-top-box-scroll-answers founder-bottom-box">
 						<navigator
-							url="/pages/detail/detail?id=1"
+							url="/pages/detail/detail?id={{item.id}}"
 						  >
 							<!-- 上面信息 -->
 							<view class="member-top-box-scroll-answers-box">
@@ -35,7 +35,7 @@
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">{{item.title}}</text>
+									<text class="member-top-box-title-name smallFont">{{item.title}}</text>
 									<!-- 活动时间 -->
 									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>
@@ -67,7 +67,7 @@
 			<view class="history-text">
 				- 历史活动 - 
 			</view>
-			<scroll-view id='history-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;" bindscrolltolower="getHistoryAct" lower-threshold="30">
+			<scroll-view id='history-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeightForH}}px;" bindscrolltolower="getHistoryAct" lower-threshold="30">
 				<block wx:for="{{historyList}}" wx:for-item="item" wx:key="index">
 					<view class="member-top-box-scroll-answers founder-bottom-box">
 						<navigator
@@ -78,12 +78,12 @@
 								<!-- 活动封面和名称 -->
 								<view class="member-top-box-poster">
 									<!-- 活动封面 -->
-									<image style="width: 4rem;height: 4rem;" src="http://wx.qlogo.cn/mmopen/vzAKoibQibtY29G6s1FghgETw6ibia5lp56F6GA6BgdOzYclUQswwMMnEIaStlSOsjFPUs76KOEqGSoRVib14icu094w/0" mode="widthFix"></image>
+									<image style="width: 4rem;height: 4rem;" src="{{item.poster}}" mode="aspectFill"></image>
 								</view>
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">{{item.title}}</text>
+									<text class="member-top-box-title-name smallFont">{{item.title}}</text>
 									<!-- 活动时间 -->
 									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>
@@ -95,8 +95,8 @@
 							<!-- 状态栏 -->
 							<view wx:if="{{item.status == 20 || item.status == 30}}" class="member-top-box-opration-status-flex" data-id="{{item.id}}">
 								<view class="answer-btn">
-									<view class="member-top-box-opration-status-flex" data-id="{{item.id}}">
-										待评价
+									<view class="member-top-box-opration-status-flex" bindtap="feedbackList" data-id="{{item.id}}">
+										查看反馈
 									</view>
 								</view>
 								<view class="answer-btn">

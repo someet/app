@@ -42,7 +42,7 @@
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">{{item.activity.title}}</text>
+									<text class="member-top-box-title-name smallFont">{{item.activity.title}}</text>
 									<!-- 活动时间 -->
 									<text class="member-top-box-title-time">{{item.activity.start_time}} - {{item.activity.end_time}}</text>
 								</view>
@@ -97,7 +97,7 @@
 								<!-- 活动名称 -->
 								<view class="member-top-box-title">
 									<!-- 活动名称 -->
-									<text class="member-top-box-title-name">{{item.title}}</text>
+									<text class="member-top-box-title-name smallFont">{{item.title}}</text>
 									<!-- 活动时间 -->
 									<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
 								</view>

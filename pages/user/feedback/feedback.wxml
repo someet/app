@@ -21,7 +21,7 @@
 		</view>
 		<view class="feedback-bottom">
 			<!-- 反馈内容 -->
-			<textarea bindblur="bindTextAreaBlur" bindinput="bindTextAreaBlur" class="feedback-textarea" name="feedback" id="" placeholder="发起人就等着你的鼓励/建议呢,要吐槽也没有关系~" placeholder-style="color:gray;"></textarea>
+			<textarea bindblur="bindTextAreaBlur" bindinput="bindTextAreaBlur" class="feedback-textarea" name="feedback" id="" placeholder="发起人就等着你的鼓励/建议呢,要吐槽也没有关系~" placeholder-style="color:gray;" style="width:95%;"></textarea>
 		</view>
 		<view class="feedback-upload feedback-bottom">
 			<view class="feedback-upload-box" data-type='feedback' bindtap="uploadImg">
@@ -35,7 +35,7 @@
 		<view class="feedback-bottom">
 			<view style="margin-bottom: 1rem;">你愿意将这个活动推荐给别人吗?（10分满分）</view>
 			<view class="feedback-records">
-				<view wx:for="{{actRecordsTotal}}" wx:key="index" wx:for-item="item" class="feedback-records-number {{actRecords >= item && actRecords!==''?'feedback-records-number-select':''}}" bindtap="changeActRecords" data-val="{{item+1}}">{{item+1}}</view>
+				<view wx:for="{{actRecordsTotal}}" wx:key="index" wx:for-item="item" class="feedback-records-number {{actRecords >= item+1 && actRecords!==''?'feedback-records-number-select':''}}" bindtap="changeActRecords" data-val="{{item+1}}">{{item+1}}</view>
 
 			</view>
 		</view>
@@ -81,7 +81,7 @@
 			<view style="margin-bottom: 1rem;">你觉得发起人怎么样呢（10分满分）</view>
 			<view class="feedback-records">
 				
-				<view wx:for="{{founderRecordsTotal}}" wx:key="index" wx:for-item="item" class="feedback-records-number {{founderRecords >= item && founderRecords!==''?'feedback-records-number-select':''}}" bindtap="changeFounderRecords" data-val="{{item+1}}">{{item+1}}</view>
+				<view wx:for="{{founderRecordsTotal}}" wx:key="index" wx:for-item="item" class="feedback-records-number {{founderRecords >= item+1 && founderRecords!==''?'feedback-records-number-select':''}}" bindtap="changeFounderRecords" data-val="{{item+1}}">{{item+1}}</view>
 				
 			</view>
 		</view>

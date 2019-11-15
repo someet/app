@@ -273,8 +273,8 @@ Page({
 				})
 				that.is_click = false;
 			} else {
-				if (res.status == 1) {
-					if (typeof(res.is_set_question) != undefined && res.is_set_question == 1) {
+				if (res.data.status == 1) {
+					if (typeof(res.data.is_set_question) != undefined && res.data.is_set_question == 1) {
 						//跳转回答问题页面
 						wx.navigateTo({
 							url: '../question/index?id=' + that.data.id
@@ -283,7 +283,7 @@ Page({
 						//未设置问题则直接生成报名记录
 						console.log(res)
 						that.is_click = false;
-						if (res.status == 1) {
+						if (res.data.status == 1) {
 							//跳转到报名成功页面
 							wx.redirectTo({
 								url: '/pages/user/answer/finish/finish'

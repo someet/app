@@ -1,0 +1,25 @@
+<view>
+	<navigator url="/pages/detail/detail?id={{id}}">
+		<view class="flist-item">
+			查看活动详情
+		</view>
+	</navigator>
+	<view class="flist-item"  bindtap="goFilter" data-id="{{id}}">
+		筛选页面
+	</view>
+	<view class="flist-item-flex">
+		<view class="flist-item-count">参加{{fInfo.join_counts}} |</view>
+		<view class="flist-item-count">反馈{{fInfo.feedbacks.length}} |</view>
+		<view class="flist-item-count">平均分{{fInfo.sponsor_score}}</view>
+	</view>
+	<view class="hadFeedUser">
+		<view>已经反馈的用户</view>
+		<view wx:if="{{feedbacks.length > 0}}">
+			<view vx:for="{{feedbacks}}" wx:for-item="item" wx:key="index" class="feedUserContent">挺好的</view>
+		</view>
+	</view>
+	
+	<view class="notFeedUser">
+		<view>尚未反馈的用户</view>
+	</view>
+</view>

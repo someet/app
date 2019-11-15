@@ -183,6 +183,7 @@ form {
 
 .member-top-box-title-name {
 	height: 70%;
+	overflow: hidden;
 }
 
 .member-top-box-title-time {
@@ -289,4 +290,7 @@ button::after {
 }
 .width1rem{
 	width: 1rem
+}
+.smallFont{
+	font-size:0.7rem;
 }

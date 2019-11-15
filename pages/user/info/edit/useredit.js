@@ -270,7 +270,7 @@ Page({
 		req.checkUserInfoComplete().then((res)=>{
 			var data = res.data;
 			console.log(res.data)
-			if(data.status == 0){
+			if(data.status == 1){
 				var userInfoComplete = data.type
 				if(userInfoComplete == 'complete'){
 					// 检查是否是从活动报名过lai/
@@ -310,6 +310,10 @@ Page({
 						url:'/pages/user/info/edit/edit'
 					})
 				}
+			}else{
+				wx.navigateTo({
+					url:'/pages/user/info/edit/edit'
+				})
 			}
 		})
 		

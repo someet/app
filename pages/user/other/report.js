@@ -7,18 +7,38 @@ Page({
 		showReason:false,
 		type:0,
 		isClickUpload:false,
-		reportImg:''
+		reportImg:'',
+		selectText:'',
+		allReason:''
 	},
 	onLoad() {
+		var text = ['我要提供产品反馈、报告错误','有人发送骚扰营销广告','有人发送色情低俗内容','有人恶意骚扰发送不文明内容','我发现了疑似传销、违规直销等行为'];
+		this.setData({
+			allReason:text
+		})
 	},
 	//提交申诉
 	reportSubmit(e){
 		console.log(e)
+		var saveImg = this.data.reportImg
 		var data = {
 			imageArr:saveImg,
 			content:e.detail.value.content,
 			type:this.data.type
 		}
+		app.loadTitle('正在提交...')
+		req.subReport(data).then((res)=>{
+			app.hideLoad();
+			console.log(res)
+			if(res.data.status == 1){
+				app.showMsg(res.data.data)
+				wx.switchTab({
+					urlL:'/pages/user/user'
+				})
+			}else{
+				app.showMsg('提交失败')
+			}
+		})
 	},
 	showReason(){
 		this.setData({
@@ -29,7 +49,9 @@ Page({
 	selectedType(e){
 		var type = e.currentTarget.dataset.type
 		this.setData({
-			type:type
+			type:type,
+			showReason:!this.data.showReason,
+			selectText:this.data.allReason[type]
 		})
 	},
 	uploadImage(){
