@@ -23,7 +23,9 @@
 			</block>
 		</scroll-view>
 		<view wx:if="{{actList.length == 0}}" style="text-align: center;font-size: 2.5rem;margin-top: 9rem;">
-			<text wx:if="{{search}}">空空如也</text>
+			<view class="search-none" wx:if="{{search}}">
+				<image src="http://img.someet.cc/FhrWOTd-DwWxJIefg9N9vtrHMoOj"  mode="widthFix" />
+			</view>
 			<text wx:if="{{!search}}">搜索点啥吧</text>
 		</view>
 	</view>

@@ -57,7 +57,12 @@ Page({
 	checkCurrent: function(e) {
 		const that = this;
 		var val = e.target.dataset.current
-		if(val =='category' || val == 'subscrib'){
+		if(val =='category'){
+			wx.navigateTo({
+				url:'/pages/index/cate/index'
+			})
+		}
+		if(val == 'subscrib'){
 			app.showMsg('敬请期待')
 			return false
 		}
@@ -106,11 +111,16 @@ Page({
 				Array.prototype.push.apply(data, res.data.data)
 				that.setData({
 					'actList': data,
-					isActStart: 1,
+					isActStart:1,
 					page: ++that.data.page,
 					pageTotal: res.data.pageTotal,
 					imgUrls:res.data.banner
 				})
+				if(data.length == 0){
+					that.setData({
+						isActStart:0
+					})
+				}
 			} else {
 				app.showMsg('周二开启活动报名哦')
 				that.setData({

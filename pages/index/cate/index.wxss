@@ -1,0 +1,13 @@
+.cate-list-box{
+	width: 100%;
+	box-sizing: border-box;
+}
+.cate-item{
+	display: inline-block;
+	box-sizing: border-box;
+	width: calc(50% - 0.2rem);
+	margin: 0.1rem;
+}
+.cate-item image{
+	width: 100%;
+}

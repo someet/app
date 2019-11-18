@@ -12,7 +12,12 @@
 	width: 100%;
 	display: flex;
 }
-
+.search-none{
+	width: 100%;
+}
+.search-none image{
+	width: 100%;
+}
 .search input {
 	border: 1px solid #ccc;
 	border-radius: 0.5rem;

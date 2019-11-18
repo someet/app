@@ -189,7 +189,7 @@ const request = {
 			wx.request({
 				header:that.getHeader(),
 				data:data,
-				method:'post',
+				method:'get',
 				url:baseApiUrl+'/user/get-history-act',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
@@ -604,6 +604,33 @@ const request = {
 				method:'get',
 				data:data,
 				url:baseApiUrl+'/answer/get-fusers',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取顶级分类
+	getAllCate(){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				url:baseApiUrl+'/activity/get-category',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
+	},
+	//获取分类
+	getCateById(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'get',
+				data:data,
+				url:baseApiUrl+'/activity/get-category-by-id',
 				success:(res)=>resolve(res.data),
 				fail:(err)=>reject(err)
 			})

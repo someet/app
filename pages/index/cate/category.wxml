@@ -1,0 +1,92 @@
+<view>
+	<view wx:if="{{tagsList.length == 0}}" style="text-align: center;font-size: 2.5rem;margin-top: 9rem;">
+		空空如也
+	</view>
+	<view class="category-main">
+		<view class="cate-child left-menu">
+			<view class="cate-item-list">
+				<view class="cate-item {{currentItem.id == item.id?'cate-item-selected':''}}" wx:for="{{tagList}}" wx:for-item="item" wx:key="index" data-id="{{item}}" bindtap="changeTab">
+					{{item.name}}
+				</view>
+			</view>
+		</view>
+		<!-- 分类图片 -->
+		<view class="cate-img">
+			<view class="cate-name">
+				<view>
+					{{currentItem.name}}
+				</view>
+				<view>
+					{{currentItem.english_name}}
+				</view>
+			</view>
+			<image src="{{currentItem.image}}" mode="widthFix" />
+		</view>
+		<!-- 分类图片结束 -->
+		<!-- 活动列表 -->
+		<view>
+			<!-- 本周活动 -->
+			<view class="member-top-box-myanswers" style="background-color: #808080;">
+				<view class="history-text">
+					- 本周活动 -
+				</view>
+				<scroll-view id='week-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeight}}px;"
+				 bindscrolltolower="getWeekAct" lower-threshold="30">
+					<block wx:for="{{weekList}}" wx:for-item="item" wx:key="index">
+						<view class="member-top-box-scroll-answers founder-bottom-box">
+							<navigator url="/pages/detail/detail?id={{item.id}}">
+								<!-- 上面信息 -->
+								<view class="member-top-box-scroll-answers-box">
+									<!-- 活动封面和名称 -->
+									<view class="member-top-box-poster">
+										<!-- 活动封面 -->
+										<image style="width: 4rem;height: 4rem;" src="{{item.poster}}" mode="aspectFill"></image>
+									</view>
+									<!-- 活动名称 -->
+									<view class="member-top-box-title">
+										<!-- 活动名称 -->
+										<text class="member-top-box-title-name smallFont">{{item.title}}</text>
+										<!-- 活动时间 -->
+										<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
+									</view>
+								</view>
+							</navigator>
+							<view class="member-line"></view>
+						</view>
+					</block>
+				</scroll-view>
+			</view>
+			<!-- 上周活动 -->
+			<view class="member-top-box-myanswers" style="background-color: #333333;">
+				<view class="history-text">
+					- 历史活动 -
+				</view>
+				<scroll-view id='history-scroll' scroll-y="isScroll" style="min-height: 8rem;height: {{screenHeightForH}}px;"
+				 bindscrolltolower="getHistoryAct" lower-threshold="30">
+					<block wx:for="{{historyList}}" wx:for-item="item" wx:key="index">
+						<view class="member-top-box-scroll-answers founder-bottom-box">
+							<navigator url="/pages/detail/detail?id={{item.id}}">
+								<!-- 上面信息 -->
+								<view class="member-top-box-scroll-answers-box">
+									<!-- 活动封面和名称 -->
+									<view class="member-top-box-poster">
+										<!-- 活动封面 -->
+										<image style="width: 4rem;height: 4rem;" src="{{item.poster}}" mode="aspectFill"></image>
+									</view>
+									<!-- 活动名称 -->
+									<view class="member-top-box-title">
+										<!-- 活动名称 -->
+										<text class="member-top-box-title-name smallFont">{{item.title}}</text>
+										<!-- 活动时间 -->
+										<text class="member-top-box-title-time">{{item.start_time}} - {{item.end_time}}</text>
+									</view>
+								</view>
+							</navigator>
+							<view class="member-line"></view>
+						</view>
+					</block>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+</view>

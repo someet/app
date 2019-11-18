@@ -1,0 +1,9 @@
+<view>
+	<view class='cate-list-box'>
+		
+		<view class="cate-item" wx:for="{{type}}" wx:for-item="item" wx:key="index" wx:if="{{item.type_img}}" data-id="{{item.id}}" bindtap="goCategory">
+			<image src="{{item.type_img}}" mode="widthFix" />
+		</view>
+		
+	</view>
+</view>

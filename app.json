@@ -22,7 +22,9 @@
 	"pages/user/info/edit/useredit",
 	"pages/components/upload/upload",
 	"pages/user/feedback/feedback",
-	"pages/index/search/index"
+	"pages/index/search/index",
+	"pages/index/cate/index",
+	"pages/index/cate/category"
   ],
   "window": {
     "backgroundTextStyle": "light",
