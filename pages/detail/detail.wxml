@@ -196,8 +196,10 @@
 	<!-- 报名按钮 -->
 	<view class="go-answer">
 		<button class="answer-goback" bindtap='goback'> 返回 </button>
-		<button wx:if='{{model.is_answer == 0 && model.is_end == 0 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 报名 </button>
-		<button wx:if='{{model.is_answer == 1 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}">已报名</button>
+		<form bindsubmit="goAnswer" report-submit="true" wx:if='{{model.is_answer == 0 && model.is_end == 0 && model.status == 20 && model.is_end != 1}}'>
+			<button formType="submit" wx:if='{{model.is_answer == 0 && model.is_end == 0 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer"  disabled="{{is_click}}"> 报名 </button>
+		</form>
+		<button wx:if='{{model.is_answer == 1 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer" disabled="{{is_click}}">已报名</button>
 		<button wx:if='{{model.status == 30}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已关闭 </button>
 		<button wx:if='{{model.status == 40}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已取消 </button>
 		<button wx:if='{{model.is_end == 1 && model.status >=20}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>

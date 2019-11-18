@@ -14,7 +14,7 @@ Page({
 		isLogin: 0,
 		isCollect: 0, //是否收藏,
 		isBlack: false, //是否拉黑,
-		randAct:[]
+		randAct: []
 	},
 	onLoad: function(options) {
 		var act_id = options.id
@@ -29,49 +29,54 @@ Page({
 		req.getHeader();
 		var userInfo = user.getUserInfo()
 	},
-	goDetail(e){
+	goDetail(e) {
 		var id = e.currentTarget.dataset.id
 		var page = getCurrentPages();
-		if(page > 9){
+		if (page > 9) {
 			wx.redirectTo({
-				url:'/pages/detail/detail?id='+id
+				url: '/pages/detail/detail?id=' + id
 			})
-		}else{
+		} else {
 			wx.navigateTo({
-				url:'/pages/detail/detail?id='+id
+				url: '/pages/detail/detail?id=' + id
 			})
 		}
-		
+
 	},
 	// 发布活动
-	releaseAct(){
+	releaseAct() {
 		var that = this
 		app.loadMsg('正在发布...')
-		req.releaseAct({'id':this.data.id}).then((res)=>{
+		req.releaseAct({
+			'id': this.data.id
+		}).then((res) => {
 			console.log(res);
 			app.hideLoad();
-			if(res.data.status == 1){
+			if (res.data.status == 1) {
 				app.showMsg('发布成功');
 				var model = that.data.model
 				model.status = 20
 				that.setData({
-					model:model
+					model: model
 				})
-			}else{
+			} else {
 				app.showMsg(res.data);
 			}
-			
+
 		})
 	},
 	// 随机获取三个活动
-	getRandAct(){
-		var id = this.data.id,that = this;
-		req.getRandAct({'id':id}).then((res)=>{
+	getRandAct() {
+		var id = this.data.id,
+			that = this;
+		req.getRandAct({
+			'id': id
+		}).then((res) => {
 			console.log(res)
-			var data =res.data
-			if(data.status == 1){
+			var data = res.data
+			if (data.status == 1) {
 				that.setData({
-					randAct:data.data
+					randAct: data.data
 				})
 			}
 		})
@@ -129,8 +134,23 @@ Page({
 			wx.hideLoading()
 		}).catch(req.showErr)
 	},
+	//获取订阅权限
+	getAccessSub() {
+		wx.requestSubscribeMessage({
+			tmplIds: ['zpYj03A-4icWUibi4QXTGwEfePc3U5zp5NX41cGgaeo','ve0c3ky3sP7esgaOsfRBdhV0SNE7Liench7hmjR_oU0','U0a2sDUeZpmHHcAQeJP4zO--cCIByGF4OzO1Ac-xYos'],
+			success(res) {
+				console.log(res)
+			},
+			fail(res){
+				console.log(res)
+			},
+			complete(res){
+				console.log(res)
+			}
+		})
+	},
 	//点击报名
-	goAnswer: function() {
+	goAnswer: function(e) {
 		var that = this;
 		var userInfoComplete = user.checkUserInfoComplete()
 		if (this.data.isLogin == 0 || !this.data.isLogin) {
@@ -164,7 +184,7 @@ Page({
 		//检查活动状态
 		var title;
 		if (this.data.model.status == 20) {
-			this.checkAnswer();
+			this.checkAnswer(e.detail.formId);
 		} else {
 			if (this.data.model.status == 30) {
 				title = '活动已关闭';
@@ -185,7 +205,7 @@ Page({
 		})
 	},
 	//判断活动状态
-	checkAnswer() {
+	checkAnswer(formId) {
 		var that = this;
 		wx.showLoading({
 			title: '查询报名状态中',
@@ -234,11 +254,15 @@ Page({
 				that.is_click = false;
 			} else {
 				//开始报名
-				that.startAnswer(res.data.is_set_question)
+				that.startAnswer(res.data.is_set_question,formId)
 			}
 		}).catch(req.showErr)
 	},
-	startAnswer(is_set_question) {
+	startAnswer(is_set_question,formId) {
+		//保存formId，发布消息
+		req.saveFormId({'formId':formId}).then((res)=>{
+			console.log(res)
+		})
 		// 开始报名流程
 		// console.log(this.data.model.profile.headimgurl)
 		// return false

@@ -635,6 +635,20 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//保存发送消息的formID
+	saveFormId(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:baseApiUrl+'/wechat/save-formid',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;
