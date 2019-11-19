@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
+	"pages/detail/qrcode",
     "pages/user/user",
     "pages/user/founder/founder",
 	"pages/user/founder/filter",

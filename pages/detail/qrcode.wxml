@@ -1,0 +1,8 @@
+<view>
+	<view class="qrcodeBox">
+		<image src="{{qrcode}}" wx:if="{{qrcode}}" mode="widthFix"/>
+		<view wx:if="{{isCheck && qrcode}}" style="text-align: center;font-size: 2.5rem;margin-top: 9rem;">
+			<text wx:if="{{isCheck&& qrcode}}">数据异常</text>
+		</view>
+	</view>
+</view>

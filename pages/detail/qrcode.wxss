@@ -1,0 +1,9 @@
+.qrcodeBox{
+	margin: 0 auto;
+	margin-top:30%;
+	width: 10rem;
+	height: 10rem;
+}
+.qrcodeBox image{
+	width: 100%;
+}

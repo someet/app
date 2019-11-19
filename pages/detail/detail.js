@@ -29,6 +29,12 @@ Page({
 		req.getHeader();
 		var userInfo = user.getUserInfo()
 	},
+	goQrcode(e){
+		var id = e.currentTarget.dataset.id
+		wx.redirectTo({
+			url: '/pages/detail/qrcode?id=' + id
+		})
+	},
 	goDetail(e) {
 		var id = e.currentTarget.dataset.id
 		var page = getCurrentPages();
@@ -88,8 +94,25 @@ Page({
 		this.setData({
 			isCollect: Number(!this.data.isCollect)
 		})
-		var title = this.data.isCollect ? '已收藏' : '取消收藏';
-		app.showMsg(title)
+		var type;
+		if(this.data.isCollect){
+			type='collect'
+		}else{
+			type='uncollect'
+		}
+		var data = {
+			cid:this.data.id,
+			type:type
+		}
+		req.addCollect(data).then((res)=>{
+			console.log(res)
+			if(res.data.status == 1){
+				var title = this.data.isCollect ? '已收藏' : '取消收藏';
+				app.showMsg(title)
+			}else{
+				app.showMsg('操作失败')
+			}
+		})
 	},
 	// 拉黑按钮
 	blackAct(e) {
@@ -97,8 +120,26 @@ Page({
 		this.setData({
 			isBlack: Number(!this.data.isBlack)
 		})
-		var title = this.data.isBlack ? '已拉黑' : '取消拉黑';
-		app.showMsg(title)
+		var type;
+		if(this.data.isBlack){
+			type='black'
+		}else{
+			type='white'
+		}
+		var data = {
+			cid:this.data.id,
+			type:type
+		}
+		req.addBlack(data).then((res)=>{
+			console.log(res)
+			if(res.data.status == 1){
+				var title = this.data.isBlack ? '已拉黑' : '取消拉黑';
+				app.showMsg(title)
+			}else{
+				app.showMsg('操作失败')
+			}
+		})
+		
 	},
 	checkLogin() {
 		var userInfo = wx.getStorageSync('userInfo')

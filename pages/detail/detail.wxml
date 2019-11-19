@@ -6,7 +6,7 @@
 		<!-- //类型展示，收藏按钮，黑名单按钮 -->
 		<view class="detail-poster-box">
 			<image mode='widthFix' src="{{model.type.icon_img}}" class="detail-slide-image-icon"/>
-			<text class='detail-slide-image-text'>观影</text>
+			<text class='detail-slide-image-text'>{{model.type.name}}</text>
 			<view class='detail-poster-box-button'>
 				<view class="detail-poster-box-button-right" bindtap="blackAct" data-id="{{model.id}}">
 					<image style="height: 50%;" mode='widthFix' src="{{isBlack?'http://img.someet.cc/FtJ4NA8wkPq5Duakif6weDqrojFx':'http://img.someet.cc/FjS9oSxzzt2XYPTPu8ft4Al6nukY'}}" class="detail-slide-image-collect"/>
@@ -199,10 +199,10 @@
 		<form bindsubmit="goAnswer" report-submit="true" wx:if='{{model.is_answer == 0 && model.is_end == 0 && model.status == 20 && model.is_end != 1}}'>
 			<button formType="submit" wx:if='{{model.is_answer == 0 && model.is_end == 0 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer"  disabled="{{is_click}}"> 报名 </button>
 		</form>
-		<button wx:if='{{model.is_answer == 1 && model.status == 20 && model.is_end != 1}}' class="answer-goanswer" disabled="{{is_click}}">已报名</button>
-		<button wx:if='{{model.status == 30}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已关闭 </button>
-		<button wx:if='{{model.status == 40}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已取消 </button>
-		<button wx:if='{{model.is_end == 1 && model.status >=20}}' class="answer-goanswer" bindtap='goAnswer' disabled="{{is_click}}"> 活动已结束 </button>
+		<button wx:if='{{model.is_answer == 1 && model.status == 20 && model.is_end != 1}}' data-id="{{model.id}}" bindtap="goQrcode" class="answer-goanswer" disabled="{{is_click}}">查看二维码</button>
+		<button wx:if='{{model.status == 30}}' class="answer-goanswer"  disabled="{{is_click}}"> 活动已关闭 </button>
+		<button wx:if='{{model.status == 40}}' class="answer-goanswer"  disabled="{{is_click}}"> 活动已取消 </button>
+		<button wx:if='{{model.is_end == 1 && model.status >=20}}' class="answer-goanswer"  disabled="{{is_click}}"> 活动已结束 </button>
 		<button wx:if='{{model.status == 15}}' class="answer-goanswer" bindtap="releaseAct"> 发布活动 </button>
 	</view>
 </view>
