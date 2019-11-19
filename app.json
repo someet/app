@@ -24,7 +24,8 @@
 	"pages/user/feedback/feedback",
 	"pages/index/search/index",
 	"pages/index/cate/index",
-	"pages/index/cate/category"
+	"pages/index/cate/category",
+	"pages/question/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

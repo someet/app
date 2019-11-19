@@ -1,10 +1,11 @@
 <view class="tabBar">
 	<view class="tabBar-item {{isActive == 'act'?'tabBar-item-red':''}}" bindtap='swichTo' data-action='act'>
-			<image
+			<!-- <image
 					class='tabBar-item-normal'
 					mode="widthFix"
 					src="/pages/image/act.png"
-				></image>
+				></image> -->
+				<text style="color:white;">活动中心</text>
 	</view>
 	<view class="tabBar-item {{isActive == 'map'?'tabBar-item-red':''}} tabBar-item-find-view" bindtap='swichTo' data-action='map'>
 		<image
@@ -14,12 +15,11 @@
 				></image>  
 	</view>
 	<view class="tabBar-item {{isActive == 'user'?'tabBar-item-red':''}}" bindtap='swichTo' data-action='user'>
+		<!-- <image class='tabBar-item-normal'
+			mode="widthFix"
+			src="/pages/image/me.png"></image> -->
 		<navigator
-				url="/pages/user/user"><image
-					 class='tabBar-item-normal'
-					mode="widthFix"
-					src="/pages/image/me.png"
-				></image>  </navigator>
+				url="/pages/user/user"> <text style="color:white;">个人中心</text> </navigator>
 	</view>
 	<slot></slot>
 </view>

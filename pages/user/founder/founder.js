@@ -15,6 +15,21 @@ Page({
 		isHistoryScroll:true,
 		isCollect:0
 	},
+	// 去筛选「
+	goFilter(e) {
+		const val = e.currentTarget.dataset.id;
+		wx.navigateTo({
+			url: '/pages/user/founder/filter',
+			events: {
+	
+			},
+			success: function(res) {
+				res.eventChannel.emit('actInfo', {
+					data: val
+				})
+			}
+		})
+	},
 	changeTab(e){
 		var type = e.currentTarget.dataset.type 
 		console.log(type)

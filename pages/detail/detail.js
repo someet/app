@@ -137,14 +137,16 @@ Page({
 	//获取订阅权限
 	getAccessSub() {
 		wx.requestSubscribeMessage({
-			tmplIds: ['zpYj03A-4icWUibi4QXTGwEfePc3U5zp5NX41cGgaeo','ve0c3ky3sP7esgaOsfRBdhV0SNE7Liench7hmjR_oU0','U0a2sDUeZpmHHcAQeJP4zO--cCIByGF4OzO1Ac-xYos'],
+			tmplIds: ['zpYj03A-4icWUibi4QXTGwEfePc3U5zp5NX41cGgaeo', 've0c3ky3sP7esgaOsfRBdhV0SNE7Liench7hmjR_oU0',
+				'U0a2sDUeZpmHHcAQeJP4zO--cCIByGF4OzO1Ac-xYos'
+			],
 			success(res) {
 				console.log(res)
 			},
-			fail(res){
+			fail(res) {
 				console.log(res)
 			},
-			complete(res){
+			complete(res) {
 				console.log(res)
 			}
 		})
@@ -254,23 +256,28 @@ Page({
 				that.is_click = false;
 			} else {
 				//开始报名
-				that.startAnswer(res.data.is_set_question,formId)
+				that.startAnswer(res.data.is_set_question, formId)
 			}
 		}).catch(req.showErr)
 	},
-	startAnswer(is_set_question,formId) {
+	startAnswer(is_set_question, formId) {
 		//保存formId，发布消息
-		req.saveFormId({'formId':formId}).then((res)=>{
+		var data = {
+			formId: formId,
+			activity_id: this.data.id,
+			content: '报名'
+		}
+		req.saveFormId(data).then((res) => {
 			console.log(res)
-		})
+		}).catch(req.showErr)
 		// 开始报名流程
-		// console.log(this.data.model.profile.headimgurl)
+		console.log('开始了')
 		// return false
 		var that = this;
 		if (is_set_question) {
 			//跳转到回答问题页面
 			wx.navigateTo({
-				url: '../question/index?id=' + this.data.id,
+				url: '/pages/question/index?id=' + this.data.id,
 				events: {
 
 				},
@@ -283,39 +290,56 @@ Page({
 					res.eventChannel.emit('founderInfo', {
 						data: founderInfo
 					})
+				},
+				fail(res){
+					console.log(res)
 				}
 			})
-			return false
-		}
-		req.startAnswer().then((res) => {
-			console.log(res)
-			if (res.success == 0) {
-				wx.showToast({
-					title: '服务器错误',
-					icon: 'none',
-					duration: 2000
-				})
-				that.is_click = false;
-			} else {
-				if (res.data.status == 1) {
-					if (typeof(res.data.is_set_question) != undefined && res.data.is_set_question == 1) {
-						//跳转回答问题页面
-						wx.navigateTo({
-							url: '../question/index?id=' + that.data.id
-						})
-					} else {
-						//未设置问题则直接生成报名记录
-						console.log(res)
-						that.is_click = false;
-						if (res.data.status == 1) {
-							//跳转到报名成功页面
-							wx.redirectTo({
-								url: '/pages/user/answer/finish/finish'
+		} else {
+			console.log('到这了')
+			req.startAnswer().then((res) => {
+				console.log(res)
+				if (res.success == 0) {
+					wx.showToast({
+						title: '服务器错误',
+						icon: 'none',
+						duration: 2000
+					})
+					that.is_click = false;
+				} else {
+					if (res.data.status == 1) {
+						if (typeof(res.data.is_set_question) != undefined && res.data.is_set_question == 1) {
+							//跳转回答问题页面
+							wx.navigateTo({
+								url: '/pages/question/index?id=' + that.data.id,
+								events: {
+								
+								},
+								success(res) {
+									var founderInfo = {
+										headimgurl: that.data.model.profile.headimgurl,
+										username: that.data.model.user.username
+									}
+									console.log(founderInfo)
+									res.eventChannel.emit('founderInfo', {
+										data: founderInfo
+									})
+								}
 							})
+						} else {
+							//未设置问题则直接生成报名记录
+							console.log(res)
+							that.is_click = false;
+							if (res.data.status == 1) {
+								//跳转到报名成功页面
+								wx.redirectTo({
+									url: '/pages/user/answer/finish/finish'
+								})
+							}
 						}
 					}
 				}
-			}
-		});
+			});
+		}
 	}
 })
