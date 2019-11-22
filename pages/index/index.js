@@ -24,6 +24,8 @@ Page({
 		pageTotal: 0
 	},
 	onLoad: function(options) {
+		var res = app.getDeviceInfo();
+		wx.setStorageSync('deviceInfo',res);
 		var city = typeof(options.city_id) == 'undefined' ? 2 : options.city_id
 		console.log(options)
 		this.setData({

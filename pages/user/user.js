@@ -63,7 +63,6 @@ Page({
 			userFunc.checkUserInfo()
 			app.loadTitle('正在登录');
 			var pro = new Promise((resolve, reject) => {
-				console.log('正在登录')
 				let timer = setInterval(function() {
 					var user = userFunc.getUserInfo()
 					if (typeof(user.id) != 'undefined') {
@@ -85,7 +84,7 @@ Page({
 		//先获取openid 再查询是否存在 不存在则创建
 	},
 	getUserInfo(data) {
-		console.log('cssssssss')
+		app.loadTitle('正在登录');
 		var that = this;
 		if (this.data.isGetInfo) {
 			app.showMsg('请稍后')
@@ -96,7 +95,7 @@ Page({
 		})
 		var checkInfo = wx.getStorageSync('userInfo')
 		req.createUser(data).then((res) => {
-			console.log(res)
+			app.hideLoad();
 			if (res.data.status == 1) {
 				userFunc.setUserInfo(res.data.data)
 				that.setData({

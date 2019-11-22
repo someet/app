@@ -77,7 +77,7 @@
 							</picker>
 						</view>
 					</view>
-					<view style="margin-bottom: 7rem">
+					<view style="margin-bottom: 2rem">
 						<text class="grayTitle">个人简介</text>
 						<view>
 							<textarea class="question-item-list-text" placeholder="请填写个人简介" name="bio" value='{{bio}}' />

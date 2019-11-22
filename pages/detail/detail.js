@@ -14,9 +14,14 @@ Page({
 		isLogin: 0,
 		isCollect: 0, //是否收藏,
 		isBlack: false, //是否拉黑,
-		randAct: []
+		randAct: [],
+		deviceInfo:{}
 	},
 	onLoad: function(options) {
+		var deviceInfo = wx.getStorageSync('deviceInfo');
+		this.setData({
+			deviceInfo:deviceInfo
+		})
 		var act_id = options.id
 		this.setData({
 			id: act_id
@@ -178,8 +183,7 @@ Page({
 	//获取订阅权限
 	getAccessSub() {
 		wx.requestSubscribeMessage({
-			tmplIds: ['zpYj03A-4icWUibi4QXTGwEfePc3U5zp5NX41cGgaeo', 've0c3ky3sP7esgaOsfRBdhV0SNE7Liench7hmjR_oU0',
-				'U0a2sDUeZpmHHcAQeJP4zO--cCIByGF4OzO1Ac-xYos'
+			tmplIds: ['faq-S-jJKkgV_5eNg3Yf1qfZEu37b0RAVVr3MzrDG0Y'
 			],
 			success(res) {
 				console.log(res)
@@ -302,6 +306,9 @@ Page({
 		}).catch(req.showErr)
 	},
 	startAnswer(is_set_question, formId) {
+		if(deviceInfo && deviceInfo.SDKVersion > '2.8.2'){
+			console.log('版本足够')
+		}
 		//保存formId，发布消息
 		var data = {
 			formId: formId,

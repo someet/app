@@ -8,7 +8,7 @@
 		</view>
 		<view class="member-founder-tab-item">
 			<text bindtap="changeTab" data-type='collect' class="{{activeTab == 'collect'?'member-founder-tab-item-active':''}}">
-				被收藏的活动
+				收藏的活动
 			</text>
 		</view>
 	</view>

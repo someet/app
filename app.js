@@ -38,5 +38,13 @@ App({
 	getWindowInfo(){
 		var client = wx.getSystemInfoSync();
 		return client;
+	},
+	getDeviceInfo(){
+		try {
+		  const res = wx.getSystemInfoSync()
+		  return res;
+		} catch (e) {
+		  // Do something when catch error
+		}
 	}
 })

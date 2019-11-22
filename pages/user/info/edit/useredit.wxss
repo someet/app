@@ -101,18 +101,15 @@
 	display: block;
 }
 .edit_btn_box{
-    width: 100%;
+    width: 50%;
     height: 3rem;
     line-height: 3rem;
     text-align: center;
     background: rgb(241,43,54);
     color:white;
     border:none;
-    display: inline-block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    /* display: inline-block; */
+	margin: 0 auto;
 }
 .edit_sex_list .edit_sex_box{
     width: 30%;

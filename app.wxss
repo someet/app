@@ -11,12 +11,11 @@
 
 .iconfont {
 	font-family: "iconfont" !important;
-	font-size: 24px;
+	font-size: 18px;
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 .icon-cc-card:before {
 	content: "\e6c5";
 }
@@ -100,6 +99,7 @@ page {
 
 view {
 	box-sizing: border-box;
+	font-size: 18px;
 }
 
 form {
@@ -140,7 +140,7 @@ form {
 /* 个人中心和发起活动和报名的活动通用活动列表样式 */
 .member-top-box-answer {
 	color: #707070;
-	font-size: 0.9rem;
+	/* font-size: 0.9rem; */
 	padding: 1rem;
 	background-color: white;
 
