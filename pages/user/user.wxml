@@ -145,5 +145,5 @@
 	</view>
 </view>
 <view>
-	<bottom-nav isActive='act'></bottom-nav>
+	<bottom-nav isActive='user'></bottom-nav>
 </view>

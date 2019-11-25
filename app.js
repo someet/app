@@ -2,14 +2,25 @@ var user = require('./common/user.js');
 App({
 	globalData:{
         apiUrl: 'http://mac.ngrok.wdevelop.cn',
-		userInfo: null
+		userInfo: null,
+		isIphoneX:false
 	},
 	onLaunch: function () {
+		var that = this;
 	  //隐藏自带的导航栏
 	  wx.hideTabBar();
 	  //检查用户状态
 	  user.checkUserInfo();
 	  wx.removeStorageSync('editFrom')
+	  var res = this.getDeviceInfo()　
+	  var radio = 1;
+	  if(res.screenWidth && res.screenHeight){
+		  radio = res.screenHeight/res.screenWidth;
+		  if(radio > 1.8){
+			  that.globalData.isIphoneX = true
+		  }
+	  }
+	  console.log(that.globalData.isIphoneX)
 	},
 	showMsg(msg,type,duration){
 		var icon = typeof(type) == 'undefined'?'none':type
@@ -42,6 +53,8 @@ App({
 	getDeviceInfo(){
 		try {
 		  const res = wx.getSystemInfoSync()
+		  wx.setStorageSync('deviceInfo',res);
+		  // that.globalData.isIphoneX = true
 		  return res;
 		} catch (e) {
 		  // Do something when catch error

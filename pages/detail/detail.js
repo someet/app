@@ -182,17 +182,20 @@ Page({
 	},
 	//获取订阅权限
 	getAccessSub() {
+		var that = this;
 		wx.requestSubscribeMessage({
-			tmplIds: ['faq-S-jJKkgV_5eNg3Yf1qfZEu37b0RAVVr3MzrDG0Y'
+			tmplIds: ['zpYj03A-4icWUibi4QXTG1MQcToYxfoDD3gtw3h_lqc','tAtOQVue4AssVd0W_XD4cPDX44PgPXzkRSMIKcM99cg','ve0c3ky3sP7esgaOsfRBdgaCx58wERvtDk_EpGPMkr0','zpYj03A-4icWUibi4QXTG1MQcToYxfoDD3gtw3h_lqc'
 			],
 			success(res) {
-				console.log(res)
+				req.saveSubTpl(res).then((res)=>{
+					console.log(res)
+					that.goAnswer();
+				})
 			},
 			fail(res) {
-				console.log(res)
-			},
-			complete(res) {
-				console.log(res)
+				req.saveSubTpl(res).then((res)=>{
+					console.log(res)
+				})
 			}
 		})
 	},
@@ -306,6 +309,7 @@ Page({
 		}).catch(req.showErr)
 	},
 	startAnswer(is_set_question, formId) {
+		var deviceInfo = this.data.deviceInfo
 		if(deviceInfo && deviceInfo.SDKVersion > '2.8.2'){
 			console.log('版本足够')
 		}

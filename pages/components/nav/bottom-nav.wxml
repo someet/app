@@ -1,4 +1,4 @@
-<view class="tabBar">
+<view class="tabBar {{isIphoneX ?'fix-iphonex-button':''}}">
 	<view class="tabBar-item {{isActive == 'act'?'tabBar-item-red':''}}" bindtap='swichTo' data-action='act'>
 			<!-- <image
 					class='tabBar-item-normal'

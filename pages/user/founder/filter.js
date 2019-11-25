@@ -83,6 +83,7 @@ Page({
 			  title: '提示',
 			  content: '选择后无法取消',
 			  success (res) {
+				  app.loadMsg('正在操作')
 			    if (res.confirm) {
 			      //确认通过或者拒绝
 				  var data = {
@@ -93,6 +94,7 @@ Page({
 					  'reject_reason':''
 				  }
 				  req.filterAnswer(data).then((res)=>{
+					  app.hideLoad();
 					  if(res.data.status == 1){
 						  var waitList = that.data.waitList
 						  var passList = that.data.passList

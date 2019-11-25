@@ -689,6 +689,20 @@ const request = {
 				fail:(err)=>reject(err)
 			})
 		})
+	},
+	//保存用户订阅权限
+	saveSubTpl(data){
+		var that = this
+		return new Promise((resolve,reject)=>{
+			wx.request({
+				header:that.getHeader(),
+				method:'post',
+				data:data,
+				url:baseApiUrl+'/wechat/save-sub-tpl',
+				success:(res)=>resolve(res.data),
+				fail:(err)=>reject(err)
+			})
+		})
 	}
 }
 module.exports = request;

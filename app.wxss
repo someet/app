@@ -99,7 +99,7 @@ page {
 
 view {
 	box-sizing: border-box;
-	font-size: 18px;
+	font-size: 36rpx;
 }
 
 form {

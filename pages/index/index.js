@@ -21,13 +21,15 @@ Page({
 		'page': 1,
 		'search': '',
 		limit: 10,
-		pageTotal: 0
+		pageTotal: 0,
+		activeBar:'act',
+		isIphoneX:false
 	},
 	onLoad: function(options) {
-		var res = app.getDeviceInfo();
-		wx.setStorageSync('deviceInfo',res);
+		this.setData({
+			isIphoneX:app.globalData.isIphoneX
+		})
 		var city = typeof(options.city_id) == 'undefined' ? 2 : options.city_id
-		console.log(options)
 		this.setData({
 			city: city
 		})

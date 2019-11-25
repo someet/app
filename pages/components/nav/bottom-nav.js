@@ -7,6 +7,10 @@ Component({
 	isActive:{
 		type:String,
 		value:'act'
+	},
+	isIphoneX:{
+		type:Boolean,
+		value:false
 	}
   },
 
@@ -14,7 +18,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-	
   },
   /**
    * 组件的方法列表

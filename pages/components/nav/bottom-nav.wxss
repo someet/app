@@ -29,3 +29,15 @@
 .tabBar-item-red{
 	background-color: rgb(193,39,47);
 }
+.fix-iphonex-button {
+    bottom:68rpx!important;
+    width:100vw;
+}
+.fix-iphonex-button::after {
+    content: ' ';
+    position: fixed;
+    bottom: 0!important;
+    height: 68rpx!important;
+    width: 100%;
+    background: #fff;
+}

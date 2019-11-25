@@ -42,5 +42,5 @@
 	</view>
 </view>
 <view>
-	<bottom-nav isActive='act'></bottom-nav>
+	<bottom-nav isActive='act' isIphoneX="{{isIphoneX}}"></bottom-nav>
 </view>
